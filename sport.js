@@ -456,19 +456,99 @@ function renderActivities(acts) {
 }
 
 // === REPEATED ROUTES ===
+let rrCharts = {};
+
+function toggleRouteDetails(idx) {
+    const detailsDiv = document.getElementById(`rr-details-${idx}`);
+    if(!detailsDiv) return;
+    
+    const isOpening = !detailsDiv.classList.contains('open');
+    detailsDiv.classList.toggle('open');
+    
+    if(isOpening && !rrCharts[idx]) {
+        const rr = stats.clusters[idx];
+        const ctx = document.getElementById(`rr-chart-${idx}`);
+        
+        // Sort chronologically
+        const acts = [...rr.activities].sort((a, b) => new Date(a.date) - new Date(b.date));
+        const labels = acts.map(a => a.date);
+        
+        // Convert pace string to float (e.g. "4:30" -> 4.5) to plot nicely
+        const paceData = acts.map(a => a.avgPace);
+        
+        rrCharts[idx] = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Pace (min/km)',
+                    data: paceData,
+                    borderColor: '#00e5a0',
+                    backgroundColor: 'rgba(0, 229, 160, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { 
+                        reverse: true, // Lower pace is better
+                        title: { display: true, text: 'Pace' } 
+                    }
+                }
+            }
+        });
+    }
+}
+
+window.openActivityModalFromRR = function(actId) {
+    const act = activities.find(a => a.id === actId);
+    if(act) openModal(act);
+}
+
 function renderRepeatedRoutes() {
     if(!stats.clusters) return;
     const list = document.getElementById('repeated-routes-list');
     if(!list) return;
     list.innerHTML = '';
     
-    stats.clusters.forEach(rr => {
+    stats.clusters.forEach((rr, idx) => {
+        const bestPace = rr.activities.map(a=>a.avgPace).filter(x=>x).sort((a,b)=>a-b)[0] || '-';
+        
+        // Sort newest first for the list
+        const actsList = [...rr.activities].sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        let historyHtml = actsList.map(a => `
+            <div class="rr-history-item" onclick="openActivityModalFromRR('${a.id}')">
+                <div class="rr-history-date">${a.date}</div>
+                <div class="rr-history-metrics">
+                    <span class="rr-history-pace">${a.avgPaceDisplay} /km</span>
+                    <span class="rr-history-hr">${a.avgHR ? '❤️ '+Math.round(a.avgHR) : ''}</span>
+                    <span class="rr-history-time">${Math.round(a.movingTime/60)} min</span>
+                </div>
+            </div>
+        `).join('');
+
         list.innerHTML += `
-            <div class="repeated-route-card">
-                <h4>${rr.name} (${rr.count}x)</h4>
+            <div class="repeated-route-card" onclick="toggleRouteDetails(${idx})" style="cursor:pointer">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h4>${rr.name} (${rr.count}x)</h4>
+                    <span style="color:var(--clr-primary)">▼</span>
+                </div>
                 <p>Avg Distance: ${(rr.avgDistance / 1000).toFixed(1)} km</p>
                 <div style="font-size: 0.85em; color: var(--clr-text-muted)">
-                    Best Pace: ${rr.activities.map(a=>a.avgPace).filter(x=>x).sort()[0] || '-'} /km
+                    Best Pace: <span style="color:white; font-weight:bold">${bestPace} /km</span>
+                </div>
+                
+                <div class="rr-details" id="rr-details-${idx}" onclick="event.stopPropagation()">
+                    <div class="rr-chart-container">
+                        <canvas id="rr-chart-${idx}"></canvas>
+                    </div>
+                    <div class="rr-history-list">
+                        ${historyHtml}
+                    </div>
                 </div>
             </div>
         `;

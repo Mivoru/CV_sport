@@ -1136,3 +1136,59 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-color: var(--primary-color);
 }
 
+
+/* === REPEATED ROUTES DETAILS === */
+.rr-details {
+    display: none;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--clr-border);
+    animation: fadeIn 0.3s ease;
+}
+.rr-details.open {
+    display: block;
+}
+.rr-chart-container {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.rr-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+.rr-history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.rr-history-item:hover {
+    background: rgba(255,255,255,0.08);
+}
+.rr-history-date {
+    color: var(--clr-text-muted);
+    font-size: 0.85em;
+}
+.rr-history-metrics {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.rr-history-pace {
+    font-weight: bold;
+    color: var(--clr-primary);
+}
+.rr-history-hr {
+    color: #ef4444;
+}
