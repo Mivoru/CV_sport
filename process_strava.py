@@ -478,10 +478,7 @@ def process_csv(csv_path, conn):
                 # Average speed > 50 km/h (13.8 m/s) or max speed > 100 km/h (27.7 m/s)
                 if avg_speed > 13.8 or max_speed > 27.7:
                     is_anomaly = 1
-            elif sport == "walk":
-                # Average speed > 10 km/h (2.7 m/s) or max speed > 15 km/h (4.1 m/s)
-                if avg_speed > 2.7 or max_speed > 4.1:
-                    is_anomaly = 1
+
 
             try:
                 conn.execute("""
