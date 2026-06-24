@@ -788,6 +788,12 @@ document.addEventListener('DOMContentLoaded', () => {
             renderRecords();
         });
     });
+
+    // Repeated Routes Filter Listeners
+    const rrFilterBtn = document.getElementById("rr-filter-btn");
+    if(rrFilterBtn) rrFilterBtn.addEventListener("click", renderRepeatedRoutes);
+    const rrSportSelect = document.getElementById("rr-filter-sport");
+    if(rrSportSelect) rrSportSelect.addEventListener("change", renderRepeatedRoutes);
 });
 
 

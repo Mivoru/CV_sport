@@ -1239,20 +1239,28 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     outline: none;
     transition: border-color 0.2s;
 }
+.db-select option {
+    background-color: var(--clr-card);
+    color: var(--clr-text);
+}
 .db-select:focus, .db-input:focus {
     border-color: var(--clr-primary);
 }
 .db-btn {
     background-color: var(--clr-primary);
     color: var(--clr-bg);
-    border: none;
-    padding: 8px 16px;
+    border: 2px solid var(--clr-primary);
+    padding: 8px 20px;
     border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
-    transition: opacity 0.2s;
-    height: 35px;
+    transition: all 0.2s ease;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 .db-btn:hover {
-    opacity: 0.8;
+    background-color: transparent;
+    color: var(--clr-primary);
 }
