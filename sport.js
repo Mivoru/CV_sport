@@ -195,13 +195,15 @@ function renderRecords() {
 }
 
 function renderFormEstimate() {
-    if(!stats.formEstimate) return;
+    if(!stats.form) return;
     const grid = document.getElementById('form-estimate-grid');
+    if(!grid) return;
     grid.innerHTML = '';
     
-    ['800m', '1500m', '3000m', '5km'].forEach(d => {
-        if(stats.formEstimate[d]) {
-            const f = stats.formEstimate[d];
+    const distances = ['800m', '1000m', '1500m', '3km', '5km', '10km', 'Half Marathon'];
+    distances.forEach(d => {
+        if(stats.form[d]) {
+            const f = stats.form[d];
             const trendIcon = f.trend === 'improving' ? '↗️' : (f.trend === 'declining' ? '↘️' : '➡️');
             grid.innerHTML += `
                 <div class="form-card">
@@ -214,8 +216,6 @@ function renderFormEstimate() {
         }
     });
 }
-
-// === TREND CHART ===
 function initTrendChart() {
     if(!stats.performanceTrend) return;
     const ctx = document.getElementById('trend-chart');
@@ -257,21 +257,21 @@ function initTrendChart() {
 // === VOLUME CHART ===
 function initVolumeChart(viewType) {
     const ctx = document.getElementById('volume-chart');
-    if(!ctx || !stats.weeklyVolumes || !stats.monthlyVolumes) return;
+    if(!ctx || !stats.volume) return;
     
-    if(volumeChart) volumeChart.destroy();
+    if(typeof volumeChart !== 'undefined' && volumeChart) volumeChart.destroy();
     
-    const dataList = viewType === 'weekly' ? stats.weeklyVolumes.slice(-20) : stats.monthlyVolumes.slice(-12);
-    const labels = dataList.map(d => viewType === 'weekly' ? d.week : d.month);
+    const dataList = stats.volume;
+    const labels = dataList.map(d => d.period);
     
     volumeChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels,
             datasets: [
-                { label: 'Run', data: dataList.map(d => Math.round((d.run || 0)/1000)), backgroundColor: '#3b9eff' },
-                { label: 'Ride', data: dataList.map(d => Math.round((d.ride || 0)/1000)), backgroundColor: '#00e5a0' },
-                { label: 'Walk', data: dataList.map(d => Math.round((d.walk || 0)/1000)), backgroundColor: '#f59e0b' }
+                { label: 'Run', data: dataList.map(d => Math.round((d.run || 0))), backgroundColor: '#3b9eff' },
+                { label: 'Ride', data: dataList.map(d => Math.round((d.ride || 0))), backgroundColor: '#00e5a0' },
+                { label: 'Walk', data: dataList.map(d => Math.round((d.walk || 0))), backgroundColor: '#f59e0b' }
             ]
         },
         options: {
@@ -279,54 +279,29 @@ function initVolumeChart(viewType) {
             maintainAspectRatio: false,
             scales: {
                 x: { stacked: true },
-                y: { stacked: true, title: {display: true, text: 'Distance (km)'} }
-            },
-            plugins: {
-                legend: { labels: { color: '#e2eaf8' } }
+                y: { stacked: true, title: { display: true, text: 'Distance (km)' } }
             }
         }
     });
-
-    // Setup toggle buttons
-    document.querySelectorAll('.vol-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            document.querySelectorAll('.vol-btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            initVolumeChart(e.target.dataset.view);
-        });
-    });
 }
-
-// === RUNNING CATEGORIES ===
 function renderRunningCategories() {
-    if(!stats.categoryStats) return;
-    const grid = document.getElementById('categories-grid');
-    grid.innerHTML = '';
+    if(!activities) return;
+    const runAct = activities.filter(a => a.sport === 'run' && (a.is_anomaly === 0 || a.is_anomaly === undefined));
     
-    const cats = [
-        {id: 'intervaly', en: 'Intervals (<800m)', cz: 'Intervaly (<800m)', color: '#ef4444'},
-        {id: 'stredni', en: 'Middle (800m-3km)', cz: 'Střední (800m-3km)', color: '#f59e0b'},
-        {id: 'tempove', en: 'Tempo (3-10km)', cz: 'Tempové (3-10km)', color: '#3b9eff'},
-        {id: 'dlouhe', en: 'Long (10km+)', cz: 'Dlouhé (10km+)', color: '#00e5a0'}
-    ];
-    
-    cats.forEach(c => {
-        const d = stats.categoryStats[c.id];
-        if(d) {
-            grid.innerHTML += `
-                <div class="cat-card" style="border-top: 4px solid ${c.color}">
-                    <h3 data-en="${c.en}" data-cz="${c.cz}">${currentLang === 'en' ? c.en : c.cz}</h3>
-                    <p>Count: ${d.count}</p>
-                    <p>Avg Pace: ${d.avgPaceDisplay} /km</p>
-                    <p>Best Pace: ${d.bestPaceDisplay} /km</p>
-                    <p>Total Dist: ${Math.round(d.totalDistance / 1000)} km</p>
-                </div>
-            `;
-        }
+    let base = 0, speed = 0, long = 0, recovery = 0;
+    runAct.forEach(a => {
+        const pace = (a.time / 60) / (a.distance / 1000);
+        if(pace < 4.5) speed++;
+        else if(a.distance > 15000) long++;
+        else if(pace > 6.0) recovery++;
+        else base++;
     });
+    
+    document.getElementById('cat-base').style.width = (base / runAct.length * 100) + "%";
+    document.getElementById('cat-speed').style.width = (speed / runAct.length * 100) + "%";
+    document.getElementById('cat-long').style.width = (long / runAct.length * 100) + "%";
+    document.getElementById('cat-recovery').style.width = (recovery / runAct.length * 100) + "%";
 }
-
-// === MAP ===
 function initMap() {
     const mapEl = document.getElementById('leaflet-map');
     if(!mapEl || !L) return;
@@ -373,71 +348,57 @@ function renderMapRoutes(filter) {
 
 // === ACTIVITIES DATABASE ===
 function setupFilters() {
-    const searchInput = document.getElementById('activity-search');
+    const searchInput = document.getElementById('search-act');
     const sportFilter = document.getElementById('filter-sport');
-    const sortFilter = document.getElementById('filter-sort');
+    const sortFilter = document.getElementById('sort-act');
     const minDistInput = document.getElementById('filter-min-dist');
     const maxDistInput = document.getElementById('filter-max-dist');
     const minPaceInput = document.getElementById('filter-min-pace');
     const maxPaceInput = document.getElementById('filter-max-pace');
-    
+    const searchBtn = document.getElementById('search-btn'); // Need to add this to HTML
+
     const update = () => {
-        const query = searchInput ? searchInput.value.toLowerCase() : "";
-        const sport = sportFilter ? sportFilter.value : "all";
-        const sort = sortFilter ? sortFilter.value : "date-desc";
-        const minDist = minDistInput && minDistInput.value ? parseFloat(minDistInput.value) : 0;
-        const maxDist = maxDistInput && maxDistInput.value ? parseFloat(maxDistInput.value) : 9999;
+        let filtered = activities;
         
-        const parsePace = (str) => {
-            if(!str) return null;
-            const parts = str.split(":");
-            if(parts.length===2) return parseInt(parts[0]) + parseInt(parts[1])/60;
-            return parseFloat(str);
-        };
-        const minPace = minPaceInput && minPaceInput.value ? parsePace(minPaceInput.value) : 0;
-        const maxPace = maxPaceInput && maxPaceInput.value ? parsePace(maxPaceInput.value) : 999;
+        // Search
+        const q = searchInput ? searchInput.value.toLowerCase() : "";
+        if(q) filtered = filtered.filter(a => a.name.toLowerCase().includes(q));
+        
+        // Sport
+        const sp = sportFilter ? sportFilter.value : "all";
+        if(sp !== 'all') filtered = filtered.filter(a => a.sport === sp);
+        
+        // Distance
+        const minDist = minDistInput && minDistInput.value ? parseFloat(minDistInput.value) * 1000 : 0;
+        const maxDist = maxDistInput && maxDistInput.value ? parseFloat(maxDistInput.value) * 1000 : Infinity;
+        filtered = filtered.filter(a => a.distance >= minDist && a.distance <= maxDist);
+        
+        // Pace (min/km)
+        const minPace = minPaceInput && minPaceInput.value ? parseFloat(minPaceInput.value) : 0;
+        const maxPace = maxPaceInput && maxPaceInput.value ? parseFloat(maxPaceInput.value) : Infinity;
+        filtered = filtered.filter(a => {
+            const pace = (a.time / 60) / (a.distance / 1000);
+            return pace >= minPace && pace <= maxPace;
+        });
 
-        let filtered = activities.filter(a => {
-            if(sport !== 'all' && a.sport !== sport) return false;
-            if(query && !a.name.toLowerCase().includes(query)) return false;
-            
-            const distKm = a.distance / 1000;
-            if(distKm < minDist || distKm > maxDist) return false;
-            
-            if(a.sport === "run") {
-                const paceVal = a.avg_pace || a.avgPace; 
-                if (paceVal && (paceVal < minPace || paceVal > maxPace)) return false;
-            }
-            return true;
-        });
+        // Sort
+        const srt = sortFilter ? sortFilter.value : "date-desc";
+        if(srt === 'date-desc') filtered.sort((a,b) => new Date(b.date) - new Date(a.date));
+        if(srt === 'date-asc') filtered.sort((a,b) => new Date(a.date) - new Date(b.date));
+        if(srt === 'dist-desc') filtered.sort((a,b) => b.distance - a.distance);
         
-        filtered.sort((a, b) => {
-            if(sort === 'date-desc') return new Date(b.date) - new Date(a.date);
-            if(sort === 'date-asc') return new Date(a.date) - new Date(b.date);
-            if(sort === 'distance-desc') return b.distance - a.distance;
-            if(sort === 'pace-asc') return (a.avgPace || 999) - (b.avgPace || 999);
-            return 0;
-        });
-        
-        const countEl = document.getElementById('activity-count');
-        if (countEl) {
-            countEl.textContent = `Showing ${filtered.length} activities`;
-        }
-        renderActivities(filtered.slice(0, 50));
+        renderActivities(filtered);
     };
-    
-    if(searchInput) searchInput.addEventListener('input', update);
-    if(sportFilter) sportFilter.addEventListener('change', update);
-    if(sortFilter) sortFilter.addEventListener('change', update);
-    if(minDistInput) minDistInput.addEventListener('input', update);
-    if(maxDistInput) maxDistInput.addEventListener('input', update);
-    if(minPaceInput) minPaceInput.addEventListener('input', update);
-    if(maxPaceInput) maxPaceInput.addEventListener('input', update);
-    
-    // Initial call
-    update();
-}
 
+    if(searchBtn) {
+        searchBtn.addEventListener('click', update);
+    } else {
+        // Fallback if button isn't found
+        if(searchInput) searchInput.addEventListener('input', update);
+        if(sportFilter) sportFilter.addEventListener('change', update);
+        if(sortFilter) sortFilter.addEventListener('change', update);
+    }
+}
 function renderActivities(acts) {
     const list = document.getElementById('activity-list');
     if(!list) return;
@@ -543,3 +504,66 @@ document.querySelectorAll(".trend-sport-tabs .vol-btn").forEach(tab => {
       renderTrends();
     });
   });
+document.addEventListener('DOMContentLoaded', () => {
+    // Add record tab listeners
+    document.querySelectorAll(".record-tab").forEach(tab => {
+        tab.addEventListener("click", (e) => {
+            document.querySelectorAll(".record-tab").forEach(t => t.classList.remove("active"));
+            e.currentTarget.classList.add("active");
+            renderRecords();
+        });
+    });
+});
+
+
+function renderTrends() {
+    const activeTab = document.querySelector(".trend-sport-tabs .active");
+    if (!activeTab || !stats || !stats.trends) return;
+    const activeSport = activeTab.dataset.sport;
+    
+    const container = document.getElementById("trend-tabs");
+    if(!container) return;
+    container.innerHTML = "";
+
+    if (activeSport === "run" && stats.trends.run) {
+        const distances = Object.keys(stats.trends.run);
+        if (distances.length === 0) return;
+        
+        let activeDist = distances[0];
+        distances.forEach((dist, idx) => {
+            const btn = document.createElement("button");
+            btn.className = `vol-btn ${idx === 0 ? "active" : ""}`;
+            btn.textContent = dist;
+            btn.onclick = (e) => {
+                container.querySelectorAll(".vol-btn").forEach(b => b.classList.remove("active"));
+                e.target.classList.add("active");
+                updateTrendChart("run", dist);
+            };
+            container.appendChild(btn);
+        });
+        updateTrendChart("run", activeDist);
+    } else if (activeSport === "ride" && stats.trends.ride) {
+        updateTrendChart("ride", null);
+    }
+}
+
+function updateTrendChart(sport, distance) {
+    if(!trendChart || !stats.trends) return;
+    
+    let dataset = [];
+    if(sport === 'run' && distance && stats.trends.run[distance]) {
+        dataset = stats.trends.run[distance];
+        trendChart.data.datasets[0].label = `Pace (${distance})`;
+    } else if (sport === 'ride' && stats.trends.ride) {
+        dataset = stats.trends.ride;
+        trendChart.data.datasets[0].label = "Avg Speed (km/h)";
+    }
+    
+    // Sort chronologically just in case
+    dataset.sort((a,b) => new Date(a.date) - new Date(b.date));
+    
+    // Smooth the line (optional: running average)
+    trendChart.data.labels = dataset.map(d => d.date);
+    trendChart.data.datasets[0].data = dataset.map(d => sport === 'run' ? d.pace : d.speed);
+    trendChart.update();
+}

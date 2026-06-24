@@ -660,7 +660,7 @@ def compute_stats(conn):
     for sport_key in ["run", "ride", "walk"]:
         # Longest
         row = conn.execute("SELECT distance, date, strava_id, name, moving_time FROM activities WHERE sport = ? AND is_anomaly = 0 ORDER BY distance DESC LIMIT 1", (sport_key,)).fetchone()
-        if row: records[sport_key]["Longest"] = {"value": round(row[0], 1), "unit": "km", "date": row[1], "activityId": row[2], "activityName": row[3], "timeDisplay": seconds_to_hms(row[4] or 0)}
+        if row: records[sport_key]["Longest"] = {"value": round(row[0] / 1000.0, 1), "unit": "km", "date": row[1], "activityId": row[2], "activityName": row[3], "timeDisplay": seconds_to_hms(row[4] or 0)}
         
         # Max Elev
         row = conn.execute("SELECT elevation_gain, date, strava_id, name FROM activities WHERE sport = ? AND is_anomaly = 0 ORDER BY elevation_gain DESC LIMIT 1", (sport_key,)).fetchone()

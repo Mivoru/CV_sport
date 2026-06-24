@@ -100,7 +100,7 @@
         "activityName": "Morning Run"
       },
       "Longest": {
-        "value": 21439.4,
+        "value": 21.4,
         "unit": "km",
         "date": "2026-01-31",
         "activityId": "17235811402",
@@ -171,7 +171,7 @@
         "activityName": "Morning Ride"
       },
       "Longest": {
-        "value": 60452.4,
+        "value": 60.5,
         "unit": "km",
         "date": "2024-05-05",
         "activityId": "14336380887",
@@ -215,7 +215,7 @@
         "activityName": "Ranní chůze"
       },
       "Longest": {
-        "value": 22502.2,
+        "value": 22.5,
         "unit": "km",
         "date": "2026-06-19",
         "activityId": "18987939418",
