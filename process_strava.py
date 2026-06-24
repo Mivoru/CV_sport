@@ -749,7 +749,7 @@ def compute_stats(conn):
 
 
 def detect_repeated_routes(conn):
-    """Detect repeated routes by comparing 5 intermediate GPS checkpoints (start, 25%, 50%, 75%, end)."""
+    """Detect repeated routes by comparing start, end, and centroid (average coordinates)."""
     activities = conn.execute("""
         SELECT a.strava_id, a.date, a.name, a.sport, a.distance, a.moving_time, a.avg_pace, a.avg_hr
         FROM activities a
@@ -765,21 +765,23 @@ def detect_repeated_routes(conn):
             (aid,)
         ).fetchall()
         
-        if len(pts) >= 5:
-            n = len(pts)
-            checkpoints = [
-                pts[0],
-                pts[n//4],
-                pts[n//2],
-                pts[3*n//4],
-                pts[-1]
-            ]
+        if len(pts) >= 2:
+            start = pts[0]
+            end = pts[-1]
+            
+            # Calculate centroid (average lat, lon)
+            avg_lat = sum(p[0] for p in pts) / len(pts)
+            avg_lon = sum(p[1] for p in pts) / len(pts)
+            centroid = (avg_lat, avg_lon)
+            
             route_info[aid] = {
-                "checkpoints": checkpoints,
+                "start": start,
+                "end": end,
+                "centroid": centroid,
                 "data": act,
             }
 
-    DIST_THRESHOLD = 300  # meters. Using 300m to account for GPS drift
+    DIST_THRESHOLD = 500  # meters. Using 500m because start/end points of a route can vary (where you start/stop watch)
     groups = []
     used = set()
 
@@ -798,31 +800,26 @@ def detect_repeated_routes(conn):
             r2 = route_info[aid2]
             dist2 = r2["data"][4]
             
-            # 1. Check total distance first to save time
+            # 1. Check total distance first
             if dist1 == 0 or dist2 == 0: continue
             if abs(dist1 - dist2) / max(dist1, dist2) > 0.2:
                 continue
                 
-            # 2. Check all 5 checkpoints forwards AND backwards
-            c1 = r1["checkpoints"]
-            c2 = r2["checkpoints"]
+            # 2. Check centroid distance (this is extremely robust against reverse routes and GPS rate differences)
+            centroid_dist = haversine(r1["centroid"][0], r1["centroid"][1], r2["centroid"][0], r2["centroid"][1])
+            if centroid_dist > DIST_THRESHOLD:
+                continue
+                
+            # 3. Check start and end (either forward or reverse)
+            start_dist_fwd = haversine(r1["start"][0], r1["start"][1], r2["start"][0], r2["start"][1])
+            end_dist_fwd = haversine(r1["end"][0], r1["end"][1], r2["end"][0], r2["end"][1])
             
-            match_forwards = True
-            for j in range(5):
-                d = haversine(c1[j][0], c1[j][1], c2[j][0], c2[j][1])
-                if d > DIST_THRESHOLD:
-                    match_forwards = False
-                    break
-                    
-            match_backwards = False
-            if not match_forwards:
-                match_backwards = True
-                for j in range(5):
-                    d = haversine(c1[j][0], c1[j][1], c2[4-j][0], c2[4-j][1])
-                    if d > DIST_THRESHOLD:
-                        match_backwards = False
-                        break
-                        
+            start_dist_rev = haversine(r1["start"][0], r1["start"][1], r2["end"][0], r2["end"][1])
+            end_dist_rev = haversine(r1["end"][0], r1["end"][1], r2["start"][0], r2["start"][1])
+            
+            match_forwards = start_dist_fwd < DIST_THRESHOLD and end_dist_fwd < DIST_THRESHOLD
+            match_backwards = start_dist_rev < DIST_THRESHOLD and end_dist_rev < DIST_THRESHOLD
+            
             if match_forwards or match_backwards:
                 group.append(aid2)
                 used.add(aid2)
@@ -855,7 +852,6 @@ def detect_repeated_routes(conn):
 
         acts.sort(key=lambda x: x["date"] or "")
         
-        # We don't need polyline in stats.json because UI uses routes.json
         result.append({
             "routeId": f"route_{group[0]}",
             "name": acts[0]["name"] if acts else "Unknown",
