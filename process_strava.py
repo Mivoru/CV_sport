@@ -593,8 +593,6 @@ def process_fit_files(export_dir, conn):
                             continue  # Absurdly fast run (anomaly)
                         if sp == 'ride' and pace < 0.85:
                             continue  # Absurdly fast ride (anomaly)
-                        if sp == 'walk' and pace < 4.00:
-                            continue  # Absurdly fast walk (running)
                         conn.execute("""
                             INSERT INTO best_efforts (activity_id, distance_label, distance_meters, time_seconds, pace)
                             VALUES (?, ?, ?, ?, ?)
