@@ -712,20 +712,35 @@ def compute_stats(conn):
     stats["trends"] = trends
 
     # ─ Volume ─
-    # We will just select all monthly volumes instead of limiting to 12
-    v_rows = conn.execute("""
-        SELECT strftime('%Y-%m', date) as month, sport, SUM(distance)
-        FROM activities WHERE is_anomaly = 0
-        GROUP BY month, sport ORDER BY month
-    """).fetchall()
-    
-    volume_dict = {}
-    for r in v_rows:
-        m, s, d = r
-        if m not in volume_dict: volume_dict[m] = {"run": 0, "ride": 0, "walk": 0}
-        if s in volume_dict[m]: volume_dict[m][s] = round(d, 1)
-    
-    stats["volume"] = [{"period": k, **v} for k,v in volume_dict.items()]
+    c = conn.cursor()
+    c.execute("""
+        SELECT strftime('%Y-%m', date) as m, sport, sum(distance)/1000.0
+        FROM activities
+        WHERE is_anomaly=0 AND sport IN ('run', 'ride', 'walk')
+        GROUP BY m, sport ORDER BY m ASC
+    """)
+    monthly_dict = {}
+    for row in c.fetchall():
+        m, s, d = row[0], row[1], row[2]
+        if m not in monthly_dict: monthly_dict[m] = {"run": 0, "ride": 0, "walk": 0}
+        if s in monthly_dict[m]: monthly_dict[m][s] = round(d, 1)
+        
+    c.execute("""
+        SELECT strftime('%Y-%W', date) as w, sport, sum(distance)/1000.0
+        FROM activities
+        WHERE is_anomaly=0 AND sport IN ('run', 'ride', 'walk')
+        GROUP BY w, sport ORDER BY w ASC
+    """)
+    weekly_dict = {}
+    for row in c.fetchall():
+        w, s, d = row[0], row[1], row[2]
+        if w not in weekly_dict: weekly_dict[w] = {"run": 0, "ride": 0, "walk": 0}
+        if s in weekly_dict[w]: weekly_dict[w][s] = round(d, 1)
+
+    stats["volume"] = {
+        "monthly": [{"period": k, **v} for k,v in monthly_dict.items()][-24:],
+        "weekly": [{"period": k, **v} for k,v in weekly_dict.items()][-52:]
+    }
 
     # ─ Clusters ─
     stats["clusters"] = detect_repeated_routes(conn)
