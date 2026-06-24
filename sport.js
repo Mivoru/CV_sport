@@ -217,44 +217,41 @@ function renderFormEstimate() {
     });
 }
 function initTrendChart() {
-    if(!stats.performanceTrend) return;
     const ctx = document.getElementById('trend-chart');
     if(!ctx) return;
     
-    const datasets = [];
-    const colors = ['#ef4444', '#f59e0b', '#3b9eff', '#00e5a0', '#a78bfa', '#ec4899', '#6366f1'];
-    let i = 0;
-    
-    for(const [dist, data] of Object.entries(stats.performanceTrend)) {
-        datasets.push({
-            label: dist,
-            data: data.map(d => ({x: d.date, y: d.pace})),
-            borderColor: colors[i % colors.length],
-            backgroundColor: colors[i % colors.length] + '44',
-            tension: 0.3,
-            fill: false
-        });
-        i++;
-    }
+    if(typeof trendChart !== 'undefined' && trendChart) trendChart.destroy();
     
     trendChart = new Chart(ctx, {
         type: 'line',
-        data: { datasets },
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Pace',
+                data: [],
+                borderColor: '#00e5a0',
+                backgroundColor: '#00e5a044',
+                tension: 0.3,
+                fill: false
+            }]
+        },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                x: { type: 'category', labels: stats.performanceTrend['1000m'] ? stats.performanceTrend['1000m'].map(d=>d.date) : [] },
-                y: { reverse: true, title: {display: true, text: 'Pace (min/km)'} }
-            },
-            plugins: {
-                legend: { labels: { color: '#e2eaf8' } }
+                y: { reverse: true }
             }
         }
     });
-}
 
-// === VOLUME CHART ===
+    // Check if trends data exists
+    if (!stats.trends) return;
+    
+    // Attempt to render the first trend
+    if(typeof renderTrends === 'function') {
+        renderTrends();
+    }
+}
 function initVolumeChart(viewType) {
     const ctx = document.getElementById('volume-chart');
     if(!ctx || !stats.volume) return;
@@ -290,7 +287,7 @@ function renderRunningCategories() {
     
     let base = 0, speed = 0, long = 0, recovery = 0;
     runAct.forEach(a => {
-        const pace = (a.time / 60) / (a.distance / 1000);
+        const pace = (a.movingTime / 60) / (a.distance / 1000);
         if(pace < 4.5) speed++;
         else if(a.distance > 15000) long++;
         else if(pace > 6.0) recovery++;
@@ -304,7 +301,7 @@ function renderRunningCategories() {
 }
 function initMap() {
     const mapEl = document.getElementById('leaflet-map');
-    if(!mapEl || !L) return;
+    if(!mapEl || typeof L === 'undefined') return;
     
     map = L.map('leaflet-map').setView([50.75, 14.55], 11);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -348,14 +345,14 @@ function renderMapRoutes(filter) {
 
 // === ACTIVITIES DATABASE ===
 function setupFilters() {
-    const searchInput = document.getElementById('search-act');
+    const searchInput = document.getElementById('activity-search');
     const sportFilter = document.getElementById('filter-sport');
-    const sortFilter = document.getElementById('sort-act');
+    const sortFilter = document.getElementById('filter-sort');
     const minDistInput = document.getElementById('filter-min-dist');
     const maxDistInput = document.getElementById('filter-max-dist');
     const minPaceInput = document.getElementById('filter-min-pace');
     const maxPaceInput = document.getElementById('filter-max-pace');
-    const searchBtn = document.getElementById('search-btn'); // Need to add this to HTML
+    const searchBtn = document.getElementById('search-btn');
 
     const update = () => {
         let filtered = activities;
@@ -377,7 +374,8 @@ function setupFilters() {
         const minPace = minPaceInput && minPaceInput.value ? parseFloat(minPaceInput.value) : 0;
         const maxPace = maxPaceInput && maxPaceInput.value ? parseFloat(maxPaceInput.value) : Infinity;
         filtered = filtered.filter(a => {
-            const pace = (a.time / 60) / (a.distance / 1000);
+            if (!a.movingTime) return false;
+            const pace = (a.movingTime / 60) / (a.distance / 1000);
             return pace >= minPace && pace <= maxPace;
         });
 
@@ -385,18 +383,32 @@ function setupFilters() {
         const srt = sortFilter ? sortFilter.value : "date-desc";
         if(srt === 'date-desc') filtered.sort((a,b) => new Date(b.date) - new Date(a.date));
         if(srt === 'date-asc') filtered.sort((a,b) => new Date(a.date) - new Date(b.date));
-        if(srt === 'dist-desc') filtered.sort((a,b) => b.distance - a.distance);
+        if(srt === 'distance-desc') filtered.sort((a,b) => b.distance - a.distance);
+        if(srt === 'pace-asc') filtered.sort((a,b) => {
+            const pa = (a.movingTime / 60) / (a.distance / 1000) || 999;
+            const pb = (b.movingTime / 60) / (b.distance / 1000) || 999;
+            return pa - pb;
+        });
         
-        renderActivities(filtered);
+        // Remove error message if we reach here
+        const list = document.getElementById('activity-list');
+        if(list && list.innerHTML.includes('Error loading data')) {
+            list.innerHTML = '';
+        }
+
+        renderActivities(filtered.slice(0, 50));
     };
 
     if(searchBtn) {
         searchBtn.addEventListener('click', update);
     } else {
-        // Fallback if button isn't found
         if(searchInput) searchInput.addEventListener('input', update);
         if(sportFilter) sportFilter.addEventListener('change', update);
         if(sortFilter) sortFilter.addEventListener('change', update);
+        if(minDistInput) minDistInput.addEventListener('input', update);
+        if(maxDistInput) maxDistInput.addEventListener('input', update);
+        if(minPaceInput) minPaceInput.addEventListener('input', update);
+        if(maxPaceInput) maxPaceInput.addEventListener('input', update);
     }
 }
 function renderActivities(acts) {
