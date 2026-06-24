@@ -560,10 +560,9 @@ function updateTrendChart(sport, distance) {
     }
     
     // Sort chronologically just in case
-    dataset.sort((a,b) => new Date(a.date) - new Date(b.date));
+    dataset.sort((a,b) => new Date(a.month) - new Date(b.month));
     
-    // Smooth the line (optional: running average)
-    trendChart.data.labels = dataset.map(d => d.date);
-    trendChart.data.datasets[0].data = dataset.map(d => sport === 'run' ? d.pace : d.speed);
+    trendChart.data.labels = dataset.map(d => d.month);
+    trendChart.data.datasets[0].data = dataset.map(d => sport === 'run' ? d.pace : d.avgSpeedKmh);
     trendChart.update();
 }
