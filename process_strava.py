@@ -589,6 +589,12 @@ def process_fit_files(export_dir, conn):
                     for dist_m, time_s in efforts.items():
                         label = f"{dist_m}m" if dist_m < 1000 else f"{dist_m // 1000}km"
                         pace = (time_s / 60.0) / (dist_m / 1000.0)  # min/km
+                        if sp == 'run' and pace < 2.00:
+                            continue  # Absurdly fast run (anomaly)
+                        if sp == 'ride' and pace < 0.85:
+                            continue  # Absurdly fast ride (anomaly)
+                        if sp == 'walk' and pace < 4.00:
+                            continue  # Absurdly fast walk (running)
                         conn.execute("""
                             INSERT INTO best_efforts (activity_id, distance_label, distance_meters, time_seconds, pace)
                             VALUES (?, ?, ?, ?, ?)

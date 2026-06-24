@@ -535,3 +535,11 @@ function openModal(act) {
         // Clear or show empty
     }
 }
+
+document.querySelectorAll(".trend-sport-tabs .vol-btn").forEach(tab => {
+    tab.addEventListener("click", (e) => {
+      document.querySelectorAll(".trend-sport-tabs .vol-btn").forEach(t => t.classList.remove("active"));
+      e.target.classList.add("active");
+      renderTrends();
+    });
+  });
