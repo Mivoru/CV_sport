@@ -478,6 +478,44 @@ function renderActivities(acts) {
 
 // === REPEATED ROUTES ===
 let rrCharts = {};
+let rrMaps = {};
+let rrSortOrders = {}; // Store current sort order per cluster index
+
+function sortRRHistory(idx) {
+    const rr = stats.clusters[idx];
+    const sortSelect = document.getElementById(`rr-sort-${idx}`);
+    if(!rr || !sortSelect) return;
+    
+    const sortType = sortSelect.value;
+    rrSortOrders[idx] = sortType;
+    
+    let actsList = [...rr.activities];
+    if (sortType === 'date-desc') {
+        actsList.sort((a, b) => new Date(b.date) - new Date(a.date));
+    } else if (sortType === 'date-asc') {
+        actsList.sort((a, b) => new Date(a.date) - new Date(b.date));
+    } else if (sortType === 'pace-asc') {
+        // Fastest first (lowest pace)
+        actsList.sort((a, b) => (a.avgPace || 999) - (b.avgPace || 999));
+    } else if (sortType === 'pace-desc') {
+        // Slowest first (highest pace)
+        actsList.sort((a, b) => (b.avgPace || -1) - (a.avgPace || -1));
+    }
+    
+    let historyHtml = actsList.map(a => `
+        <div class="rr-history-item" onclick="openActivityModalFromRR('${a.id}')">
+            <div class="rr-history-date">${a.date}</div>
+            <div class="rr-history-metrics">
+                <span class="rr-history-pace">${a.avgPaceDisplay} /km</span>
+                <span class="rr-history-hr">${a.avgHR ? '♥ '+Math.round(a.avgHR) : ''}</span>
+                <span class="rr-history-time">${Math.round(a.movingTime/60)} min</span>
+            </div>
+        </div>
+    `).join('');
+    
+    const listDiv = document.querySelector(`#rr-details-${idx} .rr-history-list`);
+    if(listDiv) listDiv.innerHTML = historyHtml;
+}
 
 function toggleRouteDetails(idx) {
     const detailsDiv = document.getElementById(`rr-details-${idx}`);
@@ -486,60 +524,98 @@ function toggleRouteDetails(idx) {
     const isOpening = !detailsDiv.classList.contains('open');
     detailsDiv.classList.toggle('open');
     
-    if(isOpening && !rrCharts[idx]) {
+    if(isOpening) {
         const rr = stats.clusters[idx];
-        const ctx = document.getElementById(`rr-chart-${idx}`);
         
-        // Sort chronologically
-        const acts = [...rr.activities].sort((a, b) => new Date(a.date) - new Date(b.date));
-        const labels = acts.map(a => a.date);
-        
-        // Convert pace string to float (e.g. "4:30" -> 4.5) to plot nicely
-        const paceData = acts.map(a => a.avgPace);
-        
-        rrCharts[idx] = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Pace (min/km)',
-                    data: paceData,
-                    borderColor: '#00e5a0',
-                    backgroundColor: 'rgba(0, 229, 160, 0.1)',
-                    tension: 0.3,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                const val = context.parsed.y;
-                                const m = Math.floor(val);
-                                const s = Math.round((val - m) * 60);
-                                return `Pace: ${m}:${s.toString().padStart(2, '0')} /km`;
+        // 1. Initialize Chart
+        if(!rrCharts[idx]) {
+            const ctx = document.getElementById(`rr-chart-${idx}`);
+            // Sort chronologically for chart
+            const acts = [...rr.activities].sort((a, b) => new Date(a.date) - new Date(b.date));
+            const labels = acts.map(a => a.date);
+            const paceData = acts.map(a => a.avgPace);
+            
+            rrCharts[idx] = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Pace (min/km)',
+                        data: paceData,
+                        borderColor: '#00e5a0',
+                        backgroundColor: 'rgba(0, 229, 160, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const val = context.parsed.y;
+                                    const m = Math.floor(val);
+                                    const s = Math.round((val - m) * 60);
+                                    return `Pace: ${m}:${s.toString().padStart(2, '0')} /km`;
+                                }
                             }
                         }
-                    }
-                },
-                scales: {
-                    y: { 
-                        reverse: true, // Lower pace is better
-                        title: { display: true, text: 'Pace' },
-                        ticks: {
-                            callback: function(value) {
-                                const m = Math.floor(value);
-                                const s = Math.round((value - m) * 60);
-                                return `${m}:${s.toString().padStart(2, '0')}`;
+                    },
+                    scales: {
+                        y: { 
+                            reverse: true, // Lower pace is better
+                            title: { display: true, text: 'Pace' },
+                            ticks: {
+                                callback: function(value) {
+                                    const m = Math.floor(value);
+                                    const s = Math.round((value - m) * 60);
+                                    return `${m}:${s.toString().padStart(2, '0')}`;
+                                }
                             }
                         }
                     }
                 }
+            });
+        }
+        
+        // 2. Initialize Map
+        if(!rrMaps[idx]) {
+            const mapId = `rr-map-${idx}`;
+            const mapEl = document.getElementById(mapId);
+            if(mapEl) {
+                // Get route polyline from the first activity in cluster
+                const actId = rr.activities[0].id;
+                const polylineData = routes[actId];
+                
+                if(polylineData && polylineData.length > 0) {
+                    rrMaps[idx] = L.map(mapId, { zoomControl: false }).setView(polylineData[0], 13);
+                    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                        attribution: '&copy; OpenStreetMap contributors'
+                    }).addTo(rrMaps[idx]);
+                    
+                    const poly = L.polyline(polylineData, { color: '#00e5a0', weight: 3 }).addTo(rrMaps[idx]);
+                    rrMaps[idx].fitBounds(poly.getBounds());
+                }
             }
-        });
+        }
+        
+        // Must invalidate size because map container was hidden
+        setTimeout(() => {
+            if(rrMaps[idx]) {
+                rrMaps[idx].invalidateSize();
+                const actId = rr.activities[0].id;
+                const polylineData = routes[actId];
+                if(polylineData) {
+                    const poly = L.polyline(polylineData);
+                    rrMaps[idx].fitBounds(poly.getBounds());
+                }
+            }
+        }, 300);
+        
+        // Ensure list is sorted according to select
+        sortRRHistory(idx);
     }
 }
 
@@ -552,42 +628,75 @@ function renderRepeatedRoutes() {
     if(!stats.clusters) return;
     const list = document.getElementById('repeated-routes-list');
     if(!list) return;
+    
+    // Read filters
+    const filterSport = document.getElementById('rr-filter-sport') ? document.getElementById('rr-filter-sport').value : 'all';
+    const filterMin = document.getElementById('rr-filter-dist-min') ? parseFloat(document.getElementById('rr-filter-dist-min').value) || 0 : 0;
+    const filterMax = document.getElementById('rr-filter-dist-max') ? parseFloat(document.getElementById('rr-filter-dist-max').value) || 999999 : 999999;
+    
     list.innerHTML = '';
     
+    // Destroy old charts and maps
+    Object.values(rrCharts).forEach(c => c && c.destroy());
+    Object.values(rrMaps).forEach(m => m && m.remove());
+    rrCharts = {};
+    rrMaps = {};
+    
     stats.clusters.forEach((rr, idx) => {
-        const bestPace = rr.activities.map(a=>a.avgPace).filter(x=>x).sort((a,b)=>a-b)[0] || '-';
+        // Evaluate cluster stats
+        const avgDist = rr.avgDistance / 1000;
         
-        // Sort newest first for the list
-        const actsList = [...rr.activities].sort((a, b) => new Date(b.date) - new Date(a.date));
+        // Determine primary sport for cluster (majority)
+        const sportCounts = {};
+        rr.activities.forEach(a => { sportCounts[a.sport] = (sportCounts[a.sport] || 0) + 1; });
+        const primarySport = Object.keys(sportCounts).reduce((a, b) => sportCounts[a] > sportCounts[b] ? a : b);
         
-        let historyHtml = actsList.map(a => `
-            <div class="rr-history-item" onclick="openActivityModalFromRR('${a.id}')">
-                <div class="rr-history-date">${a.date}</div>
-                <div class="rr-history-metrics">
-                    <span class="rr-history-pace">${a.avgPaceDisplay} /km</span>
-                    <span class="rr-history-hr">${a.avgHR ? '❤️ '+Math.round(a.avgHR) : ''}</span>
-                    <span class="rr-history-time">${Math.round(a.movingTime/60)} min</span>
-                </div>
-            </div>
-        `).join('');
-
+        // Apply filters
+        if(filterSport !== 'all' && primarySport !== filterSport) return;
+        if(avgDist < filterMin || avgDist > filterMax) return;
+        
+        const bestPaceRaw = rr.activities.map(a=>a.avgPace).filter(x=>x).sort((a,b)=>a-b)[0];
+        let bestPace = '-';
+        if(bestPaceRaw) {
+            const m = Math.floor(bestPaceRaw);
+            const s = Math.round((bestPaceRaw - m) * 60);
+            bestPace = `${m}:${s.toString().padStart(2, '0')}`;
+        }
+        
+        // Default sort is Date Desc
+        rrSortOrders[idx] = 'date-desc';
+        
         list.innerHTML += `
             <div class="repeated-route-card" onclick="toggleRouteDetails(${idx})" style="cursor:pointer">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <h4>${rr.name} (${rr.count}x)</h4>
                     <span style="color:var(--clr-primary)">▼</span>
                 </div>
-                <p>Avg Distance: ${(rr.avgDistance / 1000).toFixed(1)} km</p>
+                <p>Avg Distance: ${avgDist.toFixed(1)} km</p>
                 <div style="font-size: 0.85em; color: var(--clr-text-muted)">
                     Best Pace: <span style="color:white; font-weight:bold">${bestPace} /km</span>
                 </div>
                 
                 <div class="rr-details" id="rr-details-${idx}" onclick="event.stopPropagation()">
-                    <div class="rr-chart-container">
-                        <canvas id="rr-chart-${idx}"></canvas>
+                    <div class="rr-visuals" style="display:flex; gap: 15px; margin-bottom: 20px;">
+                        <div class="rr-chart-container" style="flex: 2; min-height: 200px;">
+                            <canvas id="rr-chart-${idx}"></canvas>
+                        </div>
+                        <div class="rr-map-container" id="rr-map-${idx}" style="flex: 1; min-height: 200px; border-radius: 8px; background: #1f2937;"></div>
                     </div>
+                    
+                    <div class="rr-history-controls" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--clr-border);">
+                        <h4 style="margin:0; font-size: 1em;">History</h4>
+                        <select id="rr-sort-${idx}" class="db-select" style="padding: 5px; font-size: 0.85em; width: auto;" onchange="sortRRHistory(${idx})">
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
+                            <option value="pace-asc">Fastest First</option>
+                            <option value="pace-desc">Slowest First</option>
+                        </select>
+                    </div>
+                    
                     <div class="rr-history-list">
-                        ${historyHtml}
+                        <!-- Filled dynamically by sortRRHistory -->
                     </div>
                 </div>
             </div>

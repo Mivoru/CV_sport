@@ -1154,6 +1154,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: 100%;
     margin-bottom: 20px;
 }
+.rr-visuals {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allows stacking on small screens */
+}
+.rr-visuals .rr-chart-container {
+    flex: 2;
+    min-width: 300px; /* Forces wrap if container is too small */
+    margin-bottom: 0;
+}
+.rr-visuals .rr-map-container {
+    flex: 1;
+    min-width: 250px;
+}
+@media(max-width: 768px) {
+    .rr-visuals {
+        flex-direction: column;
+    }
+}
 .rr-history-list {
     display: flex;
     flex-direction: column;

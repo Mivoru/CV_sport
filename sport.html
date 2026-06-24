@@ -267,6 +267,29 @@
         <div class="section-line"></div>
       </div>
       <p class="section-desc" data-en="Compare your performance on the same routes over time." data-cz="Porovnejte svůj výkon na stejných trasách v průběhu času.">Compare your performance on the same routes over time.</p>
+      
+      <!-- Repeated Routes Filter Bar -->
+      <div class="db-controls" style="margin-bottom: 20px; justify-content: center;">
+        <div class="db-filter-group">
+            <label data-en="Sport" data-cz="Sport">Sport</label>
+            <select id="rr-filter-sport" class="db-select">
+                <option value="all" data-en="All" data-cz="Vše">All</option>
+                <option value="run" data-en="Run" data-cz="Běh">Run</option>
+                <option value="ride" data-en="Ride" data-cz="Jízda">Ride</option>
+                <option value="walk" data-en="Walk" data-cz="Chůze">Walk</option>
+            </select>
+        </div>
+        <div class="db-filter-group">
+            <label data-en="Min Distance (km)" data-cz="Min Vzdálenost (km)">Min Distance (km)</label>
+            <input type="number" id="rr-filter-dist-min" class="db-input" placeholder="0">
+        </div>
+        <div class="db-filter-group">
+            <label data-en="Max Distance (km)" data-cz="Max Vzdálenost (km)">Max Distance (km)</label>
+            <input type="number" id="rr-filter-dist-max" class="db-input" placeholder="999">
+        </div>
+        <button id="rr-filter-btn" class="db-btn" data-en="Apply Filter" data-cz="Hledat">Apply Filter</button>
+      </div>
+
       <div class="repeated-routes-list" id="repeated-routes-list">
         <!-- Filled by JS -->
       </div>
