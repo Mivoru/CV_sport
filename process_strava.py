@@ -42,7 +42,7 @@ except ImportError:
 
 SCRIPT_DIR = Path(__file__).parent
 DEFAULT_EXPORT = SCRIPT_DIR / "export_166402289"
-DEFAULT_OUTPUT = SCRIPT_DIR / "web" / "data"
+DEFAULT_OUTPUT = SCRIPT_DIR / "data"
 DB_NAME = "strava.db"
 
 # Minimum distance to include (meters)
