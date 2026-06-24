@@ -749,8 +749,7 @@ def compute_stats(conn):
 
 
 def detect_repeated_routes(conn):
-    """Detect repeated routes by comparing start/end GPS positions."""
-    # Get all activities with routes
+    """Detect repeated routes by comparing 5 intermediate GPS checkpoints (start, 25%, 50%, 75%, end)."""
     activities = conn.execute("""
         SELECT a.strava_id, a.date, a.name, a.sport, a.distance, a.moving_time, a.avg_pace, a.avg_hr
         FROM activities a
@@ -758,28 +757,29 @@ def detect_repeated_routes(conn):
         ORDER BY a.date
     """).fetchall()
 
-    # Get start/end points for each activity
     route_info = {}
     for act in activities:
         aid = act[0]
-        start = conn.execute(
-            "SELECT latitude, longitude FROM trackpoints WHERE activity_id = ? ORDER BY seq ASC LIMIT 1",
+        pts = conn.execute(
+            "SELECT latitude, longitude FROM trackpoints WHERE activity_id = ? ORDER BY seq ASC",
             (aid,)
-        ).fetchone()
-        end = conn.execute(
-            "SELECT latitude, longitude FROM trackpoints WHERE activity_id = ? ORDER BY seq DESC LIMIT 1",
-            (aid,)
-        ).fetchone()
-
-        if start and end:
+        ).fetchall()
+        
+        if len(pts) >= 5:
+            n = len(pts)
+            checkpoints = [
+                pts[0],
+                pts[n//4],
+                pts[n//2],
+                pts[3*n//4],
+                pts[-1]
+            ]
             route_info[aid] = {
-                "start": (start[0], start[1]),
-                "end": (end[0], end[1]),
+                "checkpoints": checkpoints,
                 "data": act,
             }
 
-    # Group similar routes (start and end within 200m, similar distance ±20%)
-    DIST_THRESHOLD = 200  # meters
+    DIST_THRESHOLD = 300  # meters. Using 300m to account for GPS drift
     groups = []
     used = set()
 
@@ -790,31 +790,42 @@ def detect_repeated_routes(conn):
 
         group = [aid1]
         r1 = route_info[aid1]
+        dist1 = r1["data"][4]
 
         for aid2 in route_ids[i + 1:]:
             if aid2 in used:
                 continue
             r2 = route_info[aid2]
-
-            # Check start proximity
-            start_dist = haversine(r1["start"][0], r1["start"][1], r2["start"][0], r2["start"][1])
-            end_dist = haversine(r1["end"][0], r1["end"][1], r2["end"][0], r2["end"][1])
-
-            # Also check reverse direction
-            start_dist_rev = haversine(r1["start"][0], r1["start"][1], r2["end"][0], r2["end"][1])
-            end_dist_rev = haversine(r1["end"][0], r1["end"][1], r2["start"][0], r2["start"][1])
-
-            forward_match = start_dist < DIST_THRESHOLD and end_dist < DIST_THRESHOLD
-            reverse_match = start_dist_rev < DIST_THRESHOLD and end_dist_rev < DIST_THRESHOLD
-
-            if forward_match or reverse_match:
-                # Check distance similarity
-                d1 = r1["data"][4]
-                d2 = r2["data"][4]
-                if d1 > 0 and d2 > 0:
-                    ratio = min(d1, d2) / max(d1, d2)
-                    if ratio > 0.8:
-                        group.append(aid2)
+            dist2 = r2["data"][4]
+            
+            # 1. Check total distance first to save time
+            if dist1 == 0 or dist2 == 0: continue
+            if abs(dist1 - dist2) / max(dist1, dist2) > 0.2:
+                continue
+                
+            # 2. Check all 5 checkpoints forwards AND backwards
+            c1 = r1["checkpoints"]
+            c2 = r2["checkpoints"]
+            
+            match_forwards = True
+            for j in range(5):
+                d = haversine(c1[j][0], c1[j][1], c2[j][0], c2[j][1])
+                if d > DIST_THRESHOLD:
+                    match_forwards = False
+                    break
+                    
+            match_backwards = False
+            if not match_forwards:
+                match_backwards = True
+                for j in range(5):
+                    d = haversine(c1[j][0], c1[j][1], c2[4-j][0], c2[4-j][1])
+                    if d > DIST_THRESHOLD:
+                        match_backwards = False
+                        break
+                        
+            if match_forwards or match_backwards:
+                group.append(aid2)
+                used.add(aid2)
 
         if len(group) >= 2:
             for g in group:
@@ -823,7 +834,7 @@ def detect_repeated_routes(conn):
 
     # Format groups
     result = []
-    for group in groups[:20]:  # Limit to 20 repeated routes
+    for group in groups[:50]:  # Limit to 50 repeated routes
         acts = []
         total_dist = 0
         for aid in group:
@@ -842,26 +853,21 @@ def detect_repeated_routes(conn):
             })
             total_dist += d[4]
 
-        # Get polyline from first activity
-        first_tp = conn.execute(
-            "SELECT latitude, longitude FROM trackpoints WHERE activity_id = ? ORDER BY seq",
-            (group[0],)
-        ).fetchall()
-        polyline = [[r[0], r[1]] for r in first_tp]
-
         acts.sort(key=lambda x: x["date"] or "")
+        
+        # We don't need polyline in stats.json because UI uses routes.json
         result.append({
             "routeId": f"route_{group[0]}",
             "name": acts[0]["name"] if acts else "Unknown",
             "sport": acts[0]["sport"] if acts else "run",
             "activities": acts,
             "avgDistance": round(total_dist / len(group), 1),
-            "count": len(group),
-            "polyline": polyline,
+            "count": len(group)
         })
 
     result.sort(key=lambda x: x["count"], reverse=True)
     return result
+
 
 
 # ─── JSON Export ──────────────────────────────────────────────────────────────

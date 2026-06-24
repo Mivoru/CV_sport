@@ -1212,3 +1212,47 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .rr-history-hr {
     color: #ef4444;
 }
+
+/* Filter Controls styling */
+.db-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+}
+.db-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.db-filter-group label {
+    font-size: 0.85em;
+    color: var(--clr-text-muted);
+}
+.db-select, .db-input {
+    background-color: var(--clr-card);
+    border: 1px solid var(--clr-border);
+    color: var(--clr-text);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.db-select:focus, .db-input:focus {
+    border-color: var(--clr-primary);
+}
+.db-btn {
+    background-color: var(--clr-primary);
+    color: var(--clr-bg);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    height: 35px;
+}
+.db-btn:hover {
+    opacity: 0.8;
+}
