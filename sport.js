@@ -132,46 +132,68 @@ function renderHeroStats() {
 
 // === RENDER RECORDS ===
 function renderRecords() {
-    if(!stats.records) return;
-    const grid = document.getElementById('records-grid');
-    const extra = document.getElementById('records-extra');
-    grid.innerHTML = '';
-    extra.innerHTML = '';
+    const container = document.getElementById("records-grid");
+    const extraContainer = document.getElementById("records-extra");
+    if(!container || !extraContainer) return;
     
-    const distances = ['400m', '800m', '1000m', '1500m', '3000m', '5km', '10km'];
+    container.innerHTML = "";
+    extraContainer.innerHTML = "";
+
+    const activeTab = document.querySelector(".record-tab.active");
+    if (!activeTab || !stats || !stats.records) return;
     
-    distances.forEach(d => {
-        if(stats.records[d]) {
-            const r = stats.records[d];
-            grid.innerHTML += `
-                <div class="record-card">
-                    <div class="record-distance">${d}</div>
-                    <div class="record-time">${r.timeDisplay}</div>
-                    <div class="record-pace">${r.paceDisplay} /km</div>
-                    <div class="record-date">${r.date}</div>
-                </div>
+    const activeSport = activeTab.dataset.sport;
+    const sportRecords = stats.records[activeSport];
+    
+    if (!sportRecords) return;
+
+    for (const [label, data] of Object.entries(sportRecords)) {
+        if (label === "Longest" || label === "Max Elevation") continue;
+        const isCz = document.documentElement.lang === "cz" || (typeof currentLang !== 'undefined' && currentLang === "cz");
+        const div = document.createElement("div");
+        div.className = "record-card";
+        div.onclick = () => typeof showActivityModal !== "undefined" ? showActivityModal(data.activityId) : (typeof openModalById !== "undefined" ? openModalById(data.activityId) : null);
+        div.innerHTML = `
+        <div class="record-label">${label}</div>
+        <div class="record-value">${data.timeDisplay || data.time}</div>
+        <div class="record-sub">${data.paceDisplay || ''} min/km</div>
+        <div class="record-date">${data.date ? new Date(data.date).toLocaleDateString() : ''}</div>
+        `;
+        container.appendChild(div);
+    }
+
+    const extras = ["Longest", "Max Elevation"];
+    extras.forEach(ext => {
+        if (sportRecords[ext]) {
+            const data = sportRecords[ext];
+            const isCz = document.documentElement.lang === "cz" || (typeof currentLang !== 'undefined' && currentLang === "cz");
+            const div = document.createElement("div");
+            div.className = "record-card";
+            div.onclick = () => typeof showActivityModal !== "undefined" ? showActivityModal(data.activityId) : (typeof openModalById !== "undefined" ? openModalById(data.activityId) : null);
+            
+            let valDisplay = ext === "Longest" ? `${data.value} km` : `${data.value} m`;
+            let tLabel = ext;
+            if (isCz) {
+                if (ext === "Longest") {
+                    if (activeSport === "run") tLabel = "Nejdelší běh";
+                    else if (activeSport === "ride") tLabel = "Nejdelší jízda";
+                    else tLabel = "Nejdelší chůze";
+                } else {
+                    tLabel = "Největší stoupání";
+                }
+            }
+
+            div.innerHTML = `
+            <div class="record-label">${tLabel}</div>
+            <div class="record-value">${valDisplay}</div>
+            <div class="record-sub">${data.timeDisplay ? data.timeDisplay : ""}</div>
+            <div class="record-date">${data.date ? new Date(data.date).toLocaleDateString() : ''}</div>
             `;
+            extraContainer.appendChild(div);
         }
     });
-    
-    // Extras
-    const lr = stats.records.longestRun;
-    if(lr) {
-        extra.innerHTML += `<div class="record-card extra-card">
-            <div><span data-en="Longest Run" data-cz="Nejdelší Běh">${currentLang==='en'?'Longest Run':'Nejdelší Běh'}</span></div>
-            <div class="record-time">${(lr.distance / 1000).toFixed(1)} km</div>
-        </div>`;
-    }
-    const maxHR = stats.records.maxHR;
-    if(maxHR) {
-        extra.innerHTML += `<div class="record-card extra-card">
-            <div>Max HR</div>
-            <div class="record-time">${maxHR.value} bpm</div>
-        </div>`;
-    }
 }
 
-// === FORM ESTIMATE ===
 function renderFormEstimate() {
     if(!stats.formEstimate) return;
     const grid = document.getElementById('form-estimate-grid');
@@ -354,32 +376,66 @@ function setupFilters() {
     const searchInput = document.getElementById('activity-search');
     const sportFilter = document.getElementById('filter-sport');
     const sortFilter = document.getElementById('filter-sort');
+    const minDistInput = document.getElementById('filter-min-dist');
+    const maxDistInput = document.getElementById('filter-max-dist');
+    const minPaceInput = document.getElementById('filter-min-pace');
+    const maxPaceInput = document.getElementById('filter-max-pace');
     
     const update = () => {
+        const query = searchInput ? searchInput.value.toLowerCase() : "";
+        const sport = sportFilter ? sportFilter.value : "all";
+        const sort = sortFilter ? sortFilter.value : "date-desc";
+        const minDist = minDistInput && minDistInput.value ? parseFloat(minDistInput.value) : 0;
+        const maxDist = maxDistInput && maxDistInput.value ? parseFloat(maxDistInput.value) : 9999;
+        
+        const parsePace = (str) => {
+            if(!str) return null;
+            const parts = str.split(":");
+            if(parts.length===2) return parseInt(parts[0]) + parseInt(parts[1])/60;
+            return parseFloat(str);
+        };
+        const minPace = minPaceInput && minPaceInput.value ? parsePace(minPaceInput.value) : 0;
+        const maxPace = maxPaceInput && maxPaceInput.value ? parsePace(maxPaceInput.value) : 999;
+
         let filtered = activities.filter(a => {
-            if(sportFilter.value !== 'all' && a.sport !== sportFilter.value) return false;
-            if(searchInput.value) {
-                const term = searchInput.value.toLowerCase();
-                return a.name.toLowerCase().includes(term);
+            if(sport !== 'all' && a.sport !== sport) return false;
+            if(query && !a.name.toLowerCase().includes(query)) return false;
+            
+            const distKm = a.distance / 1000;
+            if(distKm < minDist || distKm > maxDist) return false;
+            
+            if(a.sport === "run") {
+                const paceVal = a.avg_pace || a.avgPace; 
+                if (paceVal && (paceVal < minPace || paceVal > maxPace)) return false;
             }
             return true;
         });
         
         filtered.sort((a, b) => {
-            if(sortFilter.value === 'date-desc') return new Date(b.date) - new Date(a.date);
-            if(sortFilter.value === 'date-asc') return new Date(a.date) - new Date(b.date);
-            if(sortFilter.value === 'distance-desc') return b.distance - a.distance;
-            if(sortFilter.value === 'pace-asc') return (a.avgPace || 999) - (b.avgPace || 999);
+            if(sort === 'date-desc') return new Date(b.date) - new Date(a.date);
+            if(sort === 'date-asc') return new Date(a.date) - new Date(b.date);
+            if(sort === 'distance-desc') return b.distance - a.distance;
+            if(sort === 'pace-asc') return (a.avgPace || 999) - (b.avgPace || 999);
             return 0;
         });
         
-        document.getElementById('activity-count').textContent = `Showing ${filtered.length} activities`;
+        const countEl = document.getElementById('activity-count');
+        if (countEl) {
+            countEl.textContent = `Showing ${filtered.length} activities`;
+        }
         renderActivities(filtered.slice(0, 50));
     };
     
     if(searchInput) searchInput.addEventListener('input', update);
     if(sportFilter) sportFilter.addEventListener('change', update);
     if(sortFilter) sortFilter.addEventListener('change', update);
+    if(minDistInput) minDistInput.addEventListener('input', update);
+    if(maxDistInput) maxDistInput.addEventListener('input', update);
+    if(minPaceInput) minPaceInput.addEventListener('input', update);
+    if(maxPaceInput) maxPaceInput.addEventListener('input', update);
+    
+    // Initial call
+    update();
 }
 
 function renderActivities(acts) {
@@ -403,12 +459,12 @@ function renderActivities(acts) {
 
 // === REPEATED ROUTES ===
 function renderRepeatedRoutes() {
-    if(!stats.repeatedRoutes) return;
+    if(!stats.clusters) return;
     const list = document.getElementById('repeated-routes-list');
     if(!list) return;
     list.innerHTML = '';
     
-    stats.repeatedRoutes.forEach(rr => {
+    stats.clusters.forEach(rr => {
         list.innerHTML += `
             <div class="repeated-route-card">
                 <h4>${rr.name} (${rr.count}x)</h4>

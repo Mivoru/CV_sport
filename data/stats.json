@@ -1,16 +1,16 @@
 {
   "totals": {
     "all": {
-      "count": 1157,
-      "distance": 3877427.0,
-      "time": 1028369.0,
-      "elevation": 60828.2
+      "count": 1147,
+      "distance": 3701478.2,
+      "time": 920582.0,
+      "elevation": 56093.2
     },
     "run": {
-      "count": 1094,
-      "distance": 1689658.6,
-      "time": 489109.0,
-      "elevation": 20658.7
+      "count": 1089,
+      "distance": 1665542.6,
+      "time": 481134.0,
+      "elevation": 20392.8
     },
     "ride": {
       "count": 53,
@@ -19,4278 +19,1534 @@
       "elevation": 30827.0
     },
     "walk": {
-      "count": 10,
-      "distance": 232124.7,
-      "time": 168843.0,
-      "elevation": 9342.5
+      "count": 5,
+      "distance": 80291.9,
+      "time": 69031.0,
+      "elevation": 4873.4
     }
   },
   "records": {
-    "400m": {
-      "time": 40.0,
-      "timeDisplay": "40s",
-      "pace": 1.67,
-      "paceDisplay": "1:39",
-      "date": "2025-01-15",
-      "activityId": "14336384560",
-      "activityName": "Afternoon Run"
+    "run": {
+      "400m": {
+        "time": 49.0,
+        "timeDisplay": "49s",
+        "pace": 2.04,
+        "paceDisplay": "2:02",
+        "date": "2025-03-02",
+        "activityId": "14336353671",
+        "activityName": "Morning Run"
+      },
+      "800m": {
+        "time": 123.0,
+        "timeDisplay": "2m 3s",
+        "pace": 2.56,
+        "paceDisplay": "2:33",
+        "date": "2025-03-02",
+        "activityId": "14336353671",
+        "activityName": "Morning Run"
+      },
+      "1000m": {
+        "time": 171.0,
+        "timeDisplay": "2m 51s",
+        "pace": 2.85,
+        "paceDisplay": "2:51",
+        "date": "2024-11-09",
+        "activityId": "14336383638",
+        "activityName": "Afternoon Run"
+      },
+      "1500m": {
+        "time": 269.0,
+        "timeDisplay": "4m 29s",
+        "pace": 2.99,
+        "paceDisplay": "2:59",
+        "date": "2025-06-08",
+        "activityId": "14732118330",
+        "activityName": "Lunch Run"
+      },
+      "3km": {
+        "time": 612.0,
+        "timeDisplay": "10m 12s",
+        "pace": 3.4,
+        "paceDisplay": "3:23",
+        "date": "2025-04-04",
+        "activityId": "14336353674",
+        "activityName": "Afternoon Run"
+      },
+      "5km": {
+        "time": 1136.0,
+        "timeDisplay": "18m 56s",
+        "pace": 3.79,
+        "paceDisplay": "3:47",
+        "date": "2024-09-21",
+        "activityId": "14336383089",
+        "activityName": "Afternoon Run"
+      },
+      "10km": {
+        "time": 2422.0,
+        "timeDisplay": "40m 22s",
+        "pace": 4.04,
+        "paceDisplay": "4:02",
+        "date": "2025-04-26",
+        "activityId": "14336353705",
+        "activityName": "Lunch Run"
+      },
+      "Half Marathon": {
+        "time": 8600.0,
+        "timeDisplay": "2h 23m 20s",
+        "pace": 6.79,
+        "paceDisplay": "6:47",
+        "date": "2026-01-31",
+        "activityId": "17235811402",
+        "activityName": "Morning Run"
+      },
+      "Longest": {
+        "value": 21439.4,
+        "unit": "km",
+        "date": "2026-01-31",
+        "activityId": "17235811402",
+        "activityName": "Morning Run",
+        "timeDisplay": "2h 9m 40s"
+      },
+      "Max Elevation": {
+        "value": 500.0,
+        "unit": "m",
+        "date": "2025-04-01",
+        "activityId": "14336353708",
+        "activityName": "Afternoon Run"
+      }
     },
+    "ride": {
+      "5km": {
+        "time": 513.0,
+        "timeDisplay": "8m 33s",
+        "pace": 1.71,
+        "paceDisplay": "1:42",
+        "date": "2024-07-22",
+        "activityId": "14336382209",
+        "activityName": "Morning Ride"
+      },
+      "10km": {
+        "time": 1269.0,
+        "timeDisplay": "21m 9s",
+        "pace": 2.11,
+        "paceDisplay": "2:06",
+        "date": "2025-07-26",
+        "activityId": "15240770711",
+        "activityName": "Lunch Ride"
+      },
+      "20km": {
+        "time": 2950.0,
+        "timeDisplay": "49m 10s",
+        "pace": 2.46,
+        "paceDisplay": "2:27",
+        "date": "2024-06-09",
+        "activityId": "14336381830",
+        "activityName": "Morning Ride"
+      },
+      "30km": {
+        "time": 4553.0,
+        "timeDisplay": "1h 15m 53s",
+        "pace": 2.53,
+        "paceDisplay": "2:31",
+        "date": "2026-06-17",
+        "activityId": "18958039539",
+        "activityName": "Odpolední jízda"
+      },
+      "40km": {
+        "time": 6439.0,
+        "timeDisplay": "1h 47m 19s",
+        "pace": 2.68,
+        "paceDisplay": "2:40",
+        "date": "2024-06-09",
+        "activityId": "14336381830",
+        "activityName": "Morning Ride"
+      },
+      "50km": {
+        "time": 9766.0,
+        "timeDisplay": "2h 42m 46s",
+        "pace": 3.26,
+        "paceDisplay": "3:15",
+        "date": "2025-05-24",
+        "activityId": "14578077374",
+        "activityName": "Morning Ride"
+      },
+      "Longest": {
+        "value": 60452.4,
+        "unit": "km",
+        "date": "2024-05-05",
+        "activityId": "14336380887",
+        "activityName": "Morning Ride",
+        "timeDisplay": "3h 1m 52s"
+      },
+      "Max Elevation": {
+        "value": 1091.6,
+        "unit": "m",
+        "date": "2024-05-12",
+        "activityId": "14336381973",
+        "activityName": "Morning Ride"
+      }
+    },
+    "walk": {
+      "5km": {
+        "time": 3252.0,
+        "timeDisplay": "54m 12s",
+        "pace": 10.84,
+        "paceDisplay": "10:50",
+        "date": "2026-06-19",
+        "activityId": "18987939418",
+        "activityName": "Ranní chůze"
+      },
+      "10km": {
+        "time": 6755.0,
+        "timeDisplay": "1h 52m 35s",
+        "pace": 11.26,
+        "paceDisplay": "11:15",
+        "date": "2026-06-19",
+        "activityId": "18987939418",
+        "activityName": "Ranní chůze"
+      },
+      "20km": {
+        "time": 16890.0,
+        "timeDisplay": "4h 41m 30s",
+        "pace": 14.07,
+        "paceDisplay": "14:04",
+        "date": "2026-06-19",
+        "activityId": "18987939418",
+        "activityName": "Ranní chůze"
+      },
+      "Longest": {
+        "value": 22502.2,
+        "unit": "km",
+        "date": "2026-06-19",
+        "activityId": "18987939418",
+        "activityName": "Ranní chůze",
+        "timeDisplay": "4h 28m 22s"
+      },
+      "Max Elevation": {
+        "value": 1546.6,
+        "unit": "m",
+        "date": "2025-08-11",
+        "activityId": "15421709839",
+        "activityName": "Výstup na Velký Kriváň"
+      }
+    }
+  },
+  "form": {
     "800m": {
-      "time": 87.0,
-      "timeDisplay": "1m 27s",
-      "pace": 1.81,
-      "paceDisplay": "1:48",
-      "date": "2025-01-15",
-      "activityId": "14336384560",
-      "activityName": "Afternoon Run"
+      "estimatedTime": 153.2,
+      "estimatedTimeDisplay": "2m 33s",
+      "estimatedPace": 3.19,
+      "estimatedPaceDisplay": "3:11",
+      "basedOnDate": "2026-04-17",
+      "basedOnDist": 3000.0
     },
     "1000m": {
-      "time": 110.0,
-      "timeDisplay": "1m 50s",
-      "pace": 1.83,
-      "paceDisplay": "1:49",
-      "date": "2025-01-15",
-      "activityId": "14336384560",
-      "activityName": "Afternoon Run"
+      "estimatedTime": 194.1,
+      "estimatedTimeDisplay": "3m 14s",
+      "estimatedPace": 3.24,
+      "estimatedPaceDisplay": "3:14",
+      "basedOnDate": "2026-04-17",
+      "basedOnDist": 3000.0
     },
     "1500m": {
-      "time": 269.0,
-      "timeDisplay": "4m 29s",
-      "pace": 2.99,
-      "paceDisplay": "2:59",
-      "date": "2025-06-08",
-      "activityId": "14732118330",
-      "activityName": "Lunch Run"
-    },
-    "3000m": {
-      "time": 612.0,
-      "timeDisplay": "10m 12s",
-      "pace": 3.4,
-      "paceDisplay": "3:23",
-      "date": "2025-04-04",
-      "activityId": "14336353674",
-      "activityName": "Afternoon Run"
-    },
-    "5km": {
-      "time": 1136.0,
-      "timeDisplay": "18m 56s",
-      "pace": 3.79,
-      "paceDisplay": "3:47",
-      "date": "2024-09-21",
-      "activityId": "14336383089",
-      "activityName": "Afternoon Run"
-    },
-    "10km": {
-      "time": 2422.0,
-      "timeDisplay": "40m 22s",
-      "pace": 4.04,
-      "paceDisplay": "4:02",
-      "date": "2025-04-26",
-      "activityId": "14336353705",
-      "activityName": "Lunch Run"
-    },
-    "longestRun": {
-      "distance": 21439.4,
-      "date": "2026-01-31",
-      "activityId": "17235811402",
-      "activityName": "Morning Run",
-      "time": 7780.0,
-      "timeDisplay": "2h 9m 40s"
-    },
-    "longestRide": {
-      "distance": 60452.4,
-      "date": "2024-05-05",
-      "activityId": "14336380887",
-      "activityName": "Morning Ride",
-      "time": 10912.0,
-      "timeDisplay": "3h 1m 52s"
-    },
-    "longestWalk": {
-      "distance": 58243.2,
-      "date": "2026-06-06",
-      "activityId": "18814072294",
-      "activityName": "Ranní chůze",
-      "time": 36586.0,
-      "timeDisplay": "10h 9m 46s"
-    },
-    "maxHR": {
-      "value": 211,
-      "date": "2025-05-30",
-      "activityId": "14643360176",
-      "activityName": "Afternoon Run"
-    },
-    "maxElevation": {
-      "value": 1546.6,
-      "date": "2025-08-11",
-      "activityId": "15421709839",
-      "activityName": "Výstup na Velký Kriváň"
-    }
-  },
-  "formEstimate": {
-    "800m": {
-      "estimatedTime": 139.0,
-      "estimatedTimeDisplay": "2m 19s",
-      "estimatedPace": 2.9,
-      "estimatedPaceDisplay": "2:53",
-      "trend": "insufficient_data",
-      "recentActivities": 3
-    },
-    "1km": {
-      "estimatedTime": 457.2,
-      "estimatedTimeDisplay": "7m 37s",
-      "estimatedPace": 5.08,
-      "estimatedPaceDisplay": "5:04",
-      "trend": "insufficient_data",
-      "recentActivities": 3
+      "estimatedTime": 298.3,
+      "estimatedTimeDisplay": "4m 58s",
+      "estimatedPace": 3.31,
+      "estimatedPaceDisplay": "3:18",
+      "basedOnDate": "2026-04-17",
+      "basedOnDist": 3000.0
     },
     "3km": {
-      "estimatedTime": 701.7,
-      "estimatedTimeDisplay": "11m 41s",
-      "estimatedPace": 3.9,
-      "estimatedPaceDisplay": "3:53",
-      "trend": "insufficient_data",
-      "recentActivities": 2
+      "estimatedTime": 622.0,
+      "estimatedTimeDisplay": "10m 22s",
+      "estimatedPace": 3.46,
+      "estimatedPaceDisplay": "3:27",
+      "basedOnDate": "2026-04-17",
+      "basedOnDist": 3000.0
     },
     "5km": {
-      "estimatedTime": 1439.2,
-      "estimatedTimeDisplay": "23m 59s",
-      "estimatedPace": 4.8,
-      "estimatedPaceDisplay": "4:47",
-      "trend": "stable",
-      "recentActivities": 5
+      "estimatedTime": 1068.9,
+      "estimatedTimeDisplay": "17m 48s",
+      "estimatedPace": 3.56,
+      "estimatedPaceDisplay": "3:33",
+      "basedOnDate": "2026-04-17",
+      "basedOnDist": 3000.0
+    },
+    "10km": {
+      "estimatedTime": 2228.6,
+      "estimatedTimeDisplay": "37m 8s",
+      "estimatedPace": 3.71,
+      "estimatedPaceDisplay": "3:42",
+      "basedOnDate": "2026-04-17",
+      "basedOnDist": 3000.0
+    },
+    "Half Marathon": {
+      "estimatedTime": 4917.2,
+      "estimatedTimeDisplay": "1h 21m 57s",
+      "estimatedPace": 3.88,
+      "estimatedPaceDisplay": "3:53",
+      "basedOnDate": "2026-04-17",
+      "basedOnDist": 3000.0
     }
   },
-  "monthlyVolumes": [
-    {
-      "month": "2023-08",
-      "run": 7991.1,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 2091.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 79.1,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2023-09",
-      "run": 6181.8,
-      "ride": 42342.4,
-      "walk": 0,
-      "runTime": 1778.0,
-      "rideTime": 10119.0,
-      "walkTime": 0,
-      "runElev": 61.5,
-      "rideElev": 761.0,
-      "walkElev": 0
-    },
-    {
-      "month": "2024-03",
-      "run": 5373.4,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 1754.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 166.2,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2024-04",
-      "run": 7142.5,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 2369.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 198.8,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2024-05",
-      "run": 17970.1,
-      "ride": 203754.5,
-      "walk": 0,
-      "runTime": 4329.0,
-      "rideTime": 37927.0,
-      "walkTime": 0,
-      "runElev": 150.0,
-      "rideElev": 3427.9,
-      "walkElev": 0
-    },
-    {
-      "month": "2024-06",
-      "run": 34708.6,
-      "ride": 90041.0,
-      "walk": 0,
-      "runTime": 9739.0,
-      "rideTime": 15754.0,
-      "walkTime": 0,
-      "runElev": 471.9,
-      "rideElev": 1317.4,
-      "walkElev": 0
-    },
-    {
-      "month": "2024-07",
-      "run": 16914.8,
-      "ride": 176620.3,
-      "walk": 0,
-      "runTime": 5383.0,
-      "rideTime": 34966.0,
-      "walkTime": 0,
-      "runElev": 378.0,
-      "rideElev": 2759.0,
-      "walkElev": 0
-    },
-    {
-      "month": "2024-08",
-      "run": 155706.0,
-      "ride": 150897.9,
-      "walk": 0,
-      "runTime": 48882.0,
-      "rideTime": 29025.0,
-      "walkTime": 0,
-      "runElev": 1843.9,
-      "rideElev": 2590.6,
-      "walkElev": 0
-    },
-    {
-      "month": "2024-09",
-      "run": 53739.9,
-      "ride": 43567.2,
-      "walk": 0,
-      "runTime": 13112.0,
-      "rideTime": 9147.0,
-      "walkTime": 0,
-      "runElev": 527.8,
-      "rideElev": 588.0,
-      "walkElev": 0
-    },
-    {
-      "month": "2024-10",
-      "run": 47581.2,
-      "ride": 45397.0,
-      "walk": 0,
-      "runTime": 13445.0,
-      "rideTime": 9641.0,
-      "walkTime": 0,
-      "runElev": 864.7,
-      "rideElev": 919.2,
-      "walkElev": 0
-    },
-    {
-      "month": "2024-11",
-      "run": 123834.9,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 34770.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 1378.2,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2024-12",
-      "run": 176957.5,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 57122.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 2235.1,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2025-01",
-      "run": 112068.7,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 37006.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 1290.7,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2025-02",
-      "run": 39443.8,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 11294.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 543.4,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2025-03",
-      "run": 106263.0,
-      "ride": 32598.9,
-      "walk": 0,
-      "runTime": 29787.0,
-      "rideTime": 6364.0,
-      "walkTime": 0,
-      "runElev": 1300.6,
-      "rideElev": 363.0,
-      "walkElev": 0
-    },
-    {
-      "month": "2025-04",
-      "run": 56897.3,
-      "ride": 127148.5,
-      "walk": 0,
-      "runTime": 15976.0,
-      "rideTime": 23992.0,
-      "walkTime": 0,
-      "runElev": 1019.1,
-      "rideElev": 1988.9,
-      "walkElev": 0
-    },
-    {
-      "month": "2025-05",
-      "run": 43861.4,
-      "ride": 154281.1,
-      "walk": 0,
-      "runTime": 11529.0,
-      "rideTime": 27880.0,
-      "walkTime": 0,
-      "runElev": 492.9,
-      "rideElev": 1898.4,
-      "walkElev": 0
-    },
-    {
-      "month": "2025-06",
-      "run": 19521.8,
-      "ride": 127854.6,
-      "walk": 0,
-      "runTime": 5084.0,
-      "rideTime": 23022.0,
-      "walkTime": 0,
-      "runElev": 119.4,
-      "rideElev": 1953.0,
-      "walkElev": 0
-    },
-    {
-      "month": "2025-07",
-      "run": 30534.8,
-      "ride": 129440.5,
-      "walk": 0,
-      "runTime": 7951.0,
-      "rideTime": 22496.0,
-      "walkTime": 0,
-      "runElev": 226.5,
-      "rideElev": 1856.1,
-      "walkElev": 0
-    },
-    {
-      "month": "2025-08",
-      "run": 50882.8,
-      "ride": 229935.6,
-      "walk": 137470.2,
-      "runTime": 14647.0,
-      "rideTime": 43140.0,
-      "walkTime": 105051.0,
-      "runElev": 691.6,
-      "rideElev": 4217.8,
-      "walkElev": 7006.1
-    },
-    {
-      "month": "2025-09",
-      "run": 42664.4,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 10960.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 398.0,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2025-10",
-      "run": 55572.5,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 15072.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 712.6,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2025-11",
-      "run": 60419.3,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 15544.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 874.6,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2025-12",
-      "run": 80736.1,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 22678.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 1157.3,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2026-01",
-      "run": 108891.1,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 35588.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 1157.4,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2026-02",
-      "run": 37122.6,
-      "ride": 0,
-      "walk": 0,
-      "runTime": 9788.0,
-      "rideTime": 0,
-      "walkTime": 0,
-      "runElev": 328.6,
-      "rideElev": 0,
-      "walkElev": 0
-    },
-    {
-      "month": "2026-03",
-      "run": 25548.8,
-      "ride": 58611.5,
-      "walk": 0,
-      "runTime": 7297.0,
-      "rideTime": 11203.0,
-      "walkTime": 0,
-      "runElev": 330.8,
-      "rideElev": 839.9,
-      "walkElev": 0
-    },
-    {
-      "month": "2026-04",
-      "run": 46175.4,
-      "ride": 76768.1,
-      "walk": 0,
-      "runTime": 10586.0,
-      "rideTime": 14407.0,
-      "walkTime": 0,
-      "runElev": 354.0,
-      "rideElev": 999.7,
-      "walkElev": 0
-    },
-    {
-      "month": "2026-05",
-      "run": 71800.5,
-      "ride": 133239.0,
-      "walk": 13909.1,
-      "runTime": 20906.0,
-      "rideTime": 26080.0,
-      "walkTime": 11104.0,
-      "runElev": 811.8,
-      "rideElev": 2376.7,
-      "walkElev": 560.9
-    },
-    {
-      "month": "2026-06",
-      "run": 47152.5,
-      "ride": 133145.6,
-      "walk": 80745.4,
-      "runTime": 12642.0,
-      "rideTime": 25254.0,
-      "walkTime": 52688.0,
-      "runElev": 494.2,
-      "rideElev": 1970.4,
-      "walkElev": 1775.5
-    }
-  ],
-  "weeklyVolumes": [
-    {
-      "week": "2023-W32",
-      "run": 7991.1,
-      "ride": 0,
-      "walk": 0,
-      "start": "2023-08-08"
-    },
-    {
-      "week": "2023-W36",
-      "run": 6181.8,
-      "ride": 0,
-      "walk": 0,
-      "start": "2023-09-06"
-    },
-    {
-      "week": "2023-W39",
-      "run": 0,
-      "ride": 42342.4,
-      "walk": 0,
-      "start": "2023-09-30"
-    },
-    {
-      "week": "2024-W10",
-      "run": 5373.4,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-03-06"
-    },
-    {
-      "week": "2024-W17",
-      "run": 7142.5,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-04-23"
-    },
-    {
-      "week": "2024-W18",
-      "run": 11977.5,
-      "ride": 60452.4,
-      "walk": 0,
-      "start": "2024-05-01"
-    },
-    {
-      "week": "2024-W19",
-      "run": 5992.6,
-      "ride": 93134.4,
-      "walk": 0,
-      "start": "2024-05-08"
-    },
-    {
-      "week": "2024-W21",
-      "run": 0,
-      "ride": 50167.7,
-      "walk": 0,
-      "start": "2024-05-26"
-    },
-    {
-      "week": "2024-W22",
-      "run": 4310.8,
-      "ride": 51212.2,
-      "walk": 0,
-      "start": "2024-06-01"
-    },
-    {
-      "week": "2024-W23",
-      "run": 7918.3,
-      "ride": 38828.8,
-      "walk": 0,
-      "start": "2024-06-08"
-    },
-    {
-      "week": "2024-W24",
-      "run": 12143.8,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-06-15"
-    },
-    {
-      "week": "2024-W26",
-      "run": 10335.7,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-06-24"
-    },
-    {
-      "week": "2024-W27",
-      "run": 8076.6,
-      "ride": 46583.8,
-      "walk": 0,
-      "start": "2024-07-06"
-    },
-    {
-      "week": "2024-W28",
-      "run": 838.0,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-07-08"
-    },
-    {
-      "week": "2024-W29",
-      "run": 8000.2,
-      "ride": 35023.3,
-      "walk": 0,
-      "start": "2024-07-15"
-    },
-    {
-      "week": "2024-W30",
-      "run": 0,
-      "ride": 62846.0,
-      "walk": 0,
-      "start": "2024-07-22"
-    },
-    {
-      "week": "2024-W31",
-      "run": 4976.4,
-      "ride": 115286.6,
-      "walk": 0,
-      "start": "2024-07-31"
-    },
-    {
-      "week": "2024-W32",
-      "run": 14422.7,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-08-11"
-    },
-    {
-      "week": "2024-W33",
-      "run": 14224.9,
-      "ride": 67778.5,
-      "walk": 0,
-      "start": "2024-08-12"
-    },
-    {
-      "week": "2024-W34",
-      "run": 38520.2,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-08-19"
-    },
-    {
-      "week": "2024-W35",
-      "run": 89700.8,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-08-26"
-    },
-    {
-      "week": "2024-W36",
-      "run": 4245.3,
-      "ride": 37545.9,
-      "walk": 0,
-      "start": "2024-09-03"
-    },
-    {
-      "week": "2024-W37",
-      "run": 19426.5,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-09-09"
-    },
-    {
-      "week": "2024-W38",
-      "run": 18988.6,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-09-18"
-    },
-    {
-      "week": "2024-W39",
-      "run": 4940.5,
-      "ride": 6021.3,
-      "walk": 0,
-      "start": "2024-09-27"
-    },
-    {
-      "week": "2024-W40",
-      "run": 11564.0,
-      "ride": 45397.0,
-      "walk": 0,
-      "start": "2024-10-02"
-    },
-    {
-      "week": "2024-W41",
-      "run": 23506.4,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-10-11"
-    },
-    {
-      "week": "2024-W42",
-      "run": 6445.2,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-10-15"
-    },
-    {
-      "week": "2024-W44",
-      "run": 30992.1,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-10-28"
-    },
-    {
-      "week": "2024-W45",
-      "run": 8028.0,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-11-07"
-    },
-    {
-      "week": "2024-W46",
-      "run": 40355.1,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-11-13"
-    },
-    {
-      "week": "2024-W47",
-      "run": 8559.5,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-11-18"
-    },
-    {
-      "week": "2024-W48",
-      "run": 59400.8,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-11-26"
-    },
-    {
-      "week": "2024-W49",
-      "run": 49108.5,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-12-03"
-    },
-    {
-      "week": "2024-W50",
-      "run": 32170.0,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-12-13"
-    },
-    {
-      "week": "2024-W51",
-      "run": 36363.9,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-12-20"
-    },
-    {
-      "week": "2024-W52",
-      "run": 32521.6,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-12-23"
-    },
-    {
-      "week": "2024-W53",
-      "run": 9358.5,
-      "ride": 0,
-      "walk": 0,
-      "start": "2024-12-30"
-    },
-    {
-      "week": "2025-W00",
-      "run": 24215.7,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-01-02"
-    },
-    {
-      "week": "2025-W01",
-      "run": 24036.4,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-01-06"
-    },
-    {
-      "week": "2025-W02",
-      "run": 27953.2,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-01-14"
-    },
-    {
-      "week": "2025-W03",
-      "run": 7857.3,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-01-20"
-    },
-    {
-      "week": "2025-W04",
-      "run": 29945.5,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-01-27"
-    },
-    {
-      "week": "2025-W05",
-      "run": 22842.0,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-02-03"
-    },
-    {
-      "week": "2025-W08",
-      "run": 44539.4,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-02-25"
-    },
-    {
-      "week": "2025-W09",
-      "run": 5557.6,
-      "ride": 32598.9,
-      "walk": 0,
-      "start": "2025-03-06"
-    },
-    {
-      "week": "2025-W10",
-      "run": 28589.7,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-03-12"
-    },
-    {
-      "week": "2025-W11",
-      "run": 18638.9,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-03-20"
-    },
-    {
-      "week": "2025-W12",
-      "run": 23599.8,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-03-27"
-    },
-    {
-      "week": "2025-W13",
-      "run": 30793.4,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-04-01"
-    },
-    {
-      "week": "2025-W14",
-      "run": 6117.3,
-      "ride": 40229.5,
-      "walk": 0,
-      "start": "2025-04-12"
-    },
-    {
-      "week": "2025-W15",
-      "run": 5407.9,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-04-19"
-    },
-    {
-      "week": "2025-W16",
-      "run": 12562.4,
-      "ride": 86919.0,
-      "walk": 0,
-      "start": "2025-04-21"
-    },
-    {
-      "week": "2025-W17",
-      "run": 16753.0,
-      "ride": 50524.3,
-      "walk": 0,
-      "start": "2025-04-30"
-    },
-    {
-      "week": "2025-W18",
-      "run": 11478.9,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-05-05"
-    },
-    {
-      "week": "2025-W19",
-      "run": 7357.5,
-      "ride": 51962.2,
-      "walk": 0,
-      "start": "2025-05-14"
-    },
-    {
-      "week": "2025-W20",
-      "run": 1556.8,
-      "ride": 51794.6,
-      "walk": 0,
-      "start": "2025-05-24"
-    },
-    {
-      "week": "2025-W21",
-      "run": 8731.5,
-      "ride": 42696.0,
-      "walk": 0,
-      "start": "2025-05-30"
-    },
-    {
-      "week": "2025-W22",
-      "run": 9369.4,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-06-02"
-    },
-    {
-      "week": "2025-W23",
-      "run": 2821.6,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-06-13"
-    },
-    {
-      "week": "2025-W24",
-      "run": 0,
-      "ride": 85158.6,
-      "walk": 0,
-      "start": "2025-06-17"
-    },
-    {
-      "week": "2025-W26",
-      "run": 7330.8,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-06-30"
-    },
-    {
-      "week": "2025-W27",
-      "run": 0,
-      "ride": 46424.0,
-      "walk": 0,
-      "start": "2025-07-13"
-    },
-    {
-      "week": "2025-W28",
-      "run": 7810.3,
-      "ride": 34256.5,
-      "walk": 0,
-      "start": "2025-07-16"
-    },
-    {
-      "week": "2025-W29",
-      "run": 22724.5,
-      "ride": 48760.0,
-      "walk": 0,
-      "start": "2025-07-21"
-    },
-    {
-      "week": "2025-W30",
-      "run": 7336.9,
-      "ride": 52642.8,
-      "walk": 0,
-      "start": "2025-08-02"
-    },
-    {
-      "week": "2025-W31",
-      "run": 8947.1,
-      "ride": 41207.3,
-      "walk": 0,
-      "start": "2025-08-07"
-    },
-    {
-      "week": "2025-W32",
-      "run": 6087.6,
-      "ride": 0,
-      "walk": 70418.4,
-      "start": "2025-08-11"
-    },
-    {
-      "week": "2025-W33",
-      "run": 12953.1,
-      "ride": 81999.3,
-      "walk": 51123.9,
-      "start": "2025-08-18"
-    },
-    {
-      "week": "2025-W34",
-      "run": 15558.1,
-      "ride": 54086.2,
-      "walk": 15927.9,
-      "start": "2025-08-25"
-    },
-    {
-      "week": "2025-W35",
-      "run": 8352.5,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-09-04"
-    },
-    {
-      "week": "2025-W36",
-      "run": 15712.1,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-09-09"
-    },
-    {
-      "week": "2025-W37",
-      "run": 6026.0,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-09-15"
-    },
-    {
-      "week": "2025-W38",
-      "run": 12573.8,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-09-27"
-    },
-    {
-      "week": "2025-W40",
-      "run": 8531.9,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-10-09"
-    },
-    {
-      "week": "2025-W41",
-      "run": 17736.1,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-10-13"
-    },
-    {
-      "week": "2025-W42",
-      "run": 29304.5,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-10-23"
-    },
-    {
-      "week": "2025-W43",
-      "run": 2430.3,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-11-01"
-    },
-    {
-      "week": "2025-W44",
-      "run": 11065.7,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-11-03"
-    },
-    {
-      "week": "2025-W45",
-      "run": 16752.1,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-11-13"
-    },
-    {
-      "week": "2025-W46",
-      "run": 11861.2,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-11-17"
-    },
-    {
-      "week": "2025-W47",
-      "run": 18310.0,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-11-28"
-    },
-    {
-      "week": "2025-W48",
-      "run": 32054.3,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-12-01"
-    },
-    {
-      "week": "2025-W50",
-      "run": 31555.4,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-12-18"
-    },
-    {
-      "week": "2025-W51",
-      "run": 14181.9,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-12-22"
-    },
-    {
-      "week": "2025-W52",
-      "run": 2944.5,
-      "ride": 0,
-      "walk": 0,
-      "start": "2025-12-29"
-    },
-    {
-      "week": "2026-W00",
-      "run": 15012.2,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-01-04"
-    },
-    {
-      "week": "2026-W01",
-      "run": 18393.5,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-01-05"
-    },
-    {
-      "week": "2026-W02",
-      "run": 27170.8,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-01-12"
-    },
-    {
-      "week": "2026-W03",
-      "run": 17101.3,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-01-19"
-    },
-    {
-      "week": "2026-W04",
-      "run": 41348.0,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-01-28"
-    },
-    {
-      "week": "2026-W05",
-      "run": 1045.1,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-02-08"
-    },
-    {
-      "week": "2026-W06",
-      "run": 16645.2,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-02-12"
-    },
-    {
-      "week": "2026-W07",
-      "run": 3377.0,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-02-19"
-    },
-    {
-      "week": "2026-W08",
-      "run": 5920.6,
-      "ride": 19985.3,
-      "walk": 0,
-      "start": "2026-02-26"
-    },
-    {
-      "week": "2026-W09",
-      "run": 0,
-      "ride": 38626.2,
-      "walk": 0,
-      "start": "2026-03-08"
-    },
-    {
-      "week": "2026-W11",
-      "run": 8125.3,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-03-19"
-    },
-    {
-      "week": "2026-W12",
-      "run": 17423.5,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-03-26"
-    },
-    {
-      "week": "2026-W13",
-      "run": 6238.9,
-      "ride": 31475.0,
-      "walk": 0,
-      "start": "2026-04-02"
-    },
-    {
-      "week": "2026-W14",
-      "run": 13980.4,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-04-06"
-    },
-    {
-      "week": "2026-W15",
-      "run": 10771.0,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-04-16"
-    },
-    {
-      "week": "2026-W16",
-      "run": 13634.8,
-      "ride": 45293.1,
-      "walk": 0,
-      "start": "2026-04-24"
-    },
-    {
-      "week": "2026-W17",
-      "run": 7004.3,
-      "ride": 29913.7,
-      "walk": 0,
-      "start": "2026-04-30"
-    },
-    {
-      "week": "2026-W18",
-      "run": 15595.1,
-      "ride": 0,
-      "walk": 13909.1,
-      "start": "2026-05-04"
-    },
-    {
-      "week": "2026-W19",
-      "run": 17587.8,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-05-11"
-    },
-    {
-      "week": "2026-W20",
-      "run": 17396.1,
-      "ride": 45662.5,
-      "walk": 0,
-      "start": "2026-05-21"
-    },
-    {
-      "week": "2026-W21",
-      "run": 15767.5,
-      "ride": 57662.8,
-      "walk": 0,
-      "start": "2026-05-28"
-    },
-    {
-      "week": "2026-W22",
-      "run": 3751.1,
-      "ride": 30847.4,
-      "walk": 58243.2,
-      "start": "2026-06-01"
-    },
-    {
-      "week": "2026-W23",
-      "run": 12594.9,
-      "ride": 31293.1,
-      "walk": 0,
-      "start": "2026-06-12"
-    },
-    {
-      "week": "2026-W24",
-      "run": 19835.8,
-      "ride": 71005.1,
-      "walk": 22502.2,
-      "start": "2026-06-15"
-    },
-    {
-      "week": "2026-W25",
-      "run": 10970.7,
-      "ride": 0,
-      "walk": 0,
-      "start": "2026-06-22"
-    }
-  ],
-  "performanceTrend": {
-    "400m": [
-      {
-        "date": "2024-08-01",
-        "pace": 3.22,
-        "activityId": "14336382165",
-        "time": 76.0,
-        "distance": 393.3
-      },
-      {
-        "date": "2024-08-01",
-        "pace": 3.29,
-        "activityId": "14336382055",
-        "time": 77.0,
-        "distance": 390.3
-      },
-      {
-        "date": "2024-08-01",
-        "pace": 3.32,
-        "activityId": "14336382092",
-        "time": 78.0,
-        "distance": 391.8
-      },
-      {
-        "date": "2024-08-01",
-        "pace": 3.23,
-        "activityId": "14336381920",
-        "time": 76.0,
-        "distance": 392.4
-      },
-      {
-        "date": "2024-08-01",
-        "pace": 3.31,
-        "activityId": "14336382160",
-        "time": 79.0,
-        "distance": 397.2
-      },
-      {
-        "date": "2024-08-01",
-        "pace": 3.19,
-        "activityId": "14336382197",
-        "time": 76.0,
-        "distance": 397.5
-      },
-      {
-        "date": "2024-08-01",
-        "pace": 3.35,
-        "activityId": "14336381909",
-        "time": 79.0,
-        "distance": 393.3
-      },
-      {
-        "date": "2024-08-01",
-        "pace": 3.37,
-        "activityId": "14336382183",
-        "time": 78.0,
-        "distance": 385.9
-      },
-      {
-        "date": "2024-08-01",
-        "pace": 3.4,
-        "activityId": "14336381935",
-        "time": 82.0,
-        "distance": 401.5
-      },
-      {
-        "date": "2024-08-01",
-        "pace": 3.26,
-        "activityId": "14336382089",
-        "time": 76.0,
-        "distance": 388.0
-      },
-      {
-        "date": "2024-08-22",
-        "pace": 3.63,
-        "activityId": "14336383050",
-        "time": 94.0,
-        "distance": 431.8
-      },
-      {
-        "date": "2024-08-30",
-        "pace": 3.06,
-        "activityId": "14336383036",
-        "time": 73.0,
-        "distance": 397.8
-      },
-      {
-        "date": "2024-08-30",
-        "pace": 3.16,
-        "activityId": "14336382816",
-        "time": 77.0,
-        "distance": 405.9
-      },
-      {
-        "date": "2024-08-30",
-        "pace": 3.37,
-        "activityId": "14336383358",
-        "time": 82.0,
-        "distance": 405.9
-      },
-      {
-        "date": "2024-08-30",
-        "pace": 3.25,
-        "activityId": "14336383918",
-        "time": 78.0,
-        "distance": 399.5
-      },
-      {
-        "date": "2024-08-30",
-        "pace": 3.34,
-        "activityId": "14336383489",
-        "time": 81.0,
-        "distance": 404.5
-      },
-      {
-        "date": "2024-08-30",
-        "pace": 3.41,
-        "activityId": "14336382810",
-        "time": 82.0,
-        "distance": 401.0
-      },
-      {
-        "date": "2024-08-30",
-        "pace": 3.4,
-        "activityId": "14336383496",
-        "time": 82.0,
-        "distance": 402.3
-      },
-      {
-        "date": "2024-08-30",
-        "pace": 3.32,
-        "activityId": "14336383648",
-        "time": 80.0,
-        "distance": 401.5
-      },
-      {
-        "date": "2024-08-30",
-        "pace": 3.02,
-        "activityId": "14336383336",
-        "time": 73.0,
-        "distance": 403.4
-      },
-      {
-        "date": "2024-08-30",
-        "pace": 3.2,
-        "activityId": "14336382757",
-        "time": 78.0,
-        "distance": 406.3
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.09,
-        "activityId": "14336383498",
-        "time": 72.0,
-        "distance": 388.6
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.14,
-        "activityId": "14336384393",
-        "time": 74.0,
-        "distance": 393.3
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.12,
-        "activityId": "14336382925",
-        "time": 74.0,
-        "distance": 395.2
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.25,
-        "activityId": "14336383224",
-        "time": 77.0,
-        "distance": 395.0
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.03,
-        "activityId": "14336384146",
-        "time": 74.0,
-        "distance": 406.4
-      },
-      {
-        "date": "2024-11-16",
-        "pace": 2.95,
-        "activityId": "14336383773",
-        "time": 72.0,
-        "distance": 406.2
-      },
-      {
-        "date": "2024-11-16",
-        "pace": 2.97,
-        "activityId": "14336383482",
-        "time": 71.0,
-        "distance": 397.9
-      },
-      {
-        "date": "2024-11-16",
-        "pace": 4.22,
-        "activityId": "14336383508",
-        "time": 99.0,
-        "distance": 391.2
-      },
-      {
-        "date": "2024-11-16",
-        "pace": 2.6,
-        "activityId": "14336383361",
-        "time": 62.0,
-        "distance": 397.5
-      },
-      {
-        "date": "2024-11-18",
-        "pace": 3.2,
-        "activityId": "14336383671",
-        "time": 71.0,
-        "distance": 369.6
-      },
-      {
-        "date": "2024-11-27",
-        "pace": 3.73,
-        "activityId": "14336383760",
-        "time": 107.0,
-        "distance": 477.9
-      },
-      {
-        "date": "2024-12-13",
-        "pace": 3.2,
-        "activityId": "14336384094",
-        "time": 76.0,
-        "distance": 396.1
-      },
-      {
-        "date": "2024-12-13",
-        "pace": 3.24,
-        "activityId": "14336384249",
-        "time": 76.0,
-        "distance": 390.9
-      },
-      {
-        "date": "2024-12-13",
-        "pace": 3.19,
-        "activityId": "14336384253",
-        "time": 75.0,
-        "distance": 391.7
-      },
-      {
-        "date": "2024-12-13",
-        "pace": 3.27,
-        "activityId": "14336383254",
-        "time": 76.0,
-        "distance": 387.4
-      },
-      {
-        "date": "2025-01-02",
-        "pace": 3.07,
-        "activityId": "14336383649",
-        "time": 72.0,
-        "distance": 391.3
-      },
-      {
-        "date": "2025-01-02",
-        "pace": 3.2,
-        "activityId": "14336384276",
-        "time": 75.0,
-        "distance": 390.2
-      },
-      {
-        "date": "2025-01-02",
-        "pace": 3.29,
-        "activityId": "14336384248",
-        "time": 79.0,
-        "distance": 400.1
-      },
-      {
-        "date": "2025-01-09",
-        "pace": 3.22,
-        "activityId": "14336384517",
-        "time": 78.0,
-        "distance": 404.0
-      },
-      {
-        "date": "2025-01-09",
-        "pace": 3.32,
-        "activityId": "14336383775",
-        "time": 79.0,
-        "distance": 396.4
-      },
-      {
-        "date": "2025-01-09",
-        "pace": 3.34,
-        "activityId": "14336384250",
-        "time": 81.0,
-        "distance": 404.3
-      },
-      {
-        "date": "2025-01-09",
-        "pace": 3.44,
-        "activityId": "14336384238",
-        "time": 81.0,
-        "distance": 392.6
-      },
-      {
-        "date": "2025-01-09",
-        "pace": 3.46,
-        "activityId": "14336384073",
-        "time": 84.0,
-        "distance": 404.8
-      },
-      {
-        "date": "2025-01-09",
-        "pace": 3.59,
-        "activityId": "14336384262",
-        "time": 85.0,
-        "distance": 394.5
-      },
-      {
-        "date": "2025-01-09",
-        "pace": 3.44,
-        "activityId": "14336384299",
-        "time": 83.0,
-        "distance": 401.7
-      },
-      {
-        "date": "2025-01-09",
-        "pace": 3.45,
-        "activityId": "14336383900",
-        "time": 83.0,
-        "distance": 400.7
-      },
-      {
-        "date": "2025-01-09",
-        "pace": 3.32,
-        "activityId": "14336384403",
-        "time": 80.0,
-        "distance": 401.5
-      },
-      {
-        "date": "2025-01-09",
-        "pace": 3.44,
-        "activityId": "14336383930",
-        "time": 83.0,
-        "distance": 402.6
-      },
-      {
-        "date": "2025-01-16",
-        "pace": 3.06,
-        "activityId": "14336384373",
-        "time": 73.0,
-        "distance": 397.2
-      },
-      {
-        "date": "2025-01-16",
-        "pace": 3.32,
-        "activityId": "14336384123",
-        "time": 77.0,
-        "distance": 386.4
-      },
-      {
-        "date": "2025-01-16",
-        "pace": 2.94,
-        "activityId": "14336383510",
-        "time": 71.0,
-        "distance": 402.0
-      },
-      {
-        "date": "2025-03-13",
-        "pace": 3.16,
-        "activityId": "14336353610",
-        "time": 81.0,
-        "distance": 427.2
-      },
-      {
-        "date": "2025-03-13",
-        "pace": 3.23,
-        "activityId": "14336353626",
-        "time": 80.0,
-        "distance": 413.0
-      },
-      {
-        "date": "2025-03-13",
-        "pace": 3.64,
-        "activityId": "14336353618",
-        "time": 85.0,
-        "distance": 389.2
-      },
-      {
-        "date": "2025-03-13",
-        "pace": 3.65,
-        "activityId": "14336353498",
-        "time": 85.0,
-        "distance": 388.5
-      },
-      {
-        "date": "2025-03-13",
-        "pace": 3.54,
-        "activityId": "14336353499",
-        "time": 84.0,
-        "distance": 395.8
-      },
-      {
-        "date": "2025-03-13",
-        "pace": 3.34,
-        "activityId": "14336353650",
-        "time": 85.0,
-        "distance": 423.7
-      },
-      {
-        "date": "2025-03-13",
-        "pace": 3.56,
-        "activityId": "14336353512",
-        "time": 87.0,
-        "distance": 407.0
-      },
-      {
-        "date": "2025-03-13",
-        "pace": 3.45,
-        "activityId": "14336353515",
-        "time": 84.0,
-        "distance": 405.5
-      },
-      {
-        "date": "2025-03-13",
-        "pace": 3.43,
-        "activityId": "14336353664",
-        "time": 84.0,
-        "distance": 408.6
-      },
-      {
-        "date": "2025-03-13",
-        "pace": 3.75,
-        "activityId": "14336353612",
-        "time": 86.0,
-        "distance": 382.0
-      },
-      {
-        "date": "2025-05-03",
-        "pace": 3.08,
-        "activityId": "14361722160",
-        "time": 72.0,
-        "distance": 389.8
-      },
-      {
-        "date": "2025-05-03",
-        "pace": 3.09,
-        "activityId": "14361408358",
-        "time": 71.0,
-        "distance": 383.3
-      },
-      {
-        "date": "2025-05-03",
-        "pace": 3.23,
-        "activityId": "14361354498",
-        "time": 75.0,
-        "distance": 386.4
-      },
-      {
-        "date": "2025-05-03",
-        "pace": 3.17,
-        "activityId": "14361353209",
-        "time": 73.0,
-        "distance": 384.0
-      },
-      {
-        "date": "2025-05-03",
-        "pace": 3.16,
-        "activityId": "14361352898",
-        "time": 74.0,
-        "distance": 389.9
-      },
-      {
-        "date": "2025-05-03",
-        "pace": 3.2,
-        "activityId": "14361293648",
-        "time": 73.0,
-        "distance": 380.5
-      },
-      {
-        "date": "2025-05-03",
-        "pace": 3.0,
-        "activityId": "14361243678",
-        "time": 70.0,
-        "distance": 388.9
-      },
-      {
-        "date": "2025-05-03",
-        "pace": 3.25,
-        "activityId": "14361242914",
-        "time": 76.0,
-        "distance": 390.1
-      },
-      {
-        "date": "2025-05-03",
-        "pace": 3.1,
-        "activityId": "14361188975",
-        "time": 73.0,
-        "distance": 392.5
-      },
-      {
-        "date": "2025-05-03",
-        "pace": 3.14,
-        "activityId": "14361187992",
-        "time": 73.0,
-        "distance": 387.9
-      },
-      {
-        "date": "2025-07-27",
-        "pace": 3.3,
-        "activityId": "15250070308",
-        "time": 75.0,
-        "distance": 378.5
-      },
-      {
-        "date": "2025-07-27",
-        "pace": 3.14,
-        "activityId": "15250068624",
-        "time": 82.0,
-        "distance": 435.5
-      },
-      {
-        "date": "2025-08-07",
-        "pace": 3.13,
-        "activityId": "15378648076",
-        "time": 70.0,
-        "distance": 372.4
-      },
-      {
-        "date": "2025-08-07",
-        "pace": 2.75,
-        "activityId": "15378648557",
-        "time": 62.0,
-        "distance": 375.6
-      },
-      {
-        "date": "2025-08-07",
-        "pace": 3.07,
-        "activityId": "15378648292",
-        "time": 88.0,
-        "distance": 478.4
-      },
-      {
-        "date": "2025-08-26",
-        "pace": 3.31,
-        "activityId": "15612653977",
-        "time": 80.0,
-        "distance": 403.3
-      },
-      {
-        "date": "2025-08-26",
-        "pace": 3.6,
-        "activityId": "15612653984",
-        "time": 88.0,
-        "distance": 407.9
-      },
-      {
-        "date": "2025-08-26",
-        "pace": 3.55,
-        "activityId": "15612648049",
-        "time": 87.0,
-        "distance": 407.9
-      },
-      {
-        "date": "2025-11-06",
-        "pace": 3.04,
-        "activityId": "16376259086",
-        "time": 72.0,
-        "distance": 395.2
-      },
-      {
-        "date": "2025-11-06",
-        "pace": 3.21,
-        "activityId": "16376259064",
-        "time": 76.0,
-        "distance": 394.5
-      },
-      {
-        "date": "2025-11-06",
-        "pace": 3.1,
-        "activityId": "16376259210",
-        "time": 75.0,
-        "distance": 403.7
-      },
-      {
-        "date": "2025-11-06",
-        "pace": 3.12,
-        "activityId": "16376259034",
-        "time": 75.0,
-        "distance": 400.1
-      },
-      {
-        "date": "2025-11-06",
-        "pace": 3.13,
-        "activityId": "16376259067",
-        "time": 74.0,
-        "distance": 393.9
-      },
-      {
-        "date": "2025-11-06",
-        "pace": 3.09,
-        "activityId": "16376253125",
-        "time": 74.0,
-        "distance": 399.4
-      },
-      {
-        "date": "2025-11-06",
-        "pace": 3.18,
-        "activityId": "16376253176",
-        "time": 75.0,
-        "distance": 392.8
-      },
-      {
-        "date": "2025-11-06",
-        "pace": 3.0,
-        "activityId": "16376253207",
-        "time": 73.0,
-        "distance": 405.6
-      },
-      {
-        "date": "2025-11-06",
-        "pace": 3.22,
-        "activityId": "16376253117",
-        "time": 78.0,
-        "distance": 403.8
-      },
-      {
-        "date": "2025-11-13",
-        "pace": 3.55,
-        "activityId": "16461683768",
-        "time": 84.0,
-        "distance": 394.9
-      },
-      {
-        "date": "2025-11-13",
-        "pace": 4.05,
-        "activityId": "16461676436",
-        "time": 94.0,
-        "distance": 387.1
-      },
-      {
-        "date": "2026-01-17",
-        "pace": 3.19,
-        "activityId": "17078020779",
-        "time": 79.0,
-        "distance": 412.4
-      },
-      {
-        "date": "2026-01-17",
-        "pace": 2.94,
-        "activityId": "17078021069",
-        "time": 71.0,
-        "distance": 402.7
-      },
-      {
-        "date": "2026-02-12",
-        "pace": 3.13,
-        "activityId": "17375296593",
-        "time": 77.0,
-        "distance": 409.5
-      },
-      {
-        "date": "2026-02-12",
-        "pace": 3.08,
-        "activityId": "17375296457",
-        "time": 76.0,
-        "distance": 411.3
-      },
-      {
-        "date": "2026-02-12",
-        "pace": 3.17,
-        "activityId": "17375296366",
-        "time": 76.0,
-        "distance": 399.0
-      },
-      {
-        "date": "2026-02-12",
-        "pace": 3.15,
-        "activityId": "17375296545",
-        "time": 77.0,
-        "distance": 407.2
-      },
-      {
-        "date": "2026-02-12",
-        "pace": 3.17,
-        "activityId": "17375296760",
-        "time": 78.0,
-        "distance": 410.6
-      },
-      {
-        "date": "2026-02-12",
-        "pace": 3.3,
-        "activityId": "17375290696",
-        "time": 77.0,
-        "distance": 388.4
-      },
-      {
-        "date": "2026-02-12",
-        "pace": 3.26,
-        "activityId": "17375290723",
-        "time": 77.0,
-        "distance": 393.9
-      },
-      {
-        "date": "2026-02-12",
-        "pace": 3.17,
-        "activityId": "17375290806",
-        "time": 76.0,
-        "distance": 399.5
-      },
-      {
-        "date": "2026-02-12",
-        "pace": 3.1,
-        "activityId": "17375290944",
-        "time": 75.0,
-        "distance": 403.7
-      },
-      {
-        "date": "2026-02-12",
-        "pace": 3.15,
-        "activityId": "17375285405",
-        "time": 77.0,
-        "distance": 407.7
-      },
-      {
-        "date": "2026-02-14",
-        "pace": 2.92,
-        "activityId": "17391492324",
-        "time": 84.0,
-        "distance": 479.7
-      },
-      {
-        "date": "2026-02-19",
-        "pace": 2.82,
-        "activityId": "17478069546",
-        "time": 66.0,
-        "distance": 390.5
-      },
-      {
-        "date": "2026-03-19",
-        "pace": 3.47,
-        "activityId": "17781626196",
-        "time": 81.0,
-        "distance": 389.3
-      },
-      {
-        "date": "2026-03-19",
-        "pace": 3.4,
-        "activityId": "17781626219",
-        "time": 80.0,
-        "distance": 392.4
-      },
-      {
-        "date": "2026-03-19",
-        "pace": 3.4,
-        "activityId": "17781618705",
-        "time": 80.0,
-        "distance": 392.0
-      },
-      {
-        "date": "2026-03-19",
-        "pace": 2.95,
-        "activityId": "17781619257",
-        "time": 70.0,
-        "distance": 395.0
-      },
-      {
-        "date": "2026-03-26",
-        "pace": 3.22,
-        "activityId": "17867472043",
-        "time": 77.0,
-        "distance": 398.8
-      },
-      {
-        "date": "2026-03-26",
-        "pace": 3.18,
-        "activityId": "17867472229",
-        "time": 75.0,
-        "distance": 393.6
-      },
-      {
-        "date": "2026-03-26",
-        "pace": 3.1,
-        "activityId": "17867205210",
-        "time": 75.0,
-        "distance": 402.7
-      },
-      {
-        "date": "2026-03-26",
-        "pace": 3.02,
-        "activityId": "17867205378",
-        "time": 72.0,
-        "distance": 397.8
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.08,
-        "activityId": "17947392011",
-        "time": 72.0,
-        "distance": 389.9
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.29,
-        "activityId": "17947183026",
-        "time": 76.0,
-        "distance": 385.5
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.24,
-        "activityId": "17947182800",
-        "time": 76.0,
-        "distance": 390.7
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.27,
-        "activityId": "17947140314",
-        "time": 77.0,
-        "distance": 392.9
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.41,
-        "activityId": "17947097552",
-        "time": 80.0,
-        "distance": 391.2
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.47,
-        "activityId": "17947093471",
-        "time": 79.0,
-        "distance": 379.6
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.36,
-        "activityId": "17947051080",
-        "time": 79.0,
-        "distance": 391.9
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.46,
-        "activityId": "17947051085",
-        "time": 80.0,
-        "distance": 385.8
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.45,
-        "activityId": "17946984231",
-        "time": 81.0,
-        "distance": 391.2
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.38,
-        "activityId": "17946984236",
-        "time": 80.0,
-        "distance": 394.8
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.16,
-        "activityId": "17946984233",
-        "time": 75.0,
-        "distance": 395.1
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.27,
-        "activityId": "17946941578",
-        "time": 76.0,
-        "distance": 387.9
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.25,
-        "activityId": "17946941599",
-        "time": 77.0,
-        "distance": 394.5
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.1,
-        "activityId": "17946906252",
-        "time": 74.0,
-        "distance": 397.3
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.27,
-        "activityId": "17946871258",
-        "time": 77.0,
-        "distance": 392.2
-      },
-      {
-        "date": "2026-04-02",
-        "pace": 3.48,
-        "activityId": "17946871255",
-        "time": 79.0,
-        "distance": 378.4
-      },
-      {
-        "date": "2026-05-21",
-        "pace": 3.25,
-        "activityId": "18597261649",
-        "time": 76.0,
-        "distance": 390.0
-      },
-      {
-        "date": "2026-05-21",
-        "pace": 2.8,
-        "activityId": "18597253903",
-        "time": 64.0,
-        "distance": 381.1
-      },
-      {
-        "date": "2026-05-30",
-        "pace": 4.01,
-        "activityId": "18711894545",
-        "time": 114.0,
-        "distance": 473.3
-      },
-      {
-        "date": "2026-06-01",
-        "pace": 3.05,
-        "activityId": "18743387596",
-        "time": 75.0,
-        "distance": 409.5
-      },
-      {
-        "date": "2026-06-01",
-        "pace": 3.01,
-        "activityId": "18743387605",
-        "time": 74.0,
-        "distance": 409.1
-      },
-      {
-        "date": "2026-06-18",
-        "pace": 2.97,
-        "activityId": "18972992088",
-        "time": 71.0,
-        "distance": 397.8
-      },
-      {
-        "date": "2026-06-18",
-        "pace": 2.99,
-        "activityId": "18972941805",
-        "time": 73.0,
-        "distance": 406.4
-      },
-      {
-        "date": "2026-06-18",
-        "pace": 2.85,
-        "activityId": "18972888725",
-        "time": 73.0,
-        "distance": 427.0
-      },
-      {
-        "date": "2026-06-22",
-        "pace": 4.04,
-        "activityId": "19024216292",
-        "time": 108.0,
-        "distance": 445.3
-      }
-    ],
-    "800m": [
-      {
-        "date": "2024-08-18",
-        "pace": 2.75,
-        "activityId": "14336383079",
-        "time": 136.0,
-        "distance": 823.8
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.45,
-        "activityId": "14336383924",
-        "time": 168.0,
-        "distance": 812.2
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.3,
-        "activityId": "14336382960",
-        "time": 166.0,
-        "distance": 838.2
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.32,
-        "activityId": "14336382956",
-        "time": 167.0,
-        "distance": 839.1
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.33,
-        "activityId": "14336383343",
-        "time": 161.0,
-        "distance": 806.5
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.32,
-        "activityId": "14336382948",
-        "time": 166.0,
-        "distance": 833.0
-      },
-      {
-        "date": "2024-11-16",
-        "pace": 3.28,
-        "activityId": "14336383631",
-        "time": 163.0,
-        "distance": 829.2
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.83,
-        "activityId": "14336383657",
-        "time": 183.0,
-        "distance": 797.4
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.87,
-        "activityId": "14336383390",
-        "time": 185.0,
-        "distance": 797.8
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.82,
-        "activityId": "14336384263",
-        "time": 185.0,
-        "distance": 808.1
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.77,
-        "activityId": "14336383627",
-        "time": 182.0,
-        "distance": 804.5
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.74,
-        "activityId": "14336383357",
-        "time": 181.0,
-        "distance": 807.5
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.77,
-        "activityId": "14336384381",
-        "time": 185.0,
-        "distance": 816.9
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.79,
-        "activityId": "14336383786",
-        "time": 178.0,
-        "distance": 782.2
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.69,
-        "activityId": "14336384505",
-        "time": 177.0,
-        "distance": 800.2
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.67,
-        "activityId": "14336383381",
-        "time": 179.0,
-        "distance": 813.0
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.75,
-        "activityId": "14336383800",
-        "time": 186.0,
-        "distance": 827.0
-      },
-      {
-        "date": "2025-05-11",
-        "pace": 2.72,
-        "activityId": "14443657898",
-        "time": 134.0,
-        "distance": 819.8
-      },
-      {
-        "date": "2025-06-14",
-        "pace": 2.67,
-        "activityId": "14794485516",
-        "time": 130.0,
-        "distance": 811.5
-      },
-      {
-        "date": "2025-07-27",
-        "pace": 2.98,
-        "activityId": "15250062836",
-        "time": 142.0,
-        "distance": 790.2
-      },
-      {
-        "date": "2025-08-27",
-        "pace": 2.89,
-        "activityId": "15612653998",
-        "time": 139.0,
-        "distance": 800.7
-      },
-      {
-        "date": "2025-10-09",
-        "pace": 3.65,
-        "activityId": "16086981953",
-        "time": 210.0,
-        "distance": 957.6
-      },
-      {
-        "date": "2025-10-09",
-        "pace": 6.65,
-        "activityId": "16086975906",
-        "time": 372.0,
-        "distance": 932.5
-      },
-      {
-        "date": "2025-11-03",
-        "pace": 3.32,
-        "activityId": "16342942053",
-        "time": 139.0,
-        "distance": 697.4
-      },
-      {
-        "date": "2025-11-20",
-        "pace": 3.61,
-        "activityId": "16516635651",
-        "time": 177.0,
-        "distance": 816.1
-      },
-      {
-        "date": "2025-11-20",
-        "pace": 3.55,
-        "activityId": "16516635396",
-        "time": 175.0,
-        "distance": 822.7
-      },
-      {
-        "date": "2025-11-20",
-        "pace": 3.55,
-        "activityId": "16516635175",
-        "time": 172.0,
-        "distance": 808.6
-      },
-      {
-        "date": "2025-11-20",
-        "pace": 3.39,
-        "activityId": "16516635386",
-        "time": 163.0,
-        "distance": 801.7
-      },
-      {
-        "date": "2025-11-20",
-        "pace": 3.12,
-        "activityId": "16516536736",
-        "time": 159.0,
-        "distance": 849.1
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.72,
-        "activityId": "16778063475",
-        "time": 187.0,
-        "distance": 838.6
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.7,
-        "activityId": "16778063269",
-        "time": 181.0,
-        "distance": 815.6
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.71,
-        "activityId": "16778063156",
-        "time": 180.0,
-        "distance": 808.7
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.69,
-        "activityId": "16778063280",
-        "time": 179.0,
-        "distance": 808.6
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.63,
-        "activityId": "16778063275",
-        "time": 178.0,
-        "distance": 817.9
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.67,
-        "activityId": "16778063132",
-        "time": 180.0,
-        "distance": 818.5
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.65,
-        "activityId": "16778058786",
-        "time": 180.0,
-        "distance": 822.0
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.71,
-        "activityId": "16778058769",
-        "time": 181.0,
-        "distance": 814.2
-      },
-      {
-        "date": "2025-12-22",
-        "pace": 4.34,
-        "activityId": "16812765120",
-        "time": 168.0,
-        "distance": 645.2
-      },
-      {
-        "date": "2025-12-22",
-        "pace": 5.28,
-        "activityId": "16812765267",
-        "time": 212.0,
-        "distance": 669.4
-      },
-      {
-        "date": "2026-03-26",
-        "pace": 3.12,
-        "activityId": "17867297259",
-        "time": 155.0,
-        "distance": 827.5
-      },
-      {
-        "date": "2026-03-26",
-        "pace": 3.25,
-        "activityId": "17867128870",
-        "time": 156.0,
-        "distance": 798.8
-      },
-      {
-        "date": "2026-05-09",
-        "pace": 2.77,
-        "activityId": "18435316906",
-        "time": 135.0,
-        "distance": 812.1
-      },
-      {
-        "date": "2026-06-01",
-        "pace": 3.13,
-        "activityId": "18743387584",
-        "time": 159.0,
-        "distance": 846.0
-      },
-      {
-        "date": "2026-06-20",
-        "pace": 2.82,
-        "activityId": "18993845577",
-        "time": 137.0,
-        "distance": 809.8
-      }
-    ],
-    "1000m": [
-      {
-        "date": "2024-05-04",
-        "pace": 4.05,
-        "activityId": "14336380709",
-        "time": 245.0,
-        "distance": 1007.5
-      },
-      {
-        "date": "2024-05-04",
-        "pace": 3.92,
-        "activityId": "14336380715",
-        "time": 239.0,
-        "distance": 1016.6
-      },
-      {
-        "date": "2024-05-04",
-        "pace": 3.89,
-        "activityId": "14336380843",
-        "time": 238.0,
-        "distance": 1019.4
-      },
-      {
-        "date": "2024-05-04",
-        "pace": 3.89,
-        "activityId": "14336380832",
-        "time": 240.0,
-        "distance": 1027.3
-      },
-      {
-        "date": "2024-05-04",
-        "pace": 3.75,
-        "activityId": "14336380727",
-        "time": 228.0,
-        "distance": 1014.0
-      },
-      {
-        "date": "2024-06-01",
-        "pace": 4.61,
-        "activityId": "14336382180",
-        "time": 279.0,
-        "distance": 1009.1
-      },
-      {
-        "date": "2024-06-01",
-        "pace": 4.72,
-        "activityId": "14336381908",
-        "time": 285.0,
-        "distance": 1007.2
-      },
-      {
-        "date": "2024-06-08",
-        "pace": 4.83,
-        "activityId": "14336381912",
-        "time": 289.0,
-        "distance": 997.5
-      },
-      {
-        "date": "2024-08-01",
-        "pace": 3.76,
-        "activityId": "14336382205",
-        "time": 236.0,
-        "distance": 1045.2
-      },
-      {
-        "date": "2024-08-18",
-        "pace": 2.75,
-        "activityId": "14336383079",
-        "time": 136.0,
-        "distance": 823.8
-      },
-      {
-        "date": "2024-08-26",
-        "pace": 3.55,
-        "activityId": "14336382923",
-        "time": 220.0,
-        "distance": 1032.1
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.45,
-        "activityId": "14336383924",
-        "time": 168.0,
-        "distance": 812.2
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.3,
-        "activityId": "14336382960",
-        "time": 166.0,
-        "distance": 838.2
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.32,
-        "activityId": "14336382956",
-        "time": 167.0,
-        "distance": 839.1
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.33,
-        "activityId": "14336383343",
-        "time": 161.0,
-        "distance": 806.5
-      },
-      {
-        "date": "2024-09-12",
-        "pace": 3.32,
-        "activityId": "14336382948",
-        "time": 166.0,
-        "distance": 833.0
-      },
-      {
-        "date": "2024-09-20",
-        "pace": 3.71,
-        "activityId": "14336383104",
-        "time": 226.0,
-        "distance": 1016.5
-      },
-      {
-        "date": "2024-09-27",
-        "pace": 3.5,
-        "activityId": "14336383338",
-        "time": 212.0,
-        "distance": 1009.7
-      },
-      {
-        "date": "2024-09-27",
-        "pace": 3.6,
-        "activityId": "14336383656",
-        "time": 218.0,
-        "distance": 1010.5
-      },
-      {
-        "date": "2024-11-09",
-        "pace": 2.98,
-        "activityId": "14336383638",
-        "time": 173.0,
-        "distance": 966.8
-      },
-      {
-        "date": "2024-11-16",
-        "pace": 3.28,
-        "activityId": "14336383631",
-        "time": 163.0,
-        "distance": 829.2
-      },
-      {
-        "date": "2024-11-30",
-        "pace": 3.72,
-        "activityId": "14336383659",
-        "time": 221.0,
-        "distance": 990.7
-      },
-      {
-        "date": "2024-11-30",
-        "pace": 3.91,
-        "activityId": "14336384376",
-        "time": 231.0,
-        "distance": 985.7
-      },
-      {
-        "date": "2024-11-30",
-        "pace": 3.89,
-        "activityId": "14336383662",
-        "time": 231.0,
-        "distance": 988.8
-      },
-      {
-        "date": "2024-11-30",
-        "pace": 3.87,
-        "activityId": "14336384092",
-        "time": 234.0,
-        "distance": 1007.6
-      },
-      {
-        "date": "2024-11-30",
-        "pace": 3.8,
-        "activityId": "14336383959",
-        "time": 226.0,
-        "distance": 990.3
-      },
-      {
-        "date": "2024-11-30",
-        "pace": 3.91,
-        "activityId": "14336383654",
-        "time": 231.0,
-        "distance": 984.9
-      },
-      {
-        "date": "2024-11-30",
-        "pace": 3.76,
-        "activityId": "14336383899",
-        "time": 225.0,
-        "distance": 996.3
-      },
-      {
-        "date": "2024-11-30",
-        "pace": 3.84,
-        "activityId": "14336384098",
-        "time": 228.0,
-        "distance": 989.6
-      },
-      {
-        "date": "2024-11-30",
-        "pace": 3.83,
-        "activityId": "14336383780",
-        "time": 228.0,
-        "distance": 991.8
-      },
-      {
-        "date": "2024-11-30",
-        "pace": 3.86,
-        "activityId": "14336383922",
-        "time": 231.0,
-        "distance": 996.2
-      },
-      {
-        "date": "2024-11-30",
-        "pace": 6.09,
-        "activityId": "14336384378",
-        "time": 361.0,
-        "distance": 987.3
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.82,
-        "activityId": "14336384263",
-        "time": 185.0,
-        "distance": 808.1
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.77,
-        "activityId": "14336383627",
-        "time": 182.0,
-        "distance": 804.5
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.74,
-        "activityId": "14336383357",
-        "time": 181.0,
-        "distance": 807.5
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.77,
-        "activityId": "14336384381",
-        "time": 185.0,
-        "distance": 816.9
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.69,
-        "activityId": "14336384505",
-        "time": 177.0,
-        "distance": 800.2
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.67,
-        "activityId": "14336383381",
-        "time": 179.0,
-        "distance": 813.0
-      },
-      {
-        "date": "2024-12-05",
-        "pace": 3.75,
-        "activityId": "14336383800",
-        "time": 186.0,
-        "distance": 827.0
-      },
-      {
-        "date": "2024-12-14",
-        "pace": 3.72,
-        "activityId": "14336383214",
-        "time": 222.0,
-        "distance": 994.0
-      },
-      {
-        "date": "2024-12-14",
-        "pace": 3.76,
-        "activityId": "14336384105",
-        "time": 226.0,
-        "distance": 1000.4
-      },
-      {
-        "date": "2024-12-21",
-        "pace": 4.02,
-        "activityId": "14336384270",
-        "time": 244.0,
-        "distance": 1011.4
-      },
-      {
-        "date": "2024-12-21",
-        "pace": 3.9,
-        "activityId": "14336383799",
-        "time": 236.0,
-        "distance": 1009.6
-      },
-      {
-        "date": "2024-12-21",
-        "pace": 4.06,
-        "activityId": "14336383672",
-        "time": 246.0,
-        "distance": 1009.7
-      },
-      {
-        "date": "2024-12-21",
-        "pace": 3.98,
-        "activityId": "14336383342",
-        "time": 243.0,
-        "distance": 1016.8
-      },
-      {
-        "date": "2025-01-04",
-        "pace": 3.85,
-        "activityId": "14336383806",
-        "time": 228.0,
-        "distance": 986.2
-      },
-      {
-        "date": "2025-01-04",
-        "pace": 3.81,
-        "activityId": "14336384117",
-        "time": 224.0,
-        "distance": 978.8
-      },
-      {
-        "date": "2025-01-18",
-        "pace": 3.42,
-        "activityId": "14336383653",
-        "time": 204.0,
-        "distance": 995.4
-      },
-      {
-        "date": "2025-01-18",
-        "pace": 3.29,
-        "activityId": "14336384267",
-        "time": 199.0,
-        "distance": 1009.0
-      },
-      {
-        "date": "2025-02-03",
-        "pace": 3.89,
-        "activityId": "14336353663",
-        "time": 247.0,
-        "distance": 1057.7
-      },
-      {
-        "date": "2025-02-08",
-        "pace": 3.92,
-        "activityId": "14336353631",
-        "time": 232.0,
-        "distance": 987.4
-      },
-      {
-        "date": "2025-02-08",
-        "pace": 4.01,
-        "activityId": "14336353621",
-        "time": 240.0,
-        "distance": 998.4
-      },
-      {
-        "date": "2025-02-08",
-        "pace": 3.73,
-        "activityId": "14336353491",
-        "time": 225.0,
-        "distance": 1004.2
-      },
-      {
-        "date": "2025-02-08",
-        "pace": 3.54,
-        "activityId": "14336353620",
-        "time": 214.0,
-        "distance": 1008.5
-      },
-      {
-        "date": "2025-03-15",
-        "pace": 3.68,
-        "activityId": "14336353503",
-        "time": 219.0,
-        "distance": 991.4
-      },
-      {
-        "date": "2025-03-15",
-        "pace": 3.85,
-        "activityId": "14336353504",
-        "time": 227.0,
-        "distance": 983.5
-      },
-      {
-        "date": "2025-04-30",
-        "pace": 3.47,
-        "activityId": "14336353488",
-        "time": 209.0,
-        "distance": 1004.7
-      },
-      {
-        "date": "2025-04-30",
-        "pace": 3.94,
-        "activityId": "14336353490",
-        "time": 239.0,
-        "distance": 1011.6
-      },
-      {
-        "date": "2025-05-11",
-        "pace": 2.72,
-        "activityId": "14443657898",
-        "time": 134.0,
-        "distance": 819.8
-      },
-      {
-        "date": "2025-06-14",
-        "pace": 2.67,
-        "activityId": "14794485516",
-        "time": 130.0,
-        "distance": 811.5
-      },
-      {
-        "date": "2025-08-27",
-        "pace": 2.89,
-        "activityId": "15612653998",
-        "time": 139.0,
-        "distance": 800.7
-      },
-      {
-        "date": "2025-10-09",
-        "pace": 3.65,
-        "activityId": "16086981953",
-        "time": 210.0,
-        "distance": 957.6
-      },
-      {
-        "date": "2025-10-09",
-        "pace": 6.65,
-        "activityId": "16086975906",
-        "time": 372.0,
-        "distance": 932.5
-      },
-      {
-        "date": "2025-11-08",
-        "pace": 2.97,
-        "activityId": "16391597303",
-        "time": 173.0,
-        "distance": 970.8
-      },
-      {
-        "date": "2025-11-15",
-        "pace": 3.78,
-        "activityId": "16462829277",
-        "time": 236.0,
-        "distance": 1040.2
-      },
-      {
-        "date": "2025-11-15",
-        "pace": 3.79,
-        "activityId": "16462829279",
-        "time": 229.0,
-        "distance": 1006.9
-      },
-      {
-        "date": "2025-11-15",
-        "pace": 4.06,
-        "activityId": "16462829256",
-        "time": 246.0,
-        "distance": 1009.7
-      },
-      {
-        "date": "2025-11-15",
-        "pace": 4.03,
-        "activityId": "16462829244",
-        "time": 240.0,
-        "distance": 991.8
-      },
-      {
-        "date": "2025-11-20",
-        "pace": 3.61,
-        "activityId": "16516635651",
-        "time": 177.0,
-        "distance": 816.1
-      },
-      {
-        "date": "2025-11-20",
-        "pace": 3.55,
-        "activityId": "16516635396",
-        "time": 175.0,
-        "distance": 822.7
-      },
-      {
-        "date": "2025-11-20",
-        "pace": 3.55,
-        "activityId": "16516635175",
-        "time": 172.0,
-        "distance": 808.6
-      },
-      {
-        "date": "2025-11-20",
-        "pace": 3.39,
-        "activityId": "16516635386",
-        "time": 163.0,
-        "distance": 801.7
-      },
-      {
-        "date": "2025-11-20",
-        "pace": 3.12,
-        "activityId": "16516536736",
-        "time": 159.0,
-        "distance": 849.1
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.72,
-        "activityId": "16778063475",
-        "time": 187.0,
-        "distance": 838.6
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.7,
-        "activityId": "16778063269",
-        "time": 181.0,
-        "distance": 815.6
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.71,
-        "activityId": "16778063156",
-        "time": 180.0,
-        "distance": 808.7
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.69,
-        "activityId": "16778063280",
-        "time": 179.0,
-        "distance": 808.6
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.63,
-        "activityId": "16778063275",
-        "time": 178.0,
-        "distance": 817.9
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.67,
-        "activityId": "16778063132",
-        "time": 180.0,
-        "distance": 818.5
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.65,
-        "activityId": "16778058786",
-        "time": 180.0,
-        "distance": 822.0
-      },
-      {
-        "date": "2025-12-18",
-        "pace": 3.71,
-        "activityId": "16778058769",
-        "time": 181.0,
-        "distance": 814.2
-      },
-      {
-        "date": "2026-01-10",
-        "pace": 7.42,
-        "activityId": "17009400394",
-        "time": 448.0,
-        "distance": 1006.3
-      },
-      {
-        "date": "2026-01-17",
-        "pace": 4.68,
-        "activityId": "17078006899",
-        "time": 320.0,
-        "distance": 1138.6
-      },
-      {
-        "date": "2026-02-01",
-        "pace": 6.6,
-        "activityId": "17246459713",
-        "time": 468.0,
-        "distance": 1182.8
-      },
-      {
-        "date": "2026-02-08",
-        "pace": 2.18,
-        "activityId": "17332494341",
-        "time": 137.0,
-        "distance": 1045.1
-      },
-      {
-        "date": "2026-02-28",
-        "pace": 4.02,
-        "activityId": "17552807238",
-        "time": 238.0,
-        "distance": 987.5
-      },
-      {
-        "date": "2026-03-26",
-        "pace": 3.12,
-        "activityId": "17867297259",
-        "time": 155.0,
-        "distance": 827.5
-      },
-      {
-        "date": "2026-04-06",
-        "pace": 3.7,
-        "activityId": "18002248002",
-        "time": 220.0,
-        "distance": 992.3
-      },
-      {
-        "date": "2026-04-06",
-        "pace": 3.86,
-        "activityId": "18002248210",
-        "time": 230.0,
-        "distance": 992.6
-      },
-      {
-        "date": "2026-04-06",
-        "pace": 3.57,
-        "activityId": "18002248180",
-        "time": 212.0,
-        "distance": 988.9
-      },
-      {
-        "date": "2026-04-16",
-        "pace": 4.43,
-        "activityId": "18133569284",
-        "time": 287.0,
-        "distance": 1078.7
-      },
-      {
-        "date": "2026-04-18",
-        "pace": 3.73,
-        "activityId": "18153961556",
-        "time": 220.0,
-        "distance": 983.7
-      },
-      {
-        "date": "2026-04-18",
-        "pace": 3.58,
-        "activityId": "18153887763",
-        "time": 212.0,
-        "distance": 988.4
-      },
-      {
-        "date": "2026-04-18",
-        "pace": 3.67,
-        "activityId": "18153814464",
-        "time": 223.0,
-        "distance": 1013.3
-      },
-      {
-        "date": "2026-05-02",
-        "pace": 4.5,
-        "activityId": "18341988675",
-        "time": 274.0,
-        "distance": 1014.4
+  "trends": {
+    "run": {
+      "400m": [
+        {
+          "month": "2023-08",
+          "bestTime": 89.0,
+          "pace": 3.7083333333333335
+        },
+        {
+          "month": "2023-09",
+          "bestTime": 89.0,
+          "pace": 3.7083333333333335
+        },
+        {
+          "month": "2024-03",
+          "bestTime": 98.0,
+          "pace": 4.083333333333333
+        },
+        {
+          "month": "2024-04",
+          "bestTime": 106.0,
+          "pace": 4.416666666666666
+        },
+        {
+          "month": "2024-05",
+          "bestTime": 77.0,
+          "pace": 3.2083333333333335
+        },
+        {
+          "month": "2024-06",
+          "bestTime": 79.0,
+          "pace": 3.2916666666666665
+        },
+        {
+          "month": "2024-07",
+          "bestTime": 98.0,
+          "pace": 4.083333333333333
+        },
+        {
+          "month": "2024-08",
+          "bestTime": 62.0,
+          "pace": 2.5833333333333335
+        },
+        {
+          "month": "2024-09",
+          "bestTime": 67.0,
+          "pace": 2.7916666666666665
+        },
+        {
+          "month": "2024-10",
+          "bestTime": 79.0,
+          "pace": 3.2916666666666665
+        },
+        {
+          "month": "2024-11",
+          "bestTime": 59.0,
+          "pace": 2.458333333333333
+        },
+        {
+          "month": "2024-12",
+          "bestTime": 56.0,
+          "pace": 2.333333333333333
+        },
+        {
+          "month": "2025-01",
+          "bestTime": 63.0,
+          "pace": 2.625
+        },
+        {
+          "month": "2025-02",
+          "bestTime": 77.0,
+          "pace": 3.2083333333333335
+        },
+        {
+          "month": "2025-03",
+          "bestTime": 49.0,
+          "pace": 2.0416666666666665
+        },
+        {
+          "month": "2025-04",
+          "bestTime": 71.0,
+          "pace": 2.958333333333333
+        },
+        {
+          "month": "2025-05",
+          "bestTime": 60.0,
+          "pace": 2.5
+        },
+        {
+          "month": "2025-06",
+          "bestTime": 59.0,
+          "pace": 2.458333333333333
+        },
+        {
+          "month": "2025-07",
+          "bestTime": 65.0,
+          "pace": 2.708333333333333
+        },
+        {
+          "month": "2025-08",
+          "bestTime": 63.0,
+          "pace": 2.625
+        },
+        {
+          "month": "2025-09",
+          "bestTime": 64.0,
+          "pace": 2.6666666666666665
+        },
+        {
+          "month": "2025-10",
+          "bestTime": 72.0,
+          "pace": 2.9999999999999996
+        },
+        {
+          "month": "2025-11",
+          "bestTime": 63.0,
+          "pace": 2.625
+        },
+        {
+          "month": "2025-12",
+          "bestTime": 73.0,
+          "pace": 3.041666666666666
+        },
+        {
+          "month": "2026-01",
+          "bestTime": 63.0,
+          "pace": 2.625
+        },
+        {
+          "month": "2026-02",
+          "bestTime": 65.0,
+          "pace": 2.708333333333333
+        },
+        {
+          "month": "2026-03",
+          "bestTime": 69.0,
+          "pace": 2.8749999999999996
+        },
+        {
+          "month": "2026-04",
+          "bestTime": 72.0,
+          "pace": 2.9999999999999996
+        },
+        {
+          "month": "2026-05",
+          "bestTime": 61.0,
+          "pace": 2.5416666666666665
+        },
+        {
+          "month": "2026-06",
+          "bestTime": 64.0,
+          "pace": 2.6666666666666665
+        }
+      ],
+      "800m": [
+        {
+          "month": "2023-08",
+          "bestTime": 191.0,
+          "pace": 3.979166666666666
+        },
+        {
+          "month": "2023-09",
+          "bestTime": 187.0,
+          "pace": 3.895833333333333
+        },
+        {
+          "month": "2024-03",
+          "bestTime": 207.0,
+          "pace": 4.3125
+        },
+        {
+          "month": "2024-04",
+          "bestTime": 226.0,
+          "pace": 4.708333333333333
+        },
+        {
+          "month": "2024-05",
+          "bestTime": 166.0,
+          "pace": 3.458333333333333
+        },
+        {
+          "month": "2024-06",
+          "bestTime": 183.0,
+          "pace": 3.8124999999999996
+        },
+        {
+          "month": "2024-07",
+          "bestTime": 205.0,
+          "pace": 4.270833333333333
+        },
+        {
+          "month": "2024-08",
+          "bestTime": 127.0,
+          "pace": 2.645833333333333
+        },
+        {
+          "month": "2024-09",
+          "bestTime": 153.0,
+          "pace": 3.1874999999999996
+        },
+        {
+          "month": "2024-10",
+          "bestTime": 169.0,
+          "pace": 3.5208333333333335
+        },
+        {
+          "month": "2024-11",
+          "bestTime": 137.0,
+          "pace": 2.8541666666666665
+        },
+        {
+          "month": "2024-12",
+          "bestTime": 146.0,
+          "pace": 3.041666666666666
+        },
+        {
+          "month": "2025-01",
+          "bestTime": 147.0,
+          "pace": 3.0625
+        },
+        {
+          "month": "2025-02",
+          "bestTime": 161.0,
+          "pace": 3.354166666666666
+        },
+        {
+          "month": "2025-03",
+          "bestTime": 123.0,
+          "pace": 2.5624999999999996
+        },
+        {
+          "month": "2025-04",
+          "bestTime": 158.0,
+          "pace": 3.2916666666666665
+        },
+        {
+          "month": "2025-05",
+          "bestTime": 126.0,
+          "pace": 2.625
+        },
+        {
+          "month": "2025-06",
+          "bestTime": 124.0,
+          "pace": 2.5833333333333335
+        },
+        {
+          "month": "2025-07",
+          "bestTime": 139.0,
+          "pace": 2.8958333333333335
+        },
+        {
+          "month": "2025-08",
+          "bestTime": 133.0,
+          "pace": 2.7708333333333335
+        },
+        {
+          "month": "2025-09",
+          "bestTime": 160.0,
+          "pace": 3.333333333333333
+        },
+        {
+          "month": "2025-10",
+          "bestTime": 160.0,
+          "pace": 3.333333333333333
+        },
+        {
+          "month": "2025-11",
+          "bestTime": 139.0,
+          "pace": 2.8958333333333335
+        },
+        {
+          "month": "2025-12",
+          "bestTime": 166.0,
+          "pace": 3.458333333333333
+        },
+        {
+          "month": "2026-01",
+          "bestTime": 189.0,
+          "pace": 3.9374999999999996
+        },
+        {
+          "month": "2026-02",
+          "bestTime": 174.0,
+          "pace": 3.6249999999999996
+        },
+        {
+          "month": "2026-03",
+          "bestTime": 144.0,
+          "pace": 2.9999999999999996
+        },
+        {
+          "month": "2026-04",
+          "bestTime": 153.0,
+          "pace": 3.1874999999999996
+        },
+        {
+          "month": "2026-05",
+          "bestTime": 126.0,
+          "pace": 2.625
+        },
+        {
+          "month": "2026-06",
+          "bestTime": 131.0,
+          "pace": 2.729166666666666
+        }
+      ],
+      "1000m": [
+        {
+          "month": "2023-08",
+          "bestTime": 243.0,
+          "pace": 4.05
+        },
+        {
+          "month": "2023-09",
+          "bestTime": 241.0,
+          "pace": 4.016666666666667
+        },
+        {
+          "month": "2024-03",
+          "bestTime": 264.0,
+          "pace": 4.4
+        },
+        {
+          "month": "2024-04",
+          "bestTime": 289.0,
+          "pace": 4.816666666666666
+        },
+        {
+          "month": "2024-05",
+          "bestTime": 214.0,
+          "pace": 3.566666666666667
+        },
+        {
+          "month": "2024-06",
+          "bestTime": 230.0,
+          "pace": 3.8333333333333335
+        },
+        {
+          "month": "2024-07",
+          "bestTime": 266.0,
+          "pace": 4.433333333333334
+        },
+        {
+          "month": "2024-08",
+          "bestTime": 207.0,
+          "pace": 3.45
+        },
+        {
+          "month": "2024-09",
+          "bestTime": 200.0,
+          "pace": 3.3333333333333335
+        },
+        {
+          "month": "2024-10",
+          "bestTime": 210.0,
+          "pace": 3.5
+        },
+        {
+          "month": "2024-11",
+          "bestTime": 171.0,
+          "pace": 2.85
+        },
+        {
+          "month": "2024-12",
+          "bestTime": 191.0,
+          "pace": 3.183333333333333
+        },
+        {
+          "month": "2025-01",
+          "bestTime": 190.0,
+          "pace": 3.1666666666666665
+        },
+        {
+          "month": "2025-02",
+          "bestTime": 203.0,
+          "pace": 3.3833333333333333
+        },
+        {
+          "month": "2025-03",
+          "bestTime": 175.0,
+          "pace": 2.9166666666666665
+        },
+        {
+          "month": "2025-04",
+          "bestTime": 198.0,
+          "pace": 3.3
+        },
+        {
+          "month": "2025-05",
+          "bestTime": 180.0,
+          "pace": 3.0
+        },
+        {
+          "month": "2025-06",
+          "bestTime": 176.0,
+          "pace": 2.933333333333333
+        },
+        {
+          "month": "2025-07",
+          "bestTime": 258.0,
+          "pace": 4.3
+        },
+        {
+          "month": "2025-08",
+          "bestTime": 228.0,
+          "pace": 3.8
+        },
+        {
+          "month": "2025-09",
+          "bestTime": 205.0,
+          "pace": 3.4166666666666665
+        },
+        {
+          "month": "2025-10",
+          "bestTime": 203.0,
+          "pace": 3.3833333333333333
+        },
+        {
+          "month": "2025-11",
+          "bestTime": 174.0,
+          "pace": 2.9
+        },
+        {
+          "month": "2025-12",
+          "bestTime": 227.0,
+          "pace": 3.783333333333333
+        },
+        {
+          "month": "2026-01",
+          "bestTime": 233.0,
+          "pace": 3.8833333333333333
+        },
+        {
+          "month": "2026-02",
+          "bestTime": 221.0,
+          "pace": 3.683333333333333
+        },
+        {
+          "month": "2026-03",
+          "bestTime": 211.0,
+          "pace": 3.5166666666666666
+        },
+        {
+          "month": "2026-04",
+          "bestTime": 193.0,
+          "pace": 3.216666666666667
+        },
+        {
+          "month": "2026-05",
+          "bestTime": 211.0,
+          "pace": 3.5166666666666666
+        },
+        {
+          "month": "2026-06",
+          "bestTime": 183.0,
+          "pace": 3.05
+        }
+      ],
+      "1500m": [
+        {
+          "month": "2023-08",
+          "bestTime": 367.0,
+          "pace": 4.0777777777777775
+        },
+        {
+          "month": "2023-09",
+          "bestTime": 394.0,
+          "pace": 4.377777777777777
+        },
+        {
+          "month": "2024-03",
+          "bestTime": 405.0,
+          "pace": 4.5
+        },
+        {
+          "month": "2024-04",
+          "bestTime": 441.0,
+          "pace": 4.8999999999999995
+        },
+        {
+          "month": "2024-05",
+          "bestTime": 334.0,
+          "pace": 3.711111111111111
+        },
+        {
+          "month": "2024-06",
+          "bestTime": 359.0,
+          "pace": 3.988888888888889
+        },
+        {
+          "month": "2024-07",
+          "bestTime": 395.0,
+          "pace": 4.388888888888888
+        },
+        {
+          "month": "2024-08",
+          "bestTime": 354.0,
+          "pace": 3.9333333333333336
+        },
+        {
+          "month": "2024-09",
+          "bestTime": 313.0,
+          "pace": 3.477777777777778
+        },
+        {
+          "month": "2024-10",
+          "bestTime": 334.0,
+          "pace": 3.711111111111111
+        },
+        {
+          "month": "2024-11",
+          "bestTime": 313.0,
+          "pace": 3.477777777777778
+        },
+        {
+          "month": "2024-12",
+          "bestTime": 315.0,
+          "pace": 3.5
+        },
+        {
+          "month": "2025-01",
+          "bestTime": 323.0,
+          "pace": 3.588888888888889
+        },
+        {
+          "month": "2025-02",
+          "bestTime": 325.0,
+          "pace": 3.611111111111111
+        },
+        {
+          "month": "2025-03",
+          "bestTime": 291.0,
+          "pace": 3.233333333333333
+        },
+        {
+          "month": "2025-04",
+          "bestTime": 300.0,
+          "pace": 3.3333333333333335
+        },
+        {
+          "month": "2025-05",
+          "bestTime": 272.0,
+          "pace": 3.022222222222222
+        },
+        {
+          "month": "2025-06",
+          "bestTime": 269.0,
+          "pace": 2.988888888888889
+        },
+        {
+          "month": "2025-07",
+          "bestTime": 393.0,
+          "pace": 4.366666666666666
+        },
+        {
+          "month": "2025-08",
+          "bestTime": 369.0,
+          "pace": 4.1000000000000005
+        },
+        {
+          "month": "2025-09",
+          "bestTime": 314.0,
+          "pace": 3.488888888888889
+        },
+        {
+          "month": "2025-10",
+          "bestTime": 322.0,
+          "pace": 3.5777777777777775
+        },
+        {
+          "month": "2025-11",
+          "bestTime": 304.0,
+          "pace": 3.3777777777777778
+        },
+        {
+          "month": "2025-12",
+          "bestTime": 353.0,
+          "pace": 3.9222222222222225
+        },
+        {
+          "month": "2026-01",
+          "bestTime": 363.0,
+          "pace": 4.033333333333333
+        },
+        {
+          "month": "2026-02",
+          "bestTime": 337.0,
+          "pace": 3.744444444444444
+        },
+        {
+          "month": "2026-03",
+          "bestTime": 342.0,
+          "pace": 3.8000000000000003
+        },
+        {
+          "month": "2026-04",
+          "bestTime": 294.0,
+          "pace": 3.266666666666667
+        },
+        {
+          "month": "2026-05",
+          "bestTime": 322.0,
+          "pace": 3.5777777777777775
+        },
+        {
+          "month": "2026-06",
+          "bestTime": 277.0,
+          "pace": 3.0777777777777775
+        }
+      ],
+      "3km": [
+        {
+          "month": "2023-08",
+          "bestTime": 765.0,
+          "pace": 4.25
+        },
+        {
+          "month": "2023-09",
+          "bestTime": 814.0,
+          "pace": 4.522222222222222
+        },
+        {
+          "month": "2024-03",
+          "bestTime": 969.0,
+          "pace": 5.383333333333333
+        },
+        {
+          "month": "2024-04",
+          "bestTime": 922.0,
+          "pace": 5.122222222222223
+        },
+        {
+          "month": "2024-05",
+          "bestTime": 770.0,
+          "pace": 4.277777777777778
+        },
+        {
+          "month": "2024-06",
+          "bestTime": 748.0,
+          "pace": 4.155555555555556
+        },
+        {
+          "month": "2024-07",
+          "bestTime": 828.0,
+          "pace": 4.6000000000000005
+        },
+        {
+          "month": "2024-08",
+          "bestTime": 733.0,
+          "pace": 4.072222222222222
+        },
+        {
+          "month": "2024-09",
+          "bestTime": 649.0,
+          "pace": 3.6055555555555556
+        },
+        {
+          "month": "2024-10",
+          "bestTime": 690.0,
+          "pace": 3.8333333333333335
+        },
+        {
+          "month": "2024-11",
+          "bestTime": 702.0,
+          "pace": 3.9
+        },
+        {
+          "month": "2024-12",
+          "bestTime": 686.0,
+          "pace": 3.8111111111111113
+        },
+        {
+          "month": "2025-01",
+          "bestTime": 797.0,
+          "pace": 4.427777777777778
+        },
+        {
+          "month": "2025-02",
+          "bestTime": 671.0,
+          "pace": 3.727777777777778
+        },
+        {
+          "month": "2025-03",
+          "bestTime": 652.0,
+          "pace": 3.6222222222222222
+        },
+        {
+          "month": "2025-04",
+          "bestTime": 612.0,
+          "pace": 3.4
+        },
+        {
+          "month": "2025-05",
+          "bestTime": 647.0,
+          "pace": 3.5944444444444446
+        },
+        {
+          "month": "2025-06",
+          "bestTime": 802.0,
+          "pace": 4.455555555555556
+        },
+        {
+          "month": "2025-07",
+          "bestTime": 789.0,
+          "pace": 4.383333333333334
+        },
+        {
+          "month": "2025-08",
+          "bestTime": 866.0,
+          "pace": 4.811111111111111
+        },
+        {
+          "month": "2025-09",
+          "bestTime": 660.0,
+          "pace": 3.6666666666666665
+        },
+        {
+          "month": "2025-10",
+          "bestTime": 672.0,
+          "pace": 3.733333333333333
+        },
+        {
+          "month": "2025-11",
+          "bestTime": 666.0,
+          "pace": 3.6999999999999997
+        },
+        {
+          "month": "2025-12",
+          "bestTime": 711.0,
+          "pace": 3.9499999999999997
+        },
+        {
+          "month": "2026-01",
+          "bestTime": 757.0,
+          "pace": 4.205555555555556
+        },
+        {
+          "month": "2026-02",
+          "bestTime": 997.0,
+          "pace": 5.538888888888889
+        },
+        {
+          "month": "2026-03",
+          "bestTime": 700.0,
+          "pace": 3.888888888888889
+        },
+        {
+          "month": "2026-04",
+          "bestTime": 622.0,
+          "pace": 3.4555555555555557
+        },
+        {
+          "month": "2026-05",
+          "bestTime": 658.0,
+          "pace": 3.6555555555555554
+        },
+        {
+          "month": "2026-06",
+          "bestTime": 784.0,
+          "pace": 4.355555555555555
+        }
+      ],
+      "5km": [
+        {
+          "month": "2023-08",
+          "bestTime": 1482.0,
+          "pace": 4.9399999999999995
+        },
+        {
+          "month": "2023-09",
+          "bestTime": 1380.0,
+          "pace": 4.6
+        },
+        {
+          "month": "2024-03",
+          "bestTime": 1667.0,
+          "pace": 5.556666666666667
+        },
+        {
+          "month": "2024-04",
+          "bestTime": 1570.0,
+          "pace": 5.233333333333333
+        },
+        {
+          "month": "2024-05",
+          "bestTime": 1274.0,
+          "pace": 4.246666666666667
+        },
+        {
+          "month": "2024-06",
+          "bestTime": 1491.0,
+          "pace": 4.970000000000001
+        },
+        {
+          "month": "2024-07",
+          "bestTime": 1376.0,
+          "pace": 4.586666666666667
+        },
+        {
+          "month": "2024-08",
+          "bestTime": 1267.0,
+          "pace": 4.223333333333334
+        },
+        {
+          "month": "2024-09",
+          "bestTime": 1136.0,
+          "pace": 3.7866666666666666
+        },
+        {
+          "month": "2024-10",
+          "bestTime": 1188.0,
+          "pace": 3.96
+        },
+        {
+          "month": "2024-11",
+          "bestTime": 1239.0,
+          "pace": 4.13
+        },
+        {
+          "month": "2024-12",
+          "bestTime": 1304.0,
+          "pace": 4.346666666666667
+        },
+        {
+          "month": "2025-01",
+          "bestTime": 1355.0,
+          "pace": 4.516666666666667
+        },
+        {
+          "month": "2025-02",
+          "bestTime": 1381.0,
+          "pace": 4.6033333333333335
+        },
+        {
+          "month": "2025-03",
+          "bestTime": 1144.0,
+          "pace": 3.8133333333333335
+        },
+        {
+          "month": "2025-04",
+          "bestTime": 1146.0,
+          "pace": 3.8200000000000003
+        },
+        {
+          "month": "2025-05",
+          "bestTime": 1154.0,
+          "pace": 3.8466666666666667
+        },
+        {
+          "month": "2025-06",
+          "bestTime": 1652.0,
+          "pace": 5.506666666666667
+        },
+        {
+          "month": "2025-07",
+          "bestTime": 1366.0,
+          "pace": 4.553333333333333
+        },
+        {
+          "month": "2025-08",
+          "bestTime": 1464.0,
+          "pace": 4.88
+        },
+        {
+          "month": "2025-09",
+          "bestTime": 1155.0,
+          "pace": 3.85
+        },
+        {
+          "month": "2025-10",
+          "bestTime": 1385.0,
+          "pace": 4.616666666666666
+        },
+        {
+          "month": "2025-11",
+          "bestTime": 1163.0,
+          "pace": 3.8766666666666665
+        },
+        {
+          "month": "2025-12",
+          "bestTime": 1419.0,
+          "pace": 4.7299999999999995
+        },
+        {
+          "month": "2026-01",
+          "bestTime": 1310.0,
+          "pace": 4.366666666666666
+        },
+        {
+          "month": "2026-02",
+          "bestTime": 1691.0,
+          "pace": 5.636666666666667
+        },
+        {
+          "month": "2026-03",
+          "bestTime": 1761.0,
+          "pace": 5.87
+        },
+        {
+          "month": "2026-04",
+          "bestTime": 1185.0,
+          "pace": 3.95
+        },
+        {
+          "month": "2026-05",
+          "bestTime": 1165.0,
+          "pace": 3.8833333333333337
+        },
+        {
+          "month": "2026-06",
+          "bestTime": 1359.0,
+          "pace": 4.529999999999999
+        }
+      ],
+      "10km": [
+        {
+          "month": "2024-08",
+          "bestTime": 2636.0,
+          "pace": 4.393333333333333
+        },
+        {
+          "month": "2024-09",
+          "bestTime": 2711.0,
+          "pace": 4.518333333333333
+        },
+        {
+          "month": "2024-10",
+          "bestTime": 2629.0,
+          "pace": 4.381666666666667
+        },
+        {
+          "month": "2024-11",
+          "bestTime": 2476.0,
+          "pace": 4.126666666666667
+        },
+        {
+          "month": "2024-12",
+          "bestTime": 2739.0,
+          "pace": 4.5649999999999995
+        },
+        {
+          "month": "2025-01",
+          "bestTime": 2730.0,
+          "pace": 4.55
+        },
+        {
+          "month": "2025-02",
+          "bestTime": 3129.0,
+          "pace": 5.215
+        },
+        {
+          "month": "2025-03",
+          "bestTime": 3289.0,
+          "pace": 5.481666666666667
+        },
+        {
+          "month": "2025-04",
+          "bestTime": 2422.0,
+          "pace": 4.036666666666667
+        },
+        {
+          "month": "2025-10",
+          "bestTime": 2915.0,
+          "pace": 4.858333333333333
+        },
+        {
+          "month": "2025-11",
+          "bestTime": 2580.0,
+          "pace": 4.3
+        },
+        {
+          "month": "2025-12",
+          "bestTime": 2849.0,
+          "pace": 4.748333333333333
+        },
+        {
+          "month": "2026-01",
+          "bestTime": 2989.0,
+          "pace": 4.981666666666667
+        },
+        {
+          "month": "2026-02",
+          "bestTime": 3373.0,
+          "pace": 5.621666666666667
+        },
+        {
+          "month": "2026-03",
+          "bestTime": 3475.0,
+          "pace": 5.791666666666666
+        },
+        {
+          "month": "2026-04",
+          "bestTime": 2447.0,
+          "pace": 4.078333333333333
+        }
+      ],
+      "Half Marathon": [
+        {
+          "month": "2026-01",
+          "bestTime": 8600.0,
+          "pace": 6.794014946832883
+        }
+      ]
+    },
+    "ride": [
+      {
+        "month": "2023-09",
+        "avgSpeedKmh": 15.0624
+      },
+      {
+        "month": "2024-05",
+        "avgSpeedKmh": 19.5147
+      },
+      {
+        "month": "2024-06",
+        "avgSpeedKmh": 21.036600000000004
+      },
+      {
+        "month": "2024-07",
+        "avgSpeedKmh": 18.71784
+      },
+      {
+        "month": "2024-08",
+        "avgSpeedKmh": 18.9477
+      },
+      {
+        "month": "2024-09",
+        "avgSpeedKmh": 16.416000000000004
+      },
+      {
+        "month": "2024-10",
+        "avgSpeedKmh": 16.9524
+      },
+      {
+        "month": "2025-03",
+        "avgSpeedKmh": 18.4392
+      },
+      {
+        "month": "2025-04",
+        "avgSpeedKmh": 19.1136
       },
-      {
-        "date": "2026-05-09",
-        "pace": 2.77,
-        "activityId": "18435316906",
-        "time": 135.0,
-        "distance": 812.1
-      },
-      {
-        "date": "2026-06-01",
-        "pace": 3.13,
-        "activityId": "18743387584",
-        "time": 159.0,
-        "distance": 846.0
-      },
-      {
-        "date": "2026-06-20",
-        "pace": 2.82,
-        "activityId": "18993845577",
-        "time": 137.0,
-        "distance": 809.8
-      }
-    ],
-    "1500m": [
-      {
-        "date": "2024-08-26",
-        "pace": 5.28,
-        "activityId": "14336383514",
-        "time": 507.0,
-        "distance": 1601.0
-      },
-      {
-        "date": "2024-08-30",
-        "pace": 6.26,
-        "activityId": "14336383210",
-        "time": 595.0,
-        "distance": 1584.7
-      },
-      {
-        "date": "2025-01-20",
-        "pace": 8.65,
-        "activityId": "14336383353",
-        "time": 776.0,
-        "distance": 1495.1
-      },
-      {
-        "date": "2025-01-20",
-        "pace": 8.05,
-        "activityId": "14336383382",
-        "time": 716.0,
-        "distance": 1482.4
-      },
-      {
-        "date": "2025-05-25",
-        "pace": 3.15,
-        "activityId": "14588878286",
-        "time": 294.0,
-        "distance": 1556.8
-      },
-      {
-        "date": "2025-06-08",
-        "pace": 3.18,
-        "activityId": "14732118330",
-        "time": 297.0,
-        "distance": 1557.9
-      },
-      {
-        "date": "2025-08-29",
-        "pace": 4.9,
-        "activityId": "15632872230",
-        "time": 363.0,
-        "distance": 1233.3
-      },
-      {
-        "date": "2025-10-25",
-        "pace": 4.71,
-        "activityId": "16252199341",
-        "time": 365.0,
-        "distance": 1290.8
-      },
-      {
-        "date": "2026-01-17",
-        "pace": 6.85,
-        "activityId": "17078028237",
-        "time": 654.0,
-        "distance": 1591.3
-      },
-      {
-        "date": "2026-01-17",
-        "pace": 6.04,
-        "activityId": "17078005899",
-        "time": 600.0,
-        "distance": 1655.9
-      },
-      {
-        "date": "2026-01-19",
-        "pace": 7.63,
-        "activityId": "17105352719",
-        "time": 604.0,
-        "distance": 1319.8
-      },
-      {
-        "date": "2026-01-19",
-        "pace": 7.9,
-        "activityId": "17105352693",
-        "time": 577.0,
-        "distance": 1217.1
-      },
-      {
-        "date": "2026-05-04",
-        "pace": 7.33,
-        "activityId": "18373878151",
-        "time": 533.0,
-        "distance": 1211.5
-      },
-      {
-        "date": "2026-05-04",
-        "pace": 7.32,
-        "activityId": "18373689348",
-        "time": 537.0,
-        "distance": 1223.0
-      },
-      {
-        "date": "2026-06-14",
-        "pace": 3.21,
-        "activityId": "18916942824",
-        "time": 296.0,
-        "distance": 1537.5
-      }
-    ],
-    "3000m": [
-      {
-        "date": "2024-05-01",
-        "pace": 4.08,
-        "activityId": "14336380742",
-        "time": 698.0,
-        "distance": 2850.8
-      },
-      {
-        "date": "2024-06-15",
-        "pace": 4.3,
-        "activityId": "14336381937",
-        "time": 846.0,
-        "distance": 3279.3
-      },
-      {
-        "date": "2024-08-19",
-        "pace": 8.0,
-        "activityId": "14336383060",
-        "time": 1176.0,
-        "distance": 2450.0
-      },
-      {
-        "date": "2024-08-19",
-        "pace": 7.49,
-        "activityId": "14336382918",
-        "time": 1123.0,
-        "distance": 2498.3
-      },
-      {
-        "date": "2024-08-25",
-        "pace": 6.48,
-        "activityId": "14336382917",
-        "time": 992.0,
-        "distance": 2553.0
-      },
-      {
-        "date": "2024-08-27",
-        "pace": 6.69,
-        "activityId": "14336382930",
-        "time": 1252.0,
-        "distance": 3121.3
-      },
-      {
-        "date": "2024-08-27",
-        "pace": 8.06,
-        "activityId": "14336383348",
-        "time": 1411.0,
-        "distance": 2919.1
-      },
-      {
-        "date": "2024-08-27",
-        "pace": 12.23,
-        "activityId": "14336383359",
-        "time": 1813.0,
-        "distance": 2470.8
-      },
-      {
-        "date": "2024-09-20",
-        "pace": 4.46,
-        "activityId": "14336383817",
-        "time": 804.0,
-        "distance": 3004.0
-      },
-      {
-        "date": "2024-09-28",
-        "pace": 3.93,
-        "activityId": "14336384306",
-        "time": 688.0,
-        "distance": 2920.3
-      },
-      {
-        "date": "2024-11-17",
-        "pace": 6.11,
-        "activityId": "14336384154",
-        "time": 1249.0,
-        "distance": 3406.9
-      },
-      {
-        "date": "2024-11-26",
-        "pace": 8.99,
-        "activityId": "14336383815",
-        "time": 1825.0,
-        "distance": 3382.3
-      },
-      {
-        "date": "2024-11-30",
-        "pace": 4.79,
-        "activityId": "14336384408",
-        "time": 741.0,
-        "distance": 2580.4
-      },
-      {
-        "date": "2024-12-14",
-        "pace": 4.17,
-        "activityId": "14336383771",
-        "time": 743.0,
-        "distance": 2970.0
-      },
-      {
-        "date": "2024-12-14",
-        "pace": 4.01,
-        "activityId": "14336384275",
-        "time": 718.0,
-        "distance": 2986.3
-      },
-      {
-        "date": "2024-12-27",
-        "pace": 4.93,
-        "activityId": "14336383504",
-        "time": 909.0,
-        "distance": 3074.8
-      },
-      {
-        "date": "2024-12-30",
-        "pace": 5.34,
-        "activityId": "14336384258",
-        "time": 876.0,
-        "distance": 2735.1
-      },
-      {
-        "date": "2025-01-26",
-        "pace": 3.81,
-        "activityId": "14336383761",
-        "time": 651.0,
-        "distance": 2849.1
-      },
-      {
-        "date": "2025-03-28",
-        "pace": 3.98,
-        "activityId": "14336353669",
-        "time": 718.0,
-        "distance": 3008.0
-      },
-      {
-        "date": "2025-04-04",
-        "pace": 3.55,
-        "activityId": "14336353674",
-        "time": 722.0,
-        "distance": 3393.4
-      },
-      {
-        "date": "2025-04-05",
-        "pace": 4.1,
-        "activityId": "14336353658",
-        "time": 711.0,
-        "distance": 2887.9
-      },
-      {
-        "date": "2025-04-06",
-        "pace": 4.13,
-        "activityId": "14336353505",
-        "time": 647.0,
-        "distance": 2612.8
-      },
-      {
-        "date": "2025-05-01",
-        "pace": 3.75,
-        "activityId": "14341397204",
-        "time": 642.0,
-        "distance": 2854.5
-      },
-      {
-        "date": "2025-05-18",
-        "pace": 3.88,
-        "activityId": "14515812658",
-        "time": 712.0,
-        "distance": 3061.5
-      },
-      {
-        "date": "2025-09-04",
-        "pace": 6.18,
-        "activityId": "15696045218",
-        "time": 893.0,
-        "distance": 2407.6
-      },
-      {
-        "date": "2025-10-09",
-        "pace": 4.19,
-        "activityId": "16086982124",
-        "time": 728.0,
-        "distance": 2893.1
-      },
-      {
-        "date": "2025-11-01",
-        "pace": 6.95,
-        "activityId": "16320404994",
-        "time": 1013.0,
-        "distance": 2430.3
-      },
-      {
-        "date": "2025-12-20",
-        "pace": 4.43,
-        "activityId": "16791107970",
-        "time": 797.0,
-        "distance": 2996.7
-      },
-      {
-        "date": "2025-12-20",
-        "pace": 4.16,
-        "activityId": "16791105513",
-        "time": 746.0,
-        "distance": 2992.0
-      },
-      {
-        "date": "2025-12-27",
-        "pace": 4.28,
-        "activityId": "16855545600",
-        "time": 747.0,
-        "distance": 2910.2
-      },
-      {
-        "date": "2026-01-25",
-        "pace": 4.39,
-        "activityId": "17170788918",
-        "time": 680.0,
-        "distance": 2584.0
-      },
-      {
-        "date": "2026-02-01",
-        "pace": 5.52,
-        "activityId": "17246454303",
-        "time": 962.0,
-        "distance": 2902.0
-      },
-      {
-        "date": "2026-02-21",
-        "pace": 4.35,
-        "activityId": "17478072546",
-        "time": 724.0,
-        "distance": 2775.1
-      },
-      {
-        "date": "2026-04-06",
-        "pace": 4.1,
-        "activityId": "18002248538",
-        "time": 739.0,
-        "distance": 3003.9
-      },
-      {
-        "date": "2026-04-11",
-        "pace": 3.9,
-        "activityId": "18064448199",
-        "time": 672.0,
-        "distance": 2871.6
-      },
-      {
-        "date": "2026-04-12",
-        "pace": 4.03,
-        "activityId": "18075132529",
-        "time": 626.0,
-        "distance": 2586.9
-      },
-      {
-        "date": "2026-04-17",
-        "pace": 3.64,
-        "activityId": "18145951949",
-        "time": 725.0,
-        "distance": 3319.5
-      },
-      {
-        "date": "2026-04-24",
-        "pace": 4.33,
-        "activityId": "18240365337",
-        "time": 783.0,
-        "distance": 3011.3
-      },
-      {
-        "date": "2026-05-01",
-        "pace": 3.91,
-        "activityId": "18329507920",
-        "time": 676.0,
-        "distance": 2879.4
-      },
-      {
-        "date": "2026-05-17",
-        "pace": 3.89,
-        "activityId": "18539148475",
-        "time": 709.0,
-        "distance": 3036.7
-      }
-    ],
-    "5km": [
-      {
-        "date": "2024-03-06",
-        "pace": 5.44,
-        "activityId": "14336383386",
-        "time": 1754.0,
-        "distance": 5373.4
-      },
-      {
-        "date": "2024-05-08",
-        "pace": 4.38,
-        "activityId": "14336382202",
-        "time": 1576.0,
-        "distance": 5992.6
-      },
-      {
-        "date": "2024-08-15",
-        "pace": 5.57,
-        "activityId": "14336383053",
-        "time": 1449.0,
-        "distance": 4336.8
-      },
-      {
-        "date": "2024-08-25",
-        "pace": 5.57,
-        "activityId": "14336383230",
-        "time": 1593.0,
-        "distance": 4765.4
-      },
-      {
-        "date": "2024-08-26",
-        "pace": 4.87,
-        "activityId": "14336382929",
-        "time": 1636.0,
-        "distance": 5603.6
-      },
-      {
-        "date": "2024-09-08",
-        "pace": 3.79,
-        "activityId": "14336383229",
-        "time": 966.0,
-        "distance": 4245.3
-      },
-      {
-        "date": "2024-09-18",
-        "pace": 4.31,
-        "activityId": "14336382935",
-        "time": 1035.0,
-        "distance": 4006.7
-      },
-      {
-        "date": "2024-09-21",
-        "pace": 3.96,
-        "activityId": "14336383089",
-        "time": 1346.0,
-        "distance": 5666.8
-      },
-      {
-        "date": "2024-09-22",
-        "pace": 4.37,
-        "activityId": "14336384423",
-        "time": 1388.0,
-        "distance": 5294.6
-      },
-      {
-        "date": "2024-10-05",
-        "pace": 4.14,
-        "activityId": "14336383667",
-        "time": 1329.0,
-        "distance": 5355.6
-      },
-      {
-        "date": "2024-10-12",
-        "pace": 4.36,
-        "activityId": "14336382796",
-        "time": 1205.0,
-        "distance": 4607.1
-      },
-      {
-        "date": "2024-11-10",
-        "pace": 3.97,
-        "activityId": "14336383803",
-        "time": 969.0,
-        "distance": 4062.8
-      },
-      {
-        "date": "2024-11-15",
-        "pace": 4.53,
-        "activityId": "14336383511",
-        "time": 1547.0,
-        "distance": 5688.7
-      },
-      {
-        "date": "2025-02-08",
-        "pace": 4.02,
-        "activityId": "14336353619",
-        "time": 967.0,
-        "distance": 4011.4
-      },
-      {
-        "date": "2025-04-03",
-        "pace": 4.75,
-        "activityId": "14336353517",
-        "time": 1238.0,
-        "distance": 4342.8
-      },
-      {
-        "date": "2025-04-19",
-        "pace": 4.41,
-        "activityId": "14336353797",
-        "time": 1431.0,
-        "distance": 5407.9
-      },
-      {
-        "date": "2025-05-05",
-        "pace": 6.11,
-        "activityId": "14386384693",
-        "time": 1710.0,
-        "distance": 4667.4
-      },
-      {
-        "date": "2025-05-08",
-        "pace": 4.15,
-        "activityId": "14413825710",
-        "time": 1493.0,
-        "distance": 5991.7
-      },
-      {
-        "date": "2025-05-14",
-        "pace": 6.04,
-        "activityId": "14479826022",
-        "time": 1557.0,
-        "distance": 4296.0
-      },
-      {
-        "date": "2025-09-04",
-        "pace": 5.09,
-        "activityId": "15696038625",
-        "time": 1278.0,
-        "distance": 4188.1
-      },
-      {
-        "date": "2025-09-14",
-        "pace": 3.79,
-        "activityId": "15805259553",
-        "time": 967.0,
-        "distance": 4250.3
-      },
-      {
-        "date": "2025-09-20",
-        "pace": 4.38,
-        "activityId": "15876077674",
-        "time": 1497.0,
-        "distance": 5689.6
-      },
-      {
-        "date": "2025-09-28",
-        "pace": 4.29,
-        "activityId": "15962687300",
-        "time": 1373.0,
-        "distance": 5329.9
-      },
-      {
-        "date": "2025-11-09",
-        "pace": 3.98,
-        "activityId": "16403229422",
-        "time": 965.0,
-        "distance": 4039.6
-      },
-      {
-        "date": "2025-11-23",
-        "pace": 4.03,
-        "activityId": "16540656322",
-        "time": 1211.0,
-        "distance": 5003.2
-      },
-      {
-        "date": "2026-01-22",
-        "pace": 5.77,
-        "activityId": "17144832915",
-        "time": 2031.0,
-        "distance": 5864.7
-      },
-      {
-        "date": "2026-03-22",
-        "pace": 4.53,
-        "activityId": "17813296473",
-        "time": 1258.0,
-        "distance": 4628.0
-      },
-      {
-        "date": "2026-05-08",
-        "pace": 4.13,
-        "activityId": "18423087007",
-        "time": 1341.0,
-        "distance": 5406.4
-      },
-      {
-        "date": "2026-05-10",
-        "pace": 4.62,
-        "activityId": "18448879665",
-        "time": 1497.0,
-        "distance": 5397.8
-      },
-      {
-        "date": "2026-05-11",
-        "pace": 5.89,
-        "activityId": "18469202309",
-        "time": 1445.0,
-        "distance": 4089.2
-      },
-      {
-        "date": "2026-06-14",
-        "pace": 4.38,
-        "activityId": "18911953630",
-        "time": 1318.0,
-        "distance": 5016.6
-      }
-    ],
-    "10km": [
-      {
-        "date": "2024-06-16",
-        "pace": 5.31,
-        "activityId": "14336381950",
-        "time": 2825.0,
-        "distance": 8864.5
-      },
-      {
-        "date": "2024-07-06",
-        "pace": 4.96,
-        "activityId": "14336381823",
-        "time": 2406.0,
-        "distance": 8076.6
-      },
-      {
-        "date": "2024-08-24",
-        "pace": 5.1,
-        "activityId": "14336382938",
-        "time": 3449.0,
-        "distance": 11274.5
-      },
-      {
-        "date": "2024-08-25",
-        "pace": 4.63,
-        "activityId": "14336382790",
-        "time": 2808.0,
-        "distance": 10105.7
-      },
-      {
-        "date": "2024-08-27",
-        "pace": 5.05,
-        "activityId": "14336383240",
-        "time": 3404.0,
-        "distance": 11238.8
-      },
-      {
-        "date": "2024-08-29",
-        "pace": 5.18,
-        "activityId": "14336383107",
-        "time": 2688.0,
-        "distance": 8652.1
-      },
-      {
-        "date": "2024-08-31",
-        "pace": 5.22,
-        "activityId": "14336384402",
-        "time": 3550.0,
-        "distance": 11333.3
-      },
-      {
-        "date": "2024-09-11",
-        "pace": 4.7,
-        "activityId": "14336382949",
-        "time": 2990.0,
-        "distance": 10593.6
-      },
-      {
-        "date": "2024-11-02",
-        "pace": 4.32,
-        "activityId": "14336383522",
-        "time": 2692.0,
-        "distance": 10392.6
-      },
-      {
-        "date": "2024-11-13",
-        "pace": 4.68,
-        "activityId": "14336384540",
-        "time": 2402.0,
-        "distance": 8545.2
-      },
-      {
-        "date": "2024-11-16",
-        "pace": 4.98,
-        "activityId": "14336383515",
-        "time": 3001.0,
-        "distance": 10049.7
-      },
-      {
-        "date": "2024-11-20",
-        "pace": 4.82,
-        "activityId": "14336383517",
-        "time": 2368.0,
-        "distance": 8189.9
-      },
-      {
-        "date": "2024-11-28",
-        "pace": 4.52,
-        "activityId": "14336384429",
-        "time": 2199.0,
-        "distance": 8108.8
-      },
-      {
-        "date": "2024-12-03",
-        "pace": 4.79,
-        "activityId": "14336384149",
-        "time": 3191.0,
-        "distance": 11106.7
-      },
-      {
-        "date": "2024-12-06",
-        "pace": 6.14,
-        "activityId": "14336384128",
-        "time": 2955.0,
-        "distance": 8015.7
-      },
-      {
-        "date": "2024-12-20",
-        "pace": 5.19,
-        "activityId": "14336383402",
-        "time": 3159.0,
-        "distance": 10140.9
-      },
-      {
-        "date": "2024-12-29",
-        "pace": 5.97,
-        "activityId": "14336383694",
-        "time": 3971.0,
-        "distance": 11078.7
-      },
-      {
-        "date": "2025-01-11",
-        "pace": 4.77,
-        "activityId": "14336384136",
-        "time": 2846.0,
-        "distance": 9940.0
-      },
-      {
-        "date": "2025-01-14",
-        "pace": 7.72,
-        "activityId": "14336384130",
-        "time": 4528.0,
-        "distance": 9781.6
-      },
-      {
-        "date": "2025-01-15",
-        "pace": 6.24,
-        "activityId": "14336384560",
-        "time": 4130.0,
-        "distance": 11037.9
-      },
-      {
-        "date": "2025-01-31",
-        "pace": 6.05,
-        "activityId": "14336353662",
-        "time": 3813.0,
-        "distance": 10511.7
-      },
-      {
-        "date": "2025-03-02",
-        "pace": 6.0,
-        "activityId": "14336353696",
-        "time": 3524.0,
-        "distance": 9789.5
-      },
-      {
-        "date": "2025-03-12",
-        "pace": 4.24,
-        "activityId": "14336353685",
-        "time": 2040.0,
-        "distance": 8012.5
-      },
-      {
-        "date": "2025-03-16",
-        "pace": 4.69,
-        "activityId": "14336353655",
-        "time": 2409.0,
-        "distance": 8567.5
-      },
-      {
-        "date": "2025-03-20",
-        "pace": 4.12,
-        "activityId": "14336353657",
-        "time": 1986.0,
-        "distance": 8032.7
-      },
-      {
-        "date": "2025-03-23",
-        "pace": 4.42,
-        "activityId": "14336353787",
-        "time": 2275.0,
-        "distance": 8577.2
-      },
-      {
-        "date": "2025-04-26",
-        "pace": 4.24,
-        "activityId": "14336353705",
-        "time": 2684.0,
-        "distance": 10553.3
-      },
-      {
-        "date": "2025-05-02",
-        "pace": 4.3,
-        "activityId": "14354374430",
-        "time": 2068.0,
-        "distance": 8008.9
-      },
-      {
-        "date": "2025-07-25",
-        "pace": 5.84,
-        "activityId": "15229513496",
-        "time": 2943.0,
-        "distance": 8404.0
-      },
-      {
-        "date": "2025-08-23",
-        "pace": 5.09,
-        "activityId": "15554470837",
-        "time": 2484.0,
-        "distance": 8130.0
-      },
-      {
-        "date": "2025-11-28",
-        "pace": 4.48,
-        "activityId": "16591663707",
-        "time": 2693.0,
-        "distance": 10011.0
-      },
-      {
-        "date": "2025-12-24",
-        "pace": 5.99,
-        "activityId": "16827223284",
-        "time": 3457.0,
-        "distance": 9620.4
-      },
-      {
-        "date": "2026-01-18",
-        "pace": 4.98,
-        "activityId": "17090109952",
-        "time": 3089.0,
-        "distance": 10328.4
-      },
-      {
-        "date": "2026-01-28",
-        "pace": 4.64,
-        "activityId": "17207380531",
-        "time": 2491.0,
-        "distance": 8942.0
-      },
-      {
-        "date": "2026-02-15",
-        "pace": 5.91,
-        "activityId": "17403028385",
-        "time": 3568.0,
-        "distance": 10060.6
-      },
-      {
-        "date": "2026-03-29",
-        "pace": 6.06,
-        "activityId": "17901686403",
-        "time": 3836.0,
-        "distance": 10545.1
-      },
-      {
-        "date": "2026-04-25",
-        "pace": 4.3,
-        "activityId": "18250087512",
-        "time": 2741.0,
-        "distance": 10623.5
-      },
-      {
-        "date": "2026-05-15",
-        "pace": 5.85,
-        "activityId": "18517239861",
-        "time": 2965.0,
-        "distance": 8453.0
-      },
-      {
-        "date": "2026-05-22",
-        "pace": 5.59,
-        "activityId": "18609491036",
-        "time": 2703.0,
-        "distance": 8053.6
-      },
-      {
-        "date": "2026-05-23",
-        "pace": 4.35,
-        "activityId": "18619309477",
-        "time": 2092.0,
-        "distance": 8008.6
-      },
-      {
-        "date": "2026-06-16",
-        "pace": 4.69,
-        "activityId": "18945530908",
-        "time": 2436.0,
-        "distance": 8650.5
-      },
-      {
-        "date": "2026-06-24",
-        "pace": 4.79,
-        "activityId": "19046412048",
-        "time": 2310.0,
-        "distance": 8031.6
-      }
-    ]
-  },
-  "hrStats": {
-    "maxEver": 211,
-    "monthlyAvgHR": [
       {
         "month": "2025-05",
-        "avg": 157.6,
-        "max": 211
+        "avgSpeedKmh": 19.9296
       },
       {
         "month": "2025-06",
-        "avg": 144.4,
-        "max": 194
+        "avgSpeedKmh": 20.1492
       },
       {
         "month": "2025-07",
-        "avg": 162.1,
-        "max": 207
+        "avgSpeedKmh": 20.5956
       },
       {
         "month": "2025-08",
-        "avg": 143.6,
-        "max": 201
-      },
-      {
-        "month": "2025-09",
-        "avg": 151.6,
-        "max": 205
-      },
-      {
-        "month": "2025-10",
-        "avg": 138.9,
-        "max": 202
-      },
-      {
-        "month": "2025-11",
-        "avg": 129.2,
-        "max": 182
-      },
-      {
-        "month": "2025-12",
-        "avg": 145.2,
-        "max": 198
-      },
-      {
-        "month": "2026-01",
-        "avg": 129.5,
-        "max": 193
-      },
-      {
-        "month": "2026-02",
-        "avg": 138.2,
-        "max": 170
+        "avgSpeedKmh": 19.832400000000003
       },
       {
         "month": "2026-03",
-        "avg": 135.7,
-        "max": 206
+        "avgSpeedKmh": 18.745200000000004
       },
       {
         "month": "2026-04",
-        "avg": 148.9,
-        "max": 199
+        "avgSpeedKmh": 19.026
       },
       {
         "month": "2026-05",
-        "avg": 154.3,
-        "max": 201
+        "avgSpeedKmh": 18.1488
       },
       {
         "month": "2026-06",
-        "avg": 147.5,
-        "max": 192
+        "avgSpeedKmh": 19.681200000000004
       }
     ]
   },
-  "categoryStats": {
-    "intervaly": {
-      "count": 746,
-      "avgPace": 3.29,
-      "avgPaceDisplay": "3:17",
-      "bestPace": 2.24,
-      "bestPaceDisplay": "2:14",
-      "avgHR": 141.2,
-      "avgDistance": 312.8,
-      "totalDistance": 233382.8
+  "volume": [
+    {
+      "period": "2023-08",
+      "run": 7991.1,
+      "ride": 0,
+      "walk": 0
     },
-    "stredni": {
-      "count": 204,
-      "avgPace": 4.39,
-      "avgPaceDisplay": "4:23",
-      "bestPace": 1.17,
-      "bestPaceDisplay": "1:10",
-      "avgHR": 151.0,
-      "avgDistance": 1562.0,
-      "totalDistance": 318640.2
+    {
+      "period": "2023-09",
+      "run": 6181.8,
+      "ride": 42342.4,
+      "walk": 0
     },
-    "tempove": {
-      "count": 106,
-      "avgPace": 4.9,
-      "avgPaceDisplay": "4:53",
-      "bestPace": 3.55,
-      "bestPaceDisplay": "3:32",
-      "avgHR": 165.7,
-      "avgDistance": 6056.7,
-      "totalDistance": 642013.8
+    {
+      "period": "2024-03",
+      "run": 5373.4,
+      "ride": 0,
+      "walk": 0
     },
-    "dlouhe": {
-      "count": 38,
-      "avgPace": 5.42,
-      "avgPaceDisplay": "5:24",
-      "bestPace": 4.24,
-      "bestPaceDisplay": "4:14",
-      "avgHR": 154.0,
-      "avgDistance": 13042.7,
-      "totalDistance": 495621.8
+    {
+      "period": "2024-04",
+      "run": 7142.5,
+      "ride": 0,
+      "walk": 0
+    },
+    {
+      "period": "2024-05",
+      "run": 17970.1,
+      "ride": 203754.5,
+      "walk": 0
+    },
+    {
+      "period": "2024-06",
+      "run": 34708.6,
+      "ride": 90041.0,
+      "walk": 0
+    },
+    {
+      "period": "2024-07",
+      "run": 16914.8,
+      "ride": 176620.3,
+      "walk": 0
+    },
+    {
+      "period": "2024-08",
+      "run": 155706.0,
+      "ride": 150897.9,
+      "walk": 0
+    },
+    {
+      "period": "2024-09",
+      "run": 53739.9,
+      "ride": 43567.2,
+      "walk": 0
+    },
+    {
+      "period": "2024-10",
+      "run": 47581.2,
+      "ride": 45397.0,
+      "walk": 0
+    },
+    {
+      "period": "2024-11",
+      "run": 123834.9,
+      "ride": 0,
+      "walk": 0
+    },
+    {
+      "period": "2024-12",
+      "run": 176957.5,
+      "ride": 0,
+      "walk": 0
+    },
+    {
+      "period": "2025-01",
+      "run": 101030.8,
+      "ride": 0,
+      "walk": 0
+    },
+    {
+      "period": "2025-02",
+      "run": 37504.4,
+      "ride": 0,
+      "walk": 0
+    },
+    {
+      "period": "2025-03",
+      "run": 96473.5,
+      "ride": 32598.9,
+      "walk": 0
+    },
+    {
+      "period": "2025-04",
+      "run": 56897.3,
+      "ride": 127148.5,
+      "walk": 0
+    },
+    {
+      "period": "2025-05",
+      "run": 43861.4,
+      "ride": 154281.1,
+      "walk": 0
+    },
+    {
+      "period": "2025-06",
+      "run": 19521.8,
+      "ride": 127854.6,
+      "walk": 0
+    },
+    {
+      "period": "2025-07",
+      "run": 30534.8,
+      "ride": 129440.5,
+      "walk": 0
+    },
+    {
+      "period": "2025-08",
+      "run": 50578.7,
+      "ride": 229935.6,
+      "walk": 54047.4
+    },
+    {
+      "period": "2025-09",
+      "run": 42664.4,
+      "ride": 0,
+      "walk": 0
+    },
+    {
+      "period": "2025-10",
+      "run": 55572.5,
+      "ride": 0,
+      "walk": 0
+    },
+    {
+      "period": "2025-11",
+      "run": 60419.3,
+      "ride": 0,
+      "walk": 0
+    },
+    {
+      "period": "2025-12",
+      "run": 80736.1,
+      "ride": 0,
+      "walk": 0
+    },
+    {
+      "period": "2026-01",
+      "run": 108891.1,
+      "ride": 0,
+      "walk": 0
+    },
+    {
+      "period": "2026-02",
+      "run": 36077.5,
+      "ride": 0,
+      "walk": 0
+    },
+    {
+      "period": "2026-03",
+      "run": 25548.8,
+      "ride": 58611.5,
+      "walk": 0
+    },
+    {
+      "period": "2026-04",
+      "run": 46175.4,
+      "ride": 76768.1,
+      "walk": 0
+    },
+    {
+      "period": "2026-05",
+      "run": 71800.5,
+      "ride": 133239.0,
+      "walk": 3742.3
+    },
+    {
+      "period": "2026-06",
+      "run": 47152.5,
+      "ride": 133145.6,
+      "walk": 22502.2
     }
-  },
-  "repeatedRoutes": [
+  ],
+  "clusters": [
     {
       "routeId": "route_14336380705",
       "name": "Lunch Run",

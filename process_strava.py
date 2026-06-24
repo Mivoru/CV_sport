@@ -57,7 +57,9 @@ RUN_CATEGORIES = {
 }
 
 # Tracked record distances (meters)
-RECORD_DISTANCES = [400, 800, 1000, 1500, 3000, 5000, 10000]
+RECORD_DISTANCES_RUN = [400, 800, 1000, 1500, 3000, 5000, 10000, 21097]
+RECORD_DISTANCES_RIDE = [5000, 10000, 20000, 30000, 40000, 50000]
+RECORD_DISTANCES_WALK = [5000, 10000, 20000, 30000, 40000, 50000]
 
 # Form estimate distances
 FORM_DISTANCES = [800, 1500, 3000, 5000]
@@ -280,7 +282,7 @@ def parse_gpx_file(filepath):
     return trackpoints
 
 
-def compute_best_efforts(trackpoints, target_distances=RECORD_DISTANCES):
+def compute_best_efforts(trackpoints, target_distances=RECORD_DISTANCES_RUN):
     """
     Compute best effort times for target distances using sliding window on trackpoints.
     Returns dict: {distance_m: best_time_seconds}
@@ -351,7 +353,12 @@ def init_db(db_path):
             total_steps INTEGER,
             fit_file TEXT,
             has_route INTEGER DEFAULT 0,
-            processed INTEGER DEFAULT 0
+            processed INTEGER DEFAULT 0,
+            start_lat REAL,
+            start_lng REAL,
+            end_lat REAL,
+            end_lng REAL,
+            is_anomaly INTEGER DEFAULT 0
         );
 
         CREATE TABLE IF NOT EXISTS trackpoints (
@@ -451,32 +458,51 @@ def process_csv(csv_path, conn):
             # Parse other fields
             elevation_gain = parse_czech_float(row.get("Nastoupaná výška", ""))
             elevation_loss = parse_czech_float(row.get("Naklesaná výška", ""))
-            min_alt = parse_czech_float(row.get("Nejnižší nadmořská výška", ""))
-            max_alt = parse_czech_float(row.get("Nejvyšší nadmořská výška", ""))
+            min_altitude = parse_czech_float(row.get("Nejnižší nadmořská výška", ""))
+            max_altitude = parse_czech_float(row.get("Nejvyšší nadmořská výška", ""))
             max_hr = parse_czech_int(row.get("Maximální tepová frekvence", ""))
             avg_hr = parse_czech_int(row.get("Průměrná tepová frekvence", ""))
-            max_cad = parse_czech_int(row.get("Maximální kadence", ""))
-            avg_cad = parse_czech_int(row.get("Průměrná kadence", ""))
+            max_cadence = parse_czech_int(row.get("Maximální kadence", ""))
+            avg_cadence = parse_czech_int(row.get("Průměrná kadence", ""))
             calories = parse_czech_float(row.get("Kalorie", ""))
             total_steps = parse_czech_int(row.get("Celkový počet kroků", ""))
             fit_file = row.get("Název souboru", "").strip()
 
-            conn.execute("""
-                INSERT OR IGNORE INTO activities
-                (strava_id, date, date_display, name, sport, run_category,
-                 elapsed_time, moving_time, distance, max_speed, avg_speed, avg_pace,
-                 elevation_gain, elevation_loss, min_altitude, max_altitude,
-                 max_hr, avg_hr, max_cadence, avg_cadence,
-                 calories, total_steps, fit_file, has_route, processed)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0)
-            """, (
-                strava_id, date_iso, date_raw, row.get("Název aktivity", "").strip(),
-                sport, run_category,
-                elapsed_time, moving_time_val, distance_m, max_speed, avg_speed, avg_pace,
-                elevation_gain, elevation_loss, min_alt, max_alt,
-                max_hr, avg_hr, max_cad, avg_cad,
-                calories, total_steps, fit_file,
-            ))
+            # Anomaly Detection
+            is_anomaly = 0
+            if sport == "run":
+                # Average pace faster than 2:00 min/km (8.33 m/s) or max speed > 35 km/h (9.72 m/s)
+                if avg_speed > 8.33 or max_speed > 9.72:
+                    is_anomaly = 1
+            elif sport == "ride":
+                # Average speed > 50 km/h (13.8 m/s) or max speed > 100 km/h (27.7 m/s)
+                if avg_speed > 13.8 or max_speed > 27.7:
+                    is_anomaly = 1
+            elif sport == "walk":
+                # Average speed > 10 km/h (2.7 m/s) or max speed > 15 km/h (4.1 m/s)
+                if avg_speed > 2.7 or max_speed > 4.1:
+                    is_anomaly = 1
+
+            try:
+                conn.execute("""
+                    INSERT OR IGNORE INTO activities
+                    (strava_id, date, date_display, name, sport, run_category,
+                     elapsed_time, moving_time, distance, max_speed, avg_speed, avg_pace,
+                     elevation_gain, elevation_loss, min_altitude, max_altitude,
+                     max_hr, avg_hr, max_cadence, avg_cadence,
+                     calories, total_steps, fit_file, has_route, processed, is_anomaly)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, ?)
+                """, (
+                    strava_id, date_iso, date_raw, row.get("Název aktivity", "").strip(),
+                    sport, run_category,
+                    elapsed_time, moving_time_val, distance_m, max_speed, avg_speed, avg_pace,
+                    elevation_gain, elevation_loss, min_altitude, max_altitude,
+                    max_hr, avg_hr, max_cadence, avg_cadence,
+                    calories, total_steps, fit_file, is_anomaly
+                ))
+            except Exception as e:
+                print(f"Error inserting row: {e}")
+                
             new_count += 1
 
     conn.commit()
@@ -534,20 +560,45 @@ def process_fit_files(export_dir, conn):
                     VALUES (?, ?, ?, ?)
                 """, (strava_id, seq, lat, lng))
 
-        # Compute best efforts for running activities
+        # Compute best efforts
         sport = conn.execute("SELECT sport FROM activities WHERE strava_id = ?", (strava_id,)).fetchone()
-        if sport and sport[0] == "run" and trackpoints:
-            efforts = compute_best_efforts(trackpoints)
-            for dist_m, time_s in efforts.items():
-                label = f"{dist_m}m" if dist_m < 1000 else f"{dist_m // 1000}km"
-                pace = (time_s / 60.0) / (dist_m / 1000.0)  # min/km
-                conn.execute("""
-                    INSERT INTO best_efforts (activity_id, distance_label, distance_meters, time_seconds, pace)
-                    VALUES (?, ?, ?, ?, ?)
-                """, (strava_id, label, dist_m, time_s, pace))
+        
+        start_lat, start_lng, end_lat, end_lng = None, None, None, None
 
-        conn.execute("UPDATE activities SET has_route = ?, processed = 1 WHERE strava_id = ?",
-                      (has_route, strava_id))
+        if trackpoints:
+            # Get valid GPS points
+            valid_gps = [tp for tp in trackpoints if "lat" in tp and "lng" in tp]
+            if valid_gps:
+                start_lat = valid_gps[0]["lat"]
+                start_lng = valid_gps[0]["lng"]
+                end_lat = valid_gps[-1]["lat"]
+                end_lng = valid_gps[-1]["lng"]
+
+            if sport:
+                sp = sport[0]
+                dists = []
+                if sp == "run":
+                    dists = RECORD_DISTANCES_RUN
+                elif sp == "ride":
+                    dists = RECORD_DISTANCES_RIDE
+                elif sp == "walk":
+                    dists = RECORD_DISTANCES_WALK
+                
+                if dists:
+                    efforts = compute_best_efforts(trackpoints, dists)
+                    for dist_m, time_s in efforts.items():
+                        label = f"{dist_m}m" if dist_m < 1000 else f"{dist_m // 1000}km"
+                        pace = (time_s / 60.0) / (dist_m / 1000.0)  # min/km
+                        conn.execute("""
+                            INSERT INTO best_efforts (activity_id, distance_label, distance_meters, time_seconds, pace)
+                            VALUES (?, ?, ?, ?, ?)
+                        """, (strava_id, label, dist_m, time_s, pace))
+
+        conn.execute("""
+            UPDATE activities 
+            SET has_route = ?, processed = 1, start_lat = ?, start_lng = ?, end_lat = ?, end_lng = ? 
+            WHERE strava_id = ?
+        """, (has_route, start_lat, start_lng, end_lat, end_lng, strava_id))
         success += 1
 
     conn.commit()
@@ -565,319 +616,119 @@ def compute_stats(conn):
     totals = {"all": {}, "run": {}, "ride": {}, "walk": {}}
     for sport_key in ["run", "ride", "walk"]:
         row = conn.execute("""
-            SELECT COUNT(*), COALESCE(SUM(distance), 0), COALESCE(SUM(moving_time), 0),
-                   COALESCE(SUM(elevation_gain), 0)
-            FROM activities WHERE sport = ?
+            SELECT COUNT(*), COALESCE(SUM(distance), 0), COALESCE(SUM(moving_time), 0), COALESCE(SUM(elevation_gain), 0)
+            FROM activities WHERE sport = ? AND is_anomaly = 0
         """, (sport_key,)).fetchone()
-        totals[sport_key] = {
-            "count": row[0],
-            "distance": round(row[1], 1),
-            "time": round(row[2], 1),
-            "elevation": round(row[3], 1),
-        }
+        totals[sport_key] = {"count": row[0], "distance": round(row[1], 1), "time": round(row[2], 1), "elevation": round(row[3], 1)}
 
-    all_row = conn.execute("""
-        SELECT COUNT(*), COALESCE(SUM(distance), 0), COALESCE(SUM(moving_time), 0),
-               COALESCE(SUM(elevation_gain), 0)
-        FROM activities
-    """).fetchone()
-    totals["all"] = {
-        "count": all_row[0],
-        "distance": round(all_row[1], 1),
-        "time": round(all_row[2], 1),
-        "elevation": round(all_row[3], 1),
-    }
+    all_row = conn.execute("SELECT COUNT(*), COALESCE(SUM(distance), 0), COALESCE(SUM(moving_time), 0), COALESCE(SUM(elevation_gain), 0) FROM activities WHERE is_anomaly = 0").fetchone()
+    totals["all"] = {"count": all_row[0], "distance": round(all_row[1], 1), "time": round(all_row[2], 1), "elevation": round(all_row[3], 1)}
     stats["totals"] = totals
 
     # ─ Records ─
-    records = {}
+    records = {"run": {}, "ride": {}, "walk": {}}
 
-    # Records at specific distances (from best_efforts table)
-    dist_labels = {400: "400m", 800: "800m", 1000: "1000m", 1500: "1500m",
-                   3000: "3000m", 5000: "5km", 10000: "10km"}
-    for dist_m, label in dist_labels.items():
-        row = conn.execute("""
-            SELECT be.time_seconds, be.pace, a.date, a.strava_id, a.name
-            FROM best_efforts be
-            JOIN activities a ON be.activity_id = a.strava_id
-            WHERE be.distance_meters = ?
-            ORDER BY be.time_seconds ASC LIMIT 1
-        """, (dist_m,)).fetchone()
+    dist_mapping = {
+        "run": {400: "400m", 800: "800m", 1000: "1000m", 1500: "1500m", 3000: "3km", 5000: "5km", 10000: "10km", 21097: "Half Marathon"},
+        "ride": {5000: "5km", 10000: "10km", 20000: "20km", 30000: "30km", 40000: "40km", 50000: "50km"},
+        "walk": {5000: "5km", 10000: "10km", 20000: "20km", 30000: "30km", 40000: "40km", 50000: "50km"}
+    }
 
-        if row:
-            records[label] = {
-                "time": round(row[0], 1),
-                "timeDisplay": seconds_to_hms(row[0]),
-                "pace": round(row[1], 2),
-                "paceDisplay": pace_to_string(row[1]),
-                "date": row[2],
-                "activityId": row[3],
-                "activityName": row[4],
-            }
-
-    # Fallback: if no best efforts from FIT files, estimate from CSV data
-    for dist_m, label in dist_labels.items():
-        if label not in records:
-            tolerance = 0.15  # 15% tolerance
+    for sport_key, distances in dist_mapping.items():
+        for dist_m, label in distances.items():
             row = conn.execute("""
-                SELECT moving_time, avg_pace, date, strava_id, name, distance
-                FROM activities
-                WHERE sport = 'run' AND distance BETWEEN ? AND ?
-                ORDER BY moving_time ASC LIMIT 1
-            """, (dist_m * (1 - tolerance), dist_m * (1 + tolerance))).fetchone()
+                SELECT be.time_seconds, be.pace, a.date, a.strava_id, a.name
+                FROM best_efforts be
+                JOIN activities a ON be.activity_id = a.strava_id
+                WHERE be.distance_meters = ? AND a.sport = ? AND a.is_anomaly = 0
+                ORDER BY be.time_seconds ASC LIMIT 1
+            """, (dist_m, sport_key)).fetchone()
 
             if row:
-                # Scale time proportionally to exact distance
-                actual_time = row[0]
-                actual_dist = row[5]
-                scaled_time = actual_time * (dist_m / actual_dist) if actual_dist > 0 else actual_time
-                pace = (scaled_time / 60.0) / (dist_m / 1000.0)
-                records[label] = {
-                    "time": round(scaled_time, 1),
-                    "timeDisplay": seconds_to_hms(scaled_time),
-                    "pace": round(pace, 2),
-                    "paceDisplay": pace_to_string(pace),
-                    "date": row[2],
-                    "activityId": row[3],
-                    "activityName": row[4],
+                records[sport_key][label] = {
+                    "time": round(row[0], 1), "timeDisplay": seconds_to_hms(row[0]),
+                    "pace": round(row[1], 2), "paceDisplay": pace_to_string(row[1]),
+                    "date": row[2], "activityId": row[3], "activityName": row[4]
                 }
 
-    # Longest activities
-    for sport_key, record_key in [("run", "longestRun"), ("ride", "longestRide"), ("walk", "longestWalk")]:
-        row = conn.execute("""
-            SELECT distance, date, strava_id, name, moving_time
-            FROM activities WHERE sport = ? ORDER BY distance DESC LIMIT 1
-        """, (sport_key,)).fetchone()
-        if row:
-            records[record_key] = {
-                "distance": round(row[0], 1),
-                "date": row[1],
-                "activityId": row[2],
-                "activityName": row[3],
-                "time": round(row[4], 1) if row[4] else None,
-                "timeDisplay": seconds_to_hms(row[4]),
-            }
-
-    # Max HR
-    row = conn.execute("""
-        SELECT max_hr, date, strava_id, name FROM activities
-        WHERE max_hr IS NOT NULL ORDER BY max_hr DESC LIMIT 1
-    """).fetchone()
-    if row:
-        records["maxHR"] = {"value": row[0], "date": row[1], "activityId": row[2], "activityName": row[3]}
-
-    # Max elevation gain
-    row = conn.execute("""
-        SELECT elevation_gain, date, strava_id, name FROM activities
-        WHERE elevation_gain IS NOT NULL ORDER BY elevation_gain DESC LIMIT 1
-    """).fetchone()
-    if row:
-        records["maxElevation"] = {"value": round(row[0], 1), "date": row[1], "activityId": row[2], "activityName": row[3]}
+    for sport_key in ["run", "ride", "walk"]:
+        # Longest
+        row = conn.execute("SELECT distance, date, strava_id, name, moving_time FROM activities WHERE sport = ? AND is_anomaly = 0 ORDER BY distance DESC LIMIT 1", (sport_key,)).fetchone()
+        if row: records[sport_key]["Longest"] = {"value": round(row[0], 1), "unit": "km", "date": row[1], "activityId": row[2], "activityName": row[3], "timeDisplay": seconds_to_hms(row[4] or 0)}
+        
+        # Max Elev
+        row = conn.execute("SELECT elevation_gain, date, strava_id, name FROM activities WHERE sport = ? AND is_anomaly = 0 ORDER BY elevation_gain DESC LIMIT 1", (sport_key,)).fetchone()
+        if row: records[sport_key]["Max Elevation"] = {"value": round(row[0], 1), "unit": "m", "date": row[1], "activityId": row[2], "activityName": row[3]}
 
     stats["records"] = records
 
-    # ─ Form Estimate ─
+    # ─ Form Estimate (Riegel) ─
     form_estimate = {}
-    cutoff_date = (datetime.now() - timedelta(weeks=FORM_WEEKS)).strftime("%Y-%m-%d")
+    cutoff_date = (datetime.now() - timedelta(days=90)).strftime("%Y-%m-%d")
 
-    for dist_m in FORM_DISTANCES:
-        label = f"{dist_m}m" if dist_m < 1000 else f"{dist_m // 1000}km"
-        tolerance = 0.25  # Wider tolerance for form estimation
+    # Find the best effort (pace) over >= 3000m in the last 90 days to use as Riegel base
+    best_recent = conn.execute("""
+        SELECT be.distance_meters, be.time_seconds, a.date 
+        FROM best_efforts be
+        JOIN activities a ON be.activity_id = a.strava_id
+        WHERE a.sport = 'run' AND a.is_anomaly = 0 AND a.date >= ? AND be.distance_meters >= 3000
+        ORDER BY be.pace ASC LIMIT 1
+    """, (cutoff_date,)).fetchone()
 
-        recent = conn.execute("""
-            SELECT moving_time, distance, date, avg_pace
-            FROM activities
-            WHERE sport = 'run' AND date >= ? AND distance BETWEEN ? AND ?
-            ORDER BY date DESC
-        """, (cutoff_date, dist_m * (1 - tolerance), dist_m * (1 + tolerance))).fetchall()
+    if best_recent:
+        d1, t1, d_date = best_recent
+        for d2, label in dist_mapping["run"].items():
+            if d2 < 800: continue # Form estimate usually doesn't work well for sprints
+            t2 = t1 * ((d2 / d1) ** 1.06)
+            p2 = (t2 / 60.0) / (d2 / 1000.0)
+            form_estimate[label] = {
+                "estimatedTime": round(t2, 1), "estimatedTimeDisplay": seconds_to_hms(t2),
+                "estimatedPace": round(p2, 2), "estimatedPaceDisplay": pace_to_string(p2),
+                "basedOnDate": d_date, "basedOnDist": d1
+            }
+    stats["form"] = form_estimate
 
-        if recent:
-            # Scale times to target distance and compute weighted average
-            scaled_times = []
-            for row in recent:
-                if row[0] and row[1] and row[1] > 0:
-                    scaled = row[0] * (dist_m / row[1])
-                    scaled_times.append(scaled)
-
-            if scaled_times:
-                # Weighted average: more recent = higher weight
-                weights = [1.0 / (i + 1) for i in range(len(scaled_times))]
-                total_weight = sum(weights)
-                est_time = sum(t * w for t, w in zip(scaled_times, weights)) / total_weight
-                est_pace = (est_time / 60.0) / (dist_m / 1000.0)
-
-                # Determine trend (compare first half vs second half of recent data)
-                if len(scaled_times) >= 4:
-                    first_half = sum(scaled_times[:len(scaled_times)//2]) / (len(scaled_times)//2)
-                    second_half = sum(scaled_times[len(scaled_times)//2:]) / (len(scaled_times) - len(scaled_times)//2)
-                    if second_half < first_half * 0.98:
-                        trend = "improving"
-                    elif second_half > first_half * 1.02:
-                        trend = "declining"
-                    else:
-                        trend = "stable"
-                else:
-                    trend = "insufficient_data"
-
-                form_estimate[label] = {
-                    "estimatedTime": round(est_time, 1),
-                    "estimatedTimeDisplay": seconds_to_hms(est_time),
-                    "estimatedPace": round(est_pace, 2),
-                    "estimatedPaceDisplay": pace_to_string(est_pace),
-                    "trend": trend,
-                    "recentActivities": len(scaled_times),
-                }
-
-    # If not enough recent data, try all-time estimation with Riegel formula
-    for dist_m in FORM_DISTANCES:
-        label = f"{dist_m}m" if dist_m < 1000 else f"{dist_m // 1000}km"
-        if label not in form_estimate:
-            # Find best recent effort at any distance and project using Riegel formula
-            recent_best = conn.execute("""
-                SELECT moving_time, distance FROM activities
-                WHERE sport = 'run' AND date >= ? AND distance > 400 AND moving_time > 0
-                ORDER BY (moving_time / distance) ASC LIMIT 5
-            """, (cutoff_date,)).fetchall()
-
-            if recent_best:
-                projections = []
-                for row in recent_best:
-                    t1, d1 = row[0], row[1]
-                    # Riegel formula: T2 = T1 * (D2/D1)^1.06
-                    projected = t1 * (dist_m / d1) ** 1.06
-                    projections.append(projected)
-
-                est_time = sum(projections) / len(projections)
-                est_pace = (est_time / 60.0) / (dist_m / 1000.0)
-
-                form_estimate[label] = {
-                    "estimatedTime": round(est_time, 1),
-                    "estimatedTimeDisplay": seconds_to_hms(est_time),
-                    "estimatedPace": round(est_pace, 2),
-                    "estimatedPaceDisplay": pace_to_string(est_pace),
-                    "trend": "projected",
-                    "recentActivities": len(projections),
-                }
-
-    stats["formEstimate"] = form_estimate
-
-    # ─ Monthly Volumes ─
-    monthly_rows = conn.execute("""
-        SELECT strftime('%Y-%m', date) as month, sport,
-               SUM(distance), SUM(moving_time), SUM(elevation_gain)
-        FROM activities
-        WHERE date IS NOT NULL
-        GROUP BY month, sport
-        ORDER BY month
-    """).fetchall()
-
-    monthly_map = defaultdict(lambda: {"run": 0, "ride": 0, "walk": 0,
-                                        "runTime": 0, "rideTime": 0, "walkTime": 0,
-                                        "runElev": 0, "rideElev": 0, "walkElev": 0})
-    for row in monthly_rows:
-        month, sport = row[0], row[1]
-        if sport in ["run", "ride", "walk"]:
-            monthly_map[month][sport] = round(row[2] or 0, 1)
-            monthly_map[month][f"{sport}Time"] = round(row[3] or 0, 1)
-            monthly_map[month][f"{sport}Elev"] = round(row[4] or 0, 1)
-
-    stats["monthlyVolumes"] = [
-        {"month": m, **v} for m, v in sorted(monthly_map.items())
-    ]
-
-    # ─ Weekly Volumes ─
-    weekly_rows = conn.execute("""
-        SELECT strftime('%Y-W%W', date) as week, sport,
-               SUM(distance), MIN(date)
-        FROM activities
-        WHERE date IS NOT NULL
-        GROUP BY week, sport
-        ORDER BY week
-    """).fetchall()
-
-    weekly_map = defaultdict(lambda: {"run": 0, "ride": 0, "walk": 0, "start": ""})
-    for row in weekly_rows:
-        week, sport = row[0], row[1]
-        if sport in ["run", "ride", "walk"]:
-            weekly_map[week][sport] = round(row[2] or 0, 1)
-            if not weekly_map[week]["start"] or row[3] < weekly_map[week]["start"]:
-                weekly_map[week]["start"] = row[3]
-
-    stats["weeklyVolumes"] = [
-        {"week": w, **v} for w, v in sorted(weekly_map.items())
-    ]
-
-    # ─ Performance Trend (pace over time for running activities by distance range) ─
-    perf_trend = {}
-    for dist_m, label in dist_labels.items():
-        tolerance = 0.2
+    # ─ Trends ─
+    trends = {"run": {}, "ride": []}
+    
+    # Run trends: best efforts per month for each distance
+    for dist_m, label in dist_mapping["run"].items():
         rows = conn.execute("""
-            SELECT date, avg_pace, strava_id, moving_time, distance
-            FROM activities
-            WHERE sport = 'run' AND distance BETWEEN ? AND ? AND avg_pace IS NOT NULL
-            ORDER BY date
-        """, (dist_m * (1 - tolerance), dist_m * (1 + tolerance))).fetchall()
+            SELECT strftime('%Y-%m', a.date) as month, MIN(be.time_seconds) as best_time
+            FROM best_efforts be JOIN activities a ON be.activity_id = a.strava_id
+            WHERE be.distance_meters = ? AND a.sport = 'run' AND a.is_anomaly = 0
+            GROUP BY month ORDER BY month
+        """, (dist_m,)).fetchall()
+        trends["run"][label] = [{"month": r[0], "bestTime": r[1], "pace": (r[1]/60.0)/(dist_m/1000.0)} for r in rows]
 
-        if rows:
-            perf_trend[label] = [
-                {
-                    "date": r[0],
-                    "pace": round(r[1], 2),
-                    "activityId": r[2],
-                    "time": round(r[3], 1) if r[3] else None,
-                    "distance": round(r[4], 1),
-                }
-                for r in rows
-            ]
-
-    stats["performanceTrend"] = perf_trend
-
-    # ─ HR Stats ─
-    max_hr_ever = conn.execute("SELECT MAX(max_hr) FROM activities WHERE max_hr IS NOT NULL").fetchone()
-    monthly_hr = conn.execute("""
-        SELECT strftime('%Y-%m', date) as month,
-               ROUND(AVG(avg_hr), 1), MAX(max_hr)
-        FROM activities
-        WHERE avg_hr IS NOT NULL AND date IS NOT NULL
+    # Ride trends: Average pace over time (by month)
+    ride_rows = conn.execute("""
+        SELECT strftime('%Y-%m', date) as month, AVG(avg_speed) as avg_speed
+        FROM activities WHERE sport = 'ride' AND is_anomaly = 0 AND avg_speed > 0
         GROUP BY month ORDER BY month
     """).fetchall()
+    trends["ride"] = [{"month": r[0], "avgSpeedKmh": r[1]*3.6} for r in ride_rows]
+    stats["trends"] = trends
 
-    stats["hrStats"] = {
-        "maxEver": max_hr_ever[0] if max_hr_ever else None,
-        "monthlyAvgHR": [
-            {"month": r[0], "avg": r[1], "max": r[2]}
-            for r in monthly_hr
-        ],
-    }
+    # ─ Volume ─
+    # We will just select all monthly volumes instead of limiting to 12
+    v_rows = conn.execute("""
+        SELECT strftime('%Y-%m', date) as month, sport, SUM(distance)
+        FROM activities WHERE is_anomaly = 0
+        GROUP BY month, sport ORDER BY month
+    """).fetchall()
+    
+    volume_dict = {}
+    for r in v_rows:
+        m, s, d = r
+        if m not in volume_dict: volume_dict[m] = {"run": 0, "ride": 0, "walk": 0}
+        if s in volume_dict[m]: volume_dict[m][s] = round(d, 1)
+    
+    stats["volume"] = [{"period": k, **v} for k,v in volume_dict.items()]
 
-    # ─ Category Stats ─
-    cat_stats = {}
-    for cat in RUN_CATEGORIES:
-        row = conn.execute("""
-            SELECT COUNT(*), AVG(avg_pace), MIN(avg_pace),
-                   AVG(avg_hr), AVG(distance), SUM(distance)
-            FROM activities
-            WHERE sport = 'run' AND run_category = ?
-        """, (cat,)).fetchone()
-        if row and row[0] > 0:
-            cat_stats[cat] = {
-                "count": row[0],
-                "avgPace": round(row[1], 2) if row[1] else None,
-                "avgPaceDisplay": pace_to_string(row[1]) if row[1] else None,
-                "bestPace": round(row[2], 2) if row[2] else None,
-                "bestPaceDisplay": pace_to_string(row[2]) if row[2] else None,
-                "avgHR": round(row[3], 1) if row[3] else None,
-                "avgDistance": round(row[4], 1) if row[4] else None,
-                "totalDistance": round(row[5], 1) if row[5] else None,
-            }
+    # ─ Clusters ─
+    stats["clusters"] = detect_repeated_routes(conn)
 
-    stats["categoryStats"] = cat_stats
-
-    # ─ Repeated Routes ─
-    repeated = detect_repeated_routes(conn)
-    stats["repeatedRoutes"] = repeated
-
-    print("   ✅ Statistics computed")
     return stats
 
 

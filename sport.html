@@ -108,11 +108,16 @@
         <h2 class="section-title" data-en="Records" data-cz="Rekordy">Records</h2>
         <div class="section-line"></div>
       </div>
+      <div class="records-tabs" id="records-tabs">
+        <button class="record-tab active" data-sport="run" data-en="Run" data-cz="Běh">Run</button>
+        <button class="record-tab" data-sport="ride" data-en="Ride" data-cz="Jízda">Ride</button>
+        <button class="record-tab" data-sport="walk" data-en="Walk" data-cz="Chůze">Walk</button>
+      </div>
       <div class="records-grid" id="records-grid">
         <!-- Filled by JS -->
       </div>
       <div class="records-extra" id="records-extra">
-        <!-- Longest run, ride, maxHR, maxElevation -->
+        <!-- Filled by JS -->
       </div>
     </div>
   </section>
@@ -140,11 +145,17 @@
         <h2 class="section-title" data-en="Performance Trends" data-cz="Výkonnostní trendy">Performance Trends</h2>
         <div class="section-line"></div>
       </div>
+      <div class="trend-sport-tabs" id="trend-sport-tabs">
+        <button class="vol-btn active" data-sport="run" data-en="Run" data-cz="Běh">Run</button>
+        <button class="vol-btn" data-sport="ride" data-en="Ride" data-cz="Jízda">Ride</button>
+      </div>
       <div class="trend-tabs" id="trend-tabs">
         <!-- Filled by JS -->
       </div>
-      <div class="chart-wrap">
-        <canvas id="trend-chart"></canvas>
+      <div class="chart-wrap chart-scroll-wrap" id="trend-chart-wrap">
+        <div class="chart-inner-wrap" style="position: relative; height: 300px; width: 100%;">
+          <canvas id="trend-chart"></canvas>
+        </div>
       </div>
     </div>
   </section>
@@ -161,8 +172,10 @@
         <button class="vol-btn active" data-view="weekly" data-en="Weekly" data-cz="Týdně">Weekly</button>
         <button class="vol-btn" data-view="monthly" data-en="Monthly" data-cz="Měsíčně">Monthly</button>
       </div>
-      <div class="chart-wrap">
-        <canvas id="volume-chart"></canvas>
+      <div class="chart-wrap chart-scroll-wrap">
+        <div class="chart-inner-wrap" style="position: relative; height: 300px; min-width: 1200px;">
+          <canvas id="volume-chart"></canvas>
+        </div>
       </div>
     </div>
   </section>
@@ -227,6 +240,10 @@
             <option value="distance-desc" data-en="Longest Distance" data-cz="Nejdelší">Longest Distance</option>
             <option value="pace-asc" data-en="Fastest Pace" data-cz="Nejrychlejší">Fastest Pace</option>
           </select>
+          <input type="number" id="filter-min-dist" class="filter-input" placeholder="Min km" step="0.1">
+          <input type="number" id="filter-max-dist" class="filter-input" placeholder="Max km" step="0.1">
+          <input type="text" id="filter-min-pace" class="filter-input" placeholder="Min pace (min/km)">
+          <input type="text" id="filter-max-pace" class="filter-input" placeholder="Max pace (min/km)">
         </div>
       </div>
       <div class="activity-count" id="activity-count"></div>
