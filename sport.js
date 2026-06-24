@@ -258,7 +258,7 @@ function initVolumeChart(viewType) {
     
     if(typeof volumeChart !== 'undefined' && volumeChart) volumeChart.destroy();
     
-    const dataList = stats.volume;
+    const dataList = stats.volume[viewType] || stats.volume.weekly || [];
     const labels = dataList.map(d => d.period);
     
     volumeChart = new Chart(ctx, {
@@ -282,7 +282,8 @@ function initVolumeChart(viewType) {
     });
 }
 function renderRunningCategories() {
-    if(!activities) return;
+    const grid = document.getElementById('categories-grid');
+    if(!grid || !activities) return;
     const runAct = activities.filter(a => a.sport === 'run' && (a.is_anomaly === 0 || a.is_anomaly === undefined));
     
     let base = 0, speed = 0, long = 0, recovery = 0;
@@ -294,10 +295,34 @@ function renderRunningCategories() {
         else base++;
     });
     
-    document.getElementById('cat-base').style.width = (base / runAct.length * 100) + "%";
-    document.getElementById('cat-speed').style.width = (speed / runAct.length * 100) + "%";
-    document.getElementById('cat-long').style.width = (long / runAct.length * 100) + "%";
-    document.getElementById('cat-recovery').style.width = (recovery / runAct.length * 100) + "%";
+    const total = runAct.length || 1;
+    grid.innerHTML = `
+        <div class="cat-card">
+            <h4 data-en="Base Building" data-cz="Základní vytrvalost">Base Building</h4>
+            <p>Pace 4:30 - 6:00 /km</p>
+            <div class="progress-bar"><div class="progress-fill" style="width: ${(base/total)*100}%"></div></div>
+            <div style="text-align: right; font-size: 0.9em; margin-top: 5px">${base} workouts</div>
+        </div>
+        <div class="cat-card">
+            <h4 data-en="Speed Work" data-cz="Rychlostní trénink">Speed Work</h4>
+            <p>Pace < 4:30 /km</p>
+            <div class="progress-bar"><div class="progress-fill" style="width: ${(speed/total)*100}%"></div></div>
+            <div style="text-align: right; font-size: 0.9em; margin-top: 5px">${speed} workouts</div>
+        </div>
+        <div class="cat-card">
+            <h4 data-en="Long Runs" data-cz="Dlouhé běhy">Long Runs</h4>
+            <p>Distance > 15 km</p>
+            <div class="progress-bar"><div class="progress-fill" style="width: ${(long/total)*100}%"></div></div>
+            <div style="text-align: right; font-size: 0.9em; margin-top: 5px">${long} workouts</div>
+        </div>
+        <div class="cat-card">
+            <h4 data-en="Recovery" data-cz="Regenerace">Recovery</h4>
+            <p>Pace > 6:00 /km</p>
+            <div class="progress-bar"><div class="progress-fill" style="width: ${(recovery/total)*100}%"></div></div>
+            <div style="text-align: right; font-size: 0.9em; margin-top: 5px">${recovery} workouts</div>
+        </div>
+    `;
+    applyLang();
 }
 function initMap() {
     const mapEl = document.getElementById('leaflet-map');
@@ -517,6 +542,15 @@ document.querySelectorAll(".trend-sport-tabs .vol-btn").forEach(tab => {
     });
   });
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // Add volume tab listeners
+    document.querySelectorAll("#volume-tabs .vol-btn").forEach(tab => {
+        tab.addEventListener("click", (e) => {
+            document.querySelectorAll("#volume-tabs .vol-btn").forEach(t => t.classList.remove("active"));
+            e.currentTarget.classList.add("active");
+            initVolumeChart(e.currentTarget.dataset.type);
+        });
+    });
     // Add record tab listeners
     document.querySelectorAll(".record-tab").forEach(tab => {
         tab.addEventListener("click", (e) => {
@@ -566,9 +600,11 @@ function updateTrendChart(sport, distance) {
     if(sport === 'run' && distance && stats.trends.run[distance]) {
         dataset = stats.trends.run[distance];
         trendChart.data.datasets[0].label = `Pace (${distance})`;
+        trendChart.options.scales.y.reverse = true;
     } else if (sport === 'ride' && stats.trends.ride) {
         dataset = stats.trends.ride;
         trendChart.data.datasets[0].label = "Avg Speed (km/h)";
+        trendChart.options.scales.y.reverse = false;
     }
     
     // Sort chronologically just in case
