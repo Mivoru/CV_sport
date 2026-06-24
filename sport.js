@@ -624,11 +624,11 @@ document.querySelectorAll(".trend-sport-tabs .vol-btn").forEach(tab => {
 document.addEventListener('DOMContentLoaded', () => {
     
     // Add volume tab listeners
-    document.querySelectorAll("#volume-tabs .vol-btn").forEach(tab => {
+    document.querySelectorAll(".volume-toggle .vol-btn").forEach(tab => {
         tab.addEventListener("click", (e) => {
-            document.querySelectorAll("#volume-tabs .vol-btn").forEach(t => t.classList.remove("active"));
+            document.querySelectorAll(".volume-toggle .vol-btn").forEach(t => t.classList.remove("active"));
             e.currentTarget.classList.add("active");
-            initVolumeChart(e.currentTarget.dataset.type);
+            initVolumeChart(e.currentTarget.dataset.view);
         });
     });
     // Add record tab listeners
