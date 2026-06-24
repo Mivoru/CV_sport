@@ -726,7 +726,7 @@ def compute_stats(conn):
         if s in monthly_dict[m]: monthly_dict[m][s] = round(d, 1)
         
     c.execute("""
-        SELECT strftime('%Y-%W', date) as w, sport, sum(distance)/1000.0
+        SELECT strftime('%Y-%m-%d', date, 'weekday 1', '-7 days') as w, sport, sum(distance)/1000.0
         FROM activities
         WHERE is_anomaly=0 AND sport IN ('run', 'ride', 'walk')
         GROUP BY w, sport ORDER BY w ASC
@@ -738,8 +738,8 @@ def compute_stats(conn):
         if s in weekly_dict[w]: weekly_dict[w][s] = round(d, 1)
 
     stats["volume"] = {
-        "monthly": [{"period": k, **v} for k,v in monthly_dict.items()][-24:],
-        "weekly": [{"period": k, **v} for k,v in weekly_dict.items()][-52:]
+        "monthly": [{"period": k, **v} for k,v in monthly_dict.items()],
+        "weekly": [{"period": k, **v} for k,v in weekly_dict.items()]
     }
 
     # ─ Clusters ─

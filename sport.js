@@ -238,8 +238,29 @@ function initTrendChart() {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const val = context.parsed.y;
+                            const m = Math.floor(val);
+                            const s = Math.round((val - m) * 60);
+                            return `Pace: ${m}:${s.toString().padStart(2, '0')} /km`;
+                        }
+                    }
+                }
+            },
             scales: {
-                y: { reverse: true }
+                y: { 
+                    reverse: true,
+                    ticks: {
+                        callback: function(value) {
+                            const m = Math.floor(value);
+                            const s = Math.round((value - m) * 60);
+                            return `${m}:${s.toString().padStart(2, '0')}`;
+                        }
+                    }
+                }
             }
         }
     });
@@ -492,10 +513,29 @@ function toggleRouteDetails(idx) {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const val = context.parsed.y;
+                                const m = Math.floor(val);
+                                const s = Math.round((val - m) * 60);
+                                return `Pace: ${m}:${s.toString().padStart(2, '0')} /km`;
+                            }
+                        }
+                    }
+                },
                 scales: {
                     y: { 
                         reverse: true, // Lower pace is better
-                        title: { display: true, text: 'Pace' } 
+                        title: { display: true, text: 'Pace' },
+                        ticks: {
+                            callback: function(value) {
+                                const m = Math.floor(value);
+                                const s = Math.round((value - m) * 60);
+                                return `${m}:${s.toString().padStart(2, '0')}`;
+                            }
+                        }
                     }
                 }
             }
