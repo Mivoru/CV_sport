@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Michal Votýpka – Sport Analytics Dashboard. Training data, performance trends, and activity maps." />
+  <title>Michal Votýpka | Sport Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <!-- Sport Dashboard CSS -->
+  <link rel="stylesheet" href="sport.css?v=2" />
+</head>
+
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>MV<span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link nav-back" data-en="← Back to CV" data-cz="← Zpět na CV">← Back to CV</a></li>
+        <li><a href="#hero" class="nav-link" data-en="Overview" data-cz="Přehled">Overview</a></li>
+        <li><a href="#records" class="nav-link" data-en="Records" data-cz="Rekordy">Records</a></li>
+        <li><a href="#trends" class="nav-link" data-en="Trends" data-cz="Trendy">Trends</a></li>
+        <li><a href="#map" class="nav-link" data-en="Map" data-cz="Mapa">Map</a></li>
+        <li><a href="#activities" class="nav-link" data-en="Activities" data-cz="Aktivity">Activities</a></li>
+      </ul>
+      <button class="lang-btn" id="lang-btn" onclick="toggleLang()" aria-label="Switch language">
+        <span class="lang-icon">🌐</span>
+        <span id="lang-label">EN → CZ</span>
+      </button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO / OVERVIEW ===== -->
+  <section id="hero" class="sport-hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-particles" id="particles"></div>
+    <div class="sport-hero-container">
+      <div class="hero-title-wrap">
+        <span class="hero-tag" data-en="Sport Analytics" data-cz="Sportovní Analytika">Sport Analytics</span>
+        <h1 class="sport-hero-title" data-en="Training Dashboard" data-cz="Tréninkový Dashboard">Training Dashboard</h1>
+        <p class="sport-hero-sub" data-en="Comprehensive overview of all training activities, performance trends, and personal records." data-cz="Komplexní přehled všech tréninků, výkonnostních trendů a osobních rekordů.">Comprehensive overview of all training activities, performance trends, and personal records.</p>
+      </div>
+
+      <!-- Total Stats Cards -->
+      <div class="hero-stats-grid">
+        <div class="hero-stat-card hero-stat-all">
+          <div class="stat-card-icon">🏅</div>
+          <div class="stat-card-value" id="stat-total-count" data-target="0">0</div>
+          <div class="stat-card-label" data-en="Total Activities" data-cz="Celkem aktivit">Total Activities</div>
+        </div>
+        <div class="hero-stat-card hero-stat-distance">
+          <div class="stat-card-icon">📏</div>
+          <div class="stat-card-value"><span id="stat-total-distance" data-target="0">0</span> <small>km</small></div>
+          <div class="stat-card-label" data-en="Total Distance" data-cz="Celková vzdálenost">Total Distance</div>
+        </div>
+        <div class="hero-stat-card hero-stat-time">
+          <div class="stat-card-icon">⏱️</div>
+          <div class="stat-card-value" id="stat-total-time">0h</div>
+          <div class="stat-card-label" data-en="Total Time" data-cz="Celkový čas">Total Time</div>
+        </div>
+        <div class="hero-stat-card hero-stat-elevation">
+          <div class="stat-card-icon">⛰️</div>
+          <div class="stat-card-value"><span id="stat-total-elevation" data-target="0">0</span> <small>m</small></div>
+          <div class="stat-card-label" data-en="Elevation Gain" data-cz="Celkové převýšení">Elevation Gain</div>
+        </div>
+      </div>
+
+      <!-- Sport Breakdown -->
+      <div class="hero-sport-breakdown">
+        <div class="sport-chip sport-chip-run">
+          <span class="chip-dot" style="background:#3b9eff"></span>
+          <span class="chip-label" data-en="Run" data-cz="Běh">Run</span>
+          <span class="chip-value" id="stat-run-count">0</span>
+          <span class="chip-dist" id="stat-run-distance">0 km</span>
+        </div>
+        <div class="sport-chip sport-chip-ride">
+          <span class="chip-dot" style="background:#00e5a0"></span>
+          <span class="chip-label" data-en="Ride" data-cz="Jízda">Ride</span>
+          <span class="chip-value" id="stat-ride-count">0</span>
+          <span class="chip-dist" id="stat-ride-distance">0 km</span>
+        </div>
+        <div class="sport-chip sport-chip-walk">
+          <span class="chip-dot" style="background:#f59e0b"></span>
+          <span class="chip-label" data-en="Walk" data-cz="Chůze">Walk</span>
+          <span class="chip-value" id="stat-walk-count">0</span>
+          <span class="chip-dist" id="stat-walk-distance">0 km</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RECORDS ===== -->
+  <section id="records" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Personal Bests" data-cz="Osobní rekordy">Personal Bests</span>
+        <h2 class="section-title" data-en="Records" data-cz="Rekordy">Records</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="records-grid" id="records-grid">
+        <!-- Filled by JS -->
+      </div>
+      <div class="records-extra" id="records-extra">
+        <!-- Longest run, ride, maxHR, maxElevation -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FORM ESTIMATE ===== -->
+  <section id="form" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Current Fitness" data-cz="Aktuální forma">Current Fitness</span>
+        <h2 class="section-title" data-en="Form Estimate" data-cz="Odhad formy">Form Estimate</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="section-desc" data-en="Estimated current performance based on recent training data." data-cz="Odhadovaný aktuální výkon na základě posledních tréninků.">Estimated current performance based on recent training data.</p>
+      <div class="form-estimate-grid" id="form-estimate-grid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PERFORMANCE TRENDS ===== -->
+  <section id="trends" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Progress Over Time" data-cz="Vývoj v čase">Progress Over Time</span>
+        <h2 class="section-title" data-en="Performance Trends" data-cz="Výkonnostní trendy">Performance Trends</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="trend-tabs" id="trend-tabs">
+        <!-- Filled by JS -->
+      </div>
+      <div class="chart-wrap">
+        <canvas id="trend-chart"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRAINING VOLUMES ===== -->
+  <section id="volumes" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Training Load" data-cz="Tréninkový objem">Training Load</span>
+        <h2 class="section-title" data-en="Training Volumes" data-cz="Tréninkové objemy">Training Volumes</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="volume-toggle">
+        <button class="vol-btn active" data-view="weekly" data-en="Weekly" data-cz="Týdně">Weekly</button>
+        <button class="vol-btn" data-view="monthly" data-en="Monthly" data-cz="Měsíčně">Monthly</button>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="volume-chart"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RUNNING CATEGORIES ===== -->
+  <section id="categories" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Training Types" data-cz="Typy tréninků">Training Types</span>
+        <h2 class="section-title" data-en="Running Categories" data-cz="Kategorie běhů">Running Categories</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="categories-grid" id="categories-grid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAP ===== -->
+  <section id="map" class="section section-map">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Where I Train" data-cz="Kde trénuji">Where I Train</span>
+        <h2 class="section-title" data-en="Activity Map" data-cz="Mapa aktivit">Activity Map</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="map-filters" id="map-filters">
+        <button class="map-filter-btn active" data-filter="all" data-en="All" data-cz="Vše">All</button>
+        <button class="map-filter-btn" data-filter="run" data-en="Run" data-cz="Běh">Run</button>
+        <button class="map-filter-btn" data-filter="ride" data-en="Ride" data-cz="Jízda">Ride</button>
+        <button class="map-filter-btn" data-filter="walk" data-en="Walk" data-cz="Chůze">Walk</button>
+      </div>
+      <div class="map-container">
+        <div id="leaflet-map"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACTIVITY DATABASE ===== -->
+  <section id="activities" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="All Workouts" data-cz="Všechny tréninky">All Workouts</span>
+        <h2 class="section-title" data-en="Activity Database" data-cz="Databáze aktivit">Activity Database</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="activity-controls">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="activity-search" class="activity-search" placeholder="Search activities..." data-en-placeholder="Search activities..." data-cz-placeholder="Hledat aktivity..." />
+        </div>
+        <div class="filter-group">
+          <select id="filter-sport" class="filter-select">
+            <option value="all" data-en="All Sports" data-cz="Všechny sporty">All Sports</option>
+            <option value="run" data-en="Run" data-cz="Běh">Run</option>
+            <option value="ride" data-en="Ride" data-cz="Jízda">Ride</option>
+            <option value="walk" data-en="Walk" data-cz="Chůze">Walk</option>
+          </select>
+          <select id="filter-sort" class="filter-select">
+            <option value="date-desc" data-en="Newest First" data-cz="Nejnovější">Newest First</option>
+            <option value="date-asc" data-en="Oldest First" data-cz="Nejstarší">Oldest First</option>
+            <option value="distance-desc" data-en="Longest Distance" data-cz="Nejdelší">Longest Distance</option>
+            <option value="pace-asc" data-en="Fastest Pace" data-cz="Nejrychlejší">Fastest Pace</option>
+          </select>
+        </div>
+      </div>
+      <div class="activity-count" id="activity-count"></div>
+      <div class="activity-list" id="activity-list">
+        <!-- Filled by JS -->
+      </div>
+      <div class="load-more-wrap">
+        <button class="btn-load-more" id="btn-load-more" data-en="Load More" data-cz="Načíst další">Load More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REPEATED ROUTES ===== -->
+  <section id="routes" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Progress on Routes" data-cz="Pokrok na trasách">Progress on Routes</span>
+        <h2 class="section-title" data-en="Repeated Routes" data-cz="Opakované trasy">Repeated Routes</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="section-desc" data-en="Compare your performance on the same routes over time." data-cz="Porovnejte svůj výkon na stejných trasách v průběhu času.">Compare your performance on the same routes over time.</p>
+      <div class="repeated-routes-list" id="repeated-routes-list">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACTIVITY DETAIL MODAL ===== -->
+  <div class="modal-overlay" id="activity-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      <div class="modal-header">
+        <div class="modal-sport-badge" id="modal-sport-badge"></div>
+        <div>
+          <h3 class="modal-title" id="modal-title"></h3>
+          <p class="modal-date" id="modal-date"></p>
+        </div>
+      </div>
+      <div class="modal-stats-grid" id="modal-stats-grid"></div>
+      <div class="modal-map-wrap">
+        <div id="modal-map"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo"><span class="logo-bracket">&lt;</span>MV<span class="logo-bracket">/&gt;</span></span>
+      <p data-en="Sport Dashboard · Michal Votýpka · 2025" data-cz="Sportovní Dashboard · Michal Votýpka · 2025">Sport Dashboard · Michal Votýpka · 2025</p>
+      <p class="footer-sub" data-en="Powered by Strava data" data-cz="Na základě dat ze Strava">Powered by Strava data</p>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Sport Dashboard JS -->
+  <script src="sport.js?v=2"></script>
+</body>
+
+</html>

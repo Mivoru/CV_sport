@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Michal Votýpka – IT Student at TUL Liberec, Endurance Runner, Software Developer. Personal CV website." />
+  <meta name="keywords"
+    content="Michal Votýpka, IT student, TUL Liberec, C++, Python, Java, athletics, runner, CV, portfolio" />
+  <meta name="author" content="Michal Votýpka" />
+  <title>Michal Votýpka | IT Student & Athlete</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>MV<span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link" data-en="About" data-cz="O mně">About</a></li>
+        <li><a href="#education" class="nav-link" data-en="Education" data-cz="Vzdělání">Education</a></li>
+        <li><a href="#skills" class="nav-link" data-en="Skills" data-cz="Dovednosti">Skills</a></li>
+        <li><a href="#experience" class="nav-link" data-en="Experience" data-cz="Zkušenosti">Experience</a></li>
+        <li><a href="#interests" class="nav-link" data-en="Interests" data-cz="Zájmy">Interests</a></li>
+        <li><a href="#contact" class="nav-link" data-en="Contact" data-cz="Kontakt">Contact</a></li>
+        <li><a href="sport.html" class="nav-link" data-en="Sport" data-cz="Sport">Sport</a></li>
+      </ul>
+      <button class="lang-btn" id="lang-btn" onclick="toggleLang()" aria-label="Switch language">
+        <span class="lang-icon">🌐</span>
+        <span id="lang-label">EN → CZ</span>
+      </button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-container">
+      <div class="hero-text">
+        <p class="hero-greeting" data-en="Hello, I'm" data-cz="Ahoj, jsem">Hello, I'm</p>
+        <h1 class="hero-name">Michal <span class="accent">Votýpka</span></h1>
+        <div class="hero-roles">
+          <span class="role-tag" data-en="IT Student @ TUL" data-cz="IT Student @ TUL">IT Student @ TUL</span>
+          <span class="role-divider">|</span>
+          <span class="role-tag" data-en="Endurance Runner" data-cz="Vytrvalostní Běžec">Endurance Runner</span>
+          <span class="role-divider">|</span>
+          <span class="role-tag" data-en="Developer" data-cz="Vývojář">Developer</span>
+        </div>
+        <p class="hero-bio"
+          data-en="I'm an IT student at the Technical University of Liberec with a passion for software development, multimedia content creation, and athletics. I find functional solutions — whether in C++ code or on the running track."
+          data-cz="Jsem student IT na TUL v Liberci se zápalem pro vývoj softwaru, tvorbu multimediálního obsahu a atletiku. Hledám funkční řešení — ať už v kódu C++ nebo na atletické dráze.">
+          I'm an IT student at the Technical University of Liberec with a passion for software development, multimedia
+          content creation, and athletics. I find functional solutions — whether in C++ code or on the running track.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn-primary" data-en="Get In Touch" data-cz="Kontaktujte mě">Get In Touch</a>
+          <a href="#about" class="btn-secondary" data-en="Learn More" data-cz="Více o mně">Learn More</a>
+        </div>
+        <div class="hero-scroll">
+          <div class="scroll-indicator">
+            <span></span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="hero-image-glow"></div>
+        <div class="hero-image-ring"></div>
+        <img src="images/hlavni.jpeg" alt="Michal Votýpka" class="hero-photo" />
+        <div class="hero-badge hero-badge-1">
+          <span class="badge-icon">🏃</span>
+          <span class="badge-text" data-en="Athlete since 2008" data-cz="Atlet od 2008">Athlete since 2008</span>
+        </div>
+        <div class="hero-badge hero-badge-2">
+          <span class="badge-icon">💻</span>
+          <span class="badge-text" data-en="C++ / Python / Java" data-cz="C++ / Python / Java">C++ / Python /
+            Java</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Who I am" data-cz="Kdo jsem">Who I am</span>
+        <h2 class="section-title" data-en="About Me" data-cz="O mně">About Me</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p data-en="I am a student at the Faculty of Mechatronics, Informatics and Interdisciplinary Studies at TUL in Liberec, focusing on information technology. My path to technology is driven by programming, digital content creation, and the discipline gained from athletics."
+            data-cz="Jsem student Fakulty mechatroniky, informatiky a mezioborových studií na TUL v Liberci se zaměřením na informační technologie. Moje cesta k technologiím vede skrze kombinaci programování, tvorby digitálního obsahu a disciplíny získané z atletiky.">
+            I am a student at the Faculty of Mechatronics, Informatics and Interdisciplinary Studies at TUL in Liberec,
+            focusing on information technology. My path to technology is driven by programming, digital content
+            creation, and the discipline gained from athletics.
+          </p>
+          <p data-en="I enjoy finding functional solutions, whether it's software development in C++ or video editing in DaVinci Resolve. Athletics since 2008 gave me perseverance and a structured mindset that I apply to every technical project."
+            data-cz="Baví mě hledat funkční řešení, ať už jde o vývoj softwaru v C++ nebo střih videa v DaVinci Resolve. Atletika od roku 2008 mi dala vytrvalost a systematické myšlení, které aplikuji v každém technickém projektu.">
+            I enjoy finding functional solutions, whether it's software development in C++ or video editing in DaVinci
+            Resolve. Athletics since 2008 gave me perseverance and a structured mindset that I apply to every technical
+            project.
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num">2008</span>
+              <span class="stat-label" data-en="Started Athletics" data-cz="Začátek Atletiky">Started Athletics</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">TUL</span>
+              <span class="stat-label" data-en="University" data-cz="Univerzita">University</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">3</span>
+              <span class="stat-label" data-en="Languages" data-cz="Jazyky">Languages</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-cards">
+          <div class="info-card" data-en="📍 Located in Nový Bor / Liberec, Czech Republic"
+            data-cz="📍 Nový Bor / Liberec, Česká republika">
+            📍 Located in Nový Bor / Liberec, Czech Republic
+          </div>
+          <div class="info-card" data-en="🎓 Faculty of Mechatronics, Informatics & Interdisciplinary Studies, TUL"
+            data-cz="🎓 FM, IT a mezioborových studií, TUL">
+            🎓 Faculty of Mechatronics, Informatics & Interdisciplinary Studies, TUL
+          </div>
+          <div class="info-card" data-en="🏃 Active athlete – TJ Jiskra Nový Bor"
+            data-cz="🏃 Aktivní atlet – TJ Jiskra Nový Bor">
+            🏃 Active athlete – TJ Jiskra Nový Bor
+          </div>
+          <div class="info-card" data-en="🎬 Multimedia content creator for athletics club"
+            data-cz="🎬 Tvorba multimediálního obsahu pro atletický oddíl">
+            🎬 Multimedia content creator for athletics club
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education" class="section education-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="My journey" data-cz="Moje cesta">My journey</span>
+        <h2 class="section-title" data-en="Education" data-cz="Vzdělání">Education</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2023 – <span data-en="Present" data-cz="Současnost">Present</span></div>
+            <h3 class="timeline-title" data-en="Technical University of Liberec"
+              data-cz="Technická univerzita v Liberci">Technical University of Liberec</h3>
+            <p class="timeline-sub" data-en="Faculty of Mechatronics, Informatics & Interdisciplinary Studies"
+              data-cz="Fakulta mechatroniky, informatiky a mezioborových studií">Faculty of Mechatronics, Informatics &
+              Interdisciplinary Studies</p>
+            <p class="timeline-desc"
+              data-en="Focus: Algorithmization, Object-Oriented Programming, Data Structures, Software Development"
+              data-cz="Zaměření: Algoritmizace, objektové programování, datové struktury, vývoj softwaru">Focus:
+              Algorithmization, Object-Oriented Programming, Data Structures, Software Development</p>
+            <div class="timeline-tags">
+              <span class="tag">C++</span><span class="tag">Java</span><span class="tag">Python</span><span
+                class="tag">HTML/CSS</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2019 – 2023</div>
+            <h3 class="timeline-title" data-en="Higher Vocational School of Glass and Secondary School Nový Bor"
+              data-cz="Vyšší odborná škola sklářská a Střední škola Nový Bor">Higher Vocational School of Glass and Secondary School Nový Bor</h3>
+            <p class="timeline-sub" data-en="Grammar school – graduated with Maturita exam"
+              data-cz="Obor Gymnázium – všeobecné vzdělání zakončené maturitní zkouškou">Grammar school – graduated with
+              Maturita exam
+            </p>
+            <p class="timeline-desc"
+              data-en="General education with broad academic foundation across sciences and humanities."
+              data-cz="Všeobecné vzdělání s širokým akademickým základem v přírodních vědách a humanitních oborech.">
+              General education with broad academic foundation across sciences and humanities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="What I can do" data-cz="Co umím">What I can do</span>
+        <h2 class="section-title" data-en="Skills" data-cz="Dovednosti">Skills</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3 class="skill-group-title">
+            <span class="skill-icon">⟨/⟩</span>
+            <span data-en="Programming & Development" data-cz="Programování a vývoj">Programming & Development</span>
+          </h3>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>C++</span><span class="skill-pct">75%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="75"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Python</span><span class="skill-pct">65%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="65"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Java</span><span class="skill-pct">60%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="60"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>HTML5 / CSS3</span><span class="skill-pct">55%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="55"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group-title">
+            <span class="skill-icon">🛠</span>
+            <span data-en="Tools & Software" data-cz="Nástroje a software">Tools & Software</span>
+          </h3>
+          <div class="skill-pills">
+            <span class="pill">DaVinci Resolve</span>
+            <span class="pill">GIMP</span>
+            <span class="pill">Unity</span>
+            <span class="pill">Overleaf / LaTeX</span>
+            <span class="pill">Microsoft Excel</span>
+            <span class="pill">Git</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group-title">
+            <span class="skill-icon">💬</span>
+            <span data-en="Languages" data-cz="Jazyky">Languages</span>
+          </h3>
+          <div class="lang-cards">
+            <div class="lang-card">
+              <span class="lang-flag">🇨🇿</span>
+              <span class="lang-name" data-en="Czech" data-cz="Čeština">Czech</span>
+              <span class="lang-level" data-en="Native" data-cz="Rodný jazyk">Native</span>
+            </div>
+            <div class="lang-card">
+              <span class="lang-flag">🇬🇧</span>
+              <span class="lang-name" data-en="English" data-cz="Angličtina">English</span>
+              <span class="lang-level" data-en="Intermediate" data-cz="Středně pokročilý">Intermediate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" class="section experience-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="What I've done" data-cz="Co jsem dělal">What I've done</span>
+        <h2 class="section-title" data-en="Experience" data-cz="Zkušenosti">Experience</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="exp-grid">
+        <div class="exp-card exp-athletics">
+          <div class="exp-icon">🏃‍♂️</div>
+          <div class="exp-content">
+            <div class="exp-period">2008 – <span data-en="Present" data-cz="Současnost">Present</span></div>
+            <h3 data-en="Athlete – TJ Jiskra Nový Bor" data-cz="Atlet – TJ Jiskra Nový Bor">Athlete – TJ Jiskra Nový Bor
+            </h3>
+            <p data-en="Active endurance runner competing at national level. Athletics since early age shaped my discipline, perseverance, and team spirit."
+              data-cz="Aktivní vytrvalostní běžec závodící na národní úrovni. Atletika od raného věku mi dala disciplínu, vytrvalost a týmového ducha.">
+              Active endurance runner competing at national level. Athletics since early age shaped my discipline,
+              perseverance, and team spirit.
+            </p>
+            <div class="exp-achievements">
+              <div class="achievement">
+                <span class="ach-medal">🥈</span>
+                <span
+                  data-en="2020 — 5th place at Czech Republic Junior Team Championships (3000m) in TJ LIAZ Jablonec colours"
+                  data-cz="2020 — 5. místo na Mistrovství ČR družstev dorostu (běh na 3000 m) v dresu TJ LIAZ Jablonec n/N">2020
+                  — 5th place at Czech Republic Junior Team Championships (3000m)</span>
+              </div>
+              <div class="achievement">
+                <span class="ach-medal">🏅</span>
+                <span data-en="2018 — 17th place at Czech Republic Youth Championships on Track"
+                  data-cz="2018 — 17. místo na Mistrovství ČR žactva na dráze">2018 — 17th place at Czech Republic Youth
+                  Championships on Track</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exp-card exp-media">
+          <div class="exp-icon">🎬</div>
+          <div class="exp-content">
+            <div class="exp-period">2020 – <span data-en="Present" data-cz="Současnost">Present</span></div>
+            <h3 data-en="Multimedia Content Creator – TJ Jiskra Nový Bor"
+              data-cz="Tvorba multimediálního obsahu – TJ Jiskra Nový Bor">Multimedia Content Creator – TJ Jiskra Nový
+              Bor</h3>
+            <p data-en="Providing multimedia support for the athletics club. Creating graphic announcements about competitions and results, producing short videos and reports from athletic events."
+              data-cz="Zajišťuji multimediální podporu pro atletický oddíl. Tvorba grafických oznámení o závodech a výsledcích, produkce krátkých videí a reportáží z atletických akcí.">
+              Providing multimedia support for the athletics club. Creating graphic announcements about competitions and
+              results, producing short videos and reports from athletic events.
+            </p>
+            <div class="exp-tools">
+              <span class="tool-tag">DaVinci Resolve</span>
+              <span class="tool-tag">GIMP</span>
+              <span class="tool-tag">Adobe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTERESTS ===== -->
+  <section id="interests" class="section interests-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="My passions" data-cz="Moje vášně">My passions</span>
+        <h2 class="section-title" data-en="Interests" data-cz="Zájmy">Interests</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- Running subsection -->
+      <div class="interest-block">
+        <h3 class="interest-block-title">
+          <span class="iblock-icon">🏃</span>
+          <span data-en="Running & Athletics" data-cz="Běh a Atletika">Running & Athletics</span>
+        </h3>
+        <p class="interest-desc"
+          data-en="Since 2008 I have been actively competing in endurance running. Sport has given me the discipline and perseverance that I also apply in technical projects."
+          data-cz="Od roku 2008 se aktivně věnuji vytrvalostnímu běhu. Sport mi dal disciplínu a vytrvalost, které aplikuji i v technických projektech.">
+          Since 2008 I have been actively competing in endurance running. Sport has given me the discipline and
+          perseverance that I also apply in technical projects.
+        </p>
+        <div class="interest-gallery running-gallery">
+          <div class="gallery-item">
+            <img src="images/beh1.jpeg" alt="Running – race photo 1" loading="lazy" style="object-position: center 55%;" />
+            <div class="gallery-overlay"><span data-en="In action" data-cz="V akci">In action</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/beh2.jpg" alt="Running – race photo 2" loading="lazy" style="object-position: top center;" />
+            <div class="gallery-overlay"><span data-en="Race day" data-cz="Den závodu">Race day</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel subsection -->
+      <div class="interest-block">
+        <h3 class="interest-block-title">
+          <span class="iblock-icon">✈️</span>
+          <span data-en="Travel & Culture" data-cz="Cestování a Kultura">Travel & Culture</span>
+        </h3>
+        <p class="interest-desc"
+          data-en="Exploring new places, cultures, and cuisines is one of my favourite ways to recharge and gain new perspectives."
+          data-cz="Poznávání nových míst, kultur a kuchyní je jedním z mých oblíbených způsobů, jak načerpat nové podněty a perspektivy.">
+          Exploring new places, cultures, and cuisines is one of my favourite ways to recharge and gain new
+          perspectives.
+        </p>
+        <div class="interest-gallery travel-gallery">
+          <div class="gallery-item gallery-large">
+            <img src="images/cestovani1.jpeg" alt="Travel photo 1" loading="lazy" />
+            <div class="gallery-overlay"><span data-en="Adventures" data-cz="Dobrodružství">Adventures</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/cestovani2.jpeg" alt="Travel photo 2" loading="lazy" />
+            <div class="gallery-overlay"><span data-en="New horizons" data-cz="Nové horizonty">New horizons</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/cestovani3.jpeg" alt="Travel photo 3" loading="lazy" />
+            <div class="gallery-overlay"><span data-en="Explore" data-cz="Objevuj">Explore</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/cestovani4.jpeg" alt="Travel photo 4" loading="lazy" />
+            <div class="gallery-overlay"><span data-en="Wanderlust" data-cz="Touha cestovat">Wanderlust</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other interests -->
+      <div class="other-interests">
+        <div class="other-int-card">
+          <span class="oi-icon">🎮</span>
+          <h4 data-en="Gaming & Game Dev" data-cz="Gaming a Vývoj Her">Gaming & Game Dev</h4>
+          <p data-en="Following modern gaming trends and experimenting with Unity for game development."
+            data-cz="Sledování moderních trendů v herním průmyslu, experimenty s Unity ve vývoji her.">Following modern
+            gaming trends and experimenting with Unity for game development.</p>
+        </div>
+        <div class="other-int-card">
+          <span class="oi-icon">🎌</span>
+          <h4 data-en="Anime & Culture" data-cz="Anime a Kultura">Anime & Culture</h4>
+          <p data-en="Fan of Japanese animation — love the storytelling, art styles, and cultural depth of anime."
+            data-cz="Fanoušek japonské animace — oceňuji způsob vyprávění, výtvarné styly a kulturní hloubku anime.">Fan
+            of Japanese animation — love the storytelling, art styles, and cultural depth of anime.</p>
+        </div>
+        <div class="other-int-card">
+          <span class="oi-icon">🎬</span>
+          <h4 data-en="Video Editing" data-cz="Střih videa">Video Editing</h4>
+          <p data-en="Creating and editing videos in DaVinci Resolve — from athletics event highlights to multimedia projects."
+            data-cz="Tvorba a střih videí v DaVinci Resolve — od sportovních sestřihů po multimediální projekty.">
+            Creating and editing videos in DaVinci Resolve — from athletics event highlights to multimedia projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Get in touch" data-cz="Napište mi">Get in touch</span>
+        <h2 class="section-title" data-en="Contact" data-cz="Kontakt">Contact</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="contact-intro"
+            data-en="Feel free to reach out for collaboration, questions, or just a chat about tech and running!"
+            data-cz="Neváhejte mě kontaktovat ohledně spolupráce, dotazů nebo jen tak o technologiích a běhu!">
+            Feel free to reach out for collaboration, questions, or just a chat about tech and running!
+          </p>
+          <div class="contact-items">
+            <a href="mailto:promichalcz@gmail.com" class="contact-item">
+              <span class="contact-icon">📧</span>
+              <div>
+                <span class="contact-label" data-en="Email" data-cz="E-mail">Email</span>
+                <span class="contact-value">promichalcz@gmail.com</span>
+              </div>
+            </a>
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <div>
+                <span class="contact-label" data-en="Location" data-cz="Lokalita">Location</span>
+                <span class="contact-value" data-en="Nový Bor / Liberec, Czech Republic"
+                  data-cz="Nový Bor / Liberec, Česká republika">Nový Bor / Liberec, Czech Republic</span>
+              </div>
+            </div>
+            <a href="#" class="contact-item">
+              <span class="contact-icon">📸</span>
+              <div>
+                <span class="contact-label">Instagram</span>
+                <span class="contact-value" data-en="@michal.votypka" data-cz="@michal.votypka">@michal.votypka</span>
+              </div>
+            </a>
+            <a href="#" class="contact-item">
+              <span class="contact-icon">👤</span>
+              <div>
+                <span class="contact-label">Facebook</span>
+                <span class="contact-value">Michal Votýpka</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form" onsubmit="handleForm(event)">
+          <div class="form-group">
+            <label for="name" data-en="Your Name" data-cz="Vaše jméno">Your Name</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe" />
+          </div>
+          <div class="form-group">
+            <label for="email" data-en="Your Email" data-cz="Váš e-mail">Your Email</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="message" data-en="Message" data-cz="Zpráva">Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Hello Michal..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary form-btn" data-en="Send Message" data-cz="Odeslat zprávu">Send
+            Message</button>
+          <div id="form-success" class="form-success hidden" data-en="✅ Message sent! I'll get back to you soon."
+            data-cz="✅ Zpráva odeslána! Brzy se ozvu.">✅ Message sent! I'll get back to you soon.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo"><span class="logo-bracket">&lt;</span>MV<span class="logo-bracket">/&gt;</span></span>
+      <p data-en="Designed & built by Michal Votýpka · 2025" data-cz="Navrženo a vytvořeno Michalem Votýpkou · 2025">
+        Designed & built by Michal Votýpka · 2025</p>
+      <p class="footer-sub" data-en="IT Student · Athlete · Developer" data-cz="IT Student · Atlet · Vývojář">IT Student
+        · Athlete · Developer</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

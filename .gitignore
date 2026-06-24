@@ -1,0 +1,4 @@
+export_*/
+__pycache__/
+*.db
+.env

@@ -1,0 +1,58 @@
+1. Úvod / O mně (About Me)
+Jmenuji se Michal Votýpka
+CZ: Jsem student Fakulty mechatroniky, informatiky a mezioborových studií na TUL v Liberci se zaměřením na informační technologie. Moje cesta k technologiím vede skrze kombinaci programování, tvorby digitálního obsahu a disciplíny získané z atletiky. Baví mě hledat funkční řešení, ať už jde o vývoj softwaru v C++ nebo střih videa v DaVinci Resolve.
+
+EN: I am an IT student at the Technical University of Liberec. My path to technology is driven by a combination of programming, digital content creation, and the discipline gained from athletics. I enjoy finding functional solutions, whether it's software development in C++ or video editing in DaVinci Resolve.
+
+2. Vzdělání (Education)
+2022 – Současnost: Technická univerzita v Liberci
+
+Obor: Informační technologie
+
+Zaměření: Algoritmizace, objektové programování, datové struktury.
+
+2014 – 2022: Gymnázium Nový Bor
+
+Všeobecné vzdělání zakončené maturitní zkouškou.
+
+3. Technické dovednosti (Technical Skills)
+Programování a Vývoj
+Jazyky: C++, Java, Python
+
+Web: HTML5, CSS3 (základy tvorby webových stránek)
+
+Engine: Unity (základy vývoje her, práce s 3D prostorem)
+
+Softwarové nástroje
+Multimédia: DaVinci Resolve (střih a postprodukce videa), GIMP (pokročilá úprava bitmapové grafiky)
+
+Produktivita: Overleaf (LaTeX – sazba technických dokumentů), Microsoft Excel (pokročilé zpracování dat)
+
+4. Sportovní úspěchy a mimoškolní činnost (Experience & Athletics)
+Atletika (TJ Jiskra Nový Bor)
+Již od roku 2008 se aktivně věnuji atletice. Sport mi dal disciplínu a vytrvalost, které aplikuji i v technických projektech.
+
+2020: 5. místo na Mistrovství ČR družstev dorostu (běh na 3000 m) v dresu TJ LIAZ Jablonec n/N.
+
+2018: 17. místo na Mistrovství ČR žactva na dráze.
+
+Tvorba obsahu
+Pro oddíl TJ Jiskra Nový Bor zajišťuji multimediální podporu:
+
+Tvorba grafických oznámení o závodech a výsledcích.
+
+Produkce krátkých videí a reportáží z atletických akcí.
+
+5. Zájmy (Interests)
+Gaming & Vývoj: Sledování moderních trendů v herním průmyslu, experimenty v Unity.
+
+Kultura: Anime a cestování.
+
+Sport: Aktivní trénink a vytrvalostní běh.
+
+6. Kontakt (Contact)
+Lokalita: Nový Bor / Liberec, ČR
+
+E-mail: [Tvůj Email]
+
+Socials: [Odkaz na Instagram] | [Odkaz na Facebook]
